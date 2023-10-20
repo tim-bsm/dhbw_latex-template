@@ -2,7 +2,7 @@
 
 \begin{titlepage}
 
-\begin{longtable}{p{8.2cm} p{5.4cm}}
+\begin{longtable}{p{9cm} p{9cm}}
 	{
 		\raisebox{\ht\strutbox-\totalheight}{
 			\ifshowfirmenlogo
@@ -19,12 +19,21 @@
 	{
 		\raisebox{\ht\strutbox-\totalheight}{
 			\ifshowdhbwlogo
-				\iflang{de} {
-					\includegraphics[height=2.5cm]{dhbw.png}
-				}
-				\iflang{en} {
-					\includegraphics[height=2.5cm]{dhbw_en.jpg}
-				}
+				\ifshowfirmenlogo
+					\iflang{de} {
+						\includegraphics[height=2.5cm, trim=5cm 0cm -5cm 0cm]{dhbw.png}
+					}
+					\iflang{en} {
+						\includegraphics[height=2.5cm, trim=1.8cm 0.1cm -1.8cm -0.1cm]{dhbw_en.jpg}
+					}
+				\else
+					\iflang{de} {
+						\includegraphics[height=5cm, trim=18cm 0cm -18cm 0cm]{dhbw.png}
+					}
+					\iflang{en} {
+						\includegraphics[height=5cm, trim=4.9cm 0cm -4.9cm 0cm]{dhbw_en.jpg}
+					}
+				\fi
 			\fi
 		}
 	}

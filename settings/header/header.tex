@@ -13,7 +13,8 @@
     headsepline,		% Linie nach Kopfzeile.
     footsepline,		% Linie vor Fusszeile.
     %footheight = 16pt,	% Höhe der Fusszeile
-    abstracton,		    % Abstract Überschriften
+    %abstracton,		    % Abstract Überschriften
+    abstract=true,
     DIV=calc,		    % Satzspiegel berechnen
     BCOR=8mm,		    % Bindekorrektur links: 8mm
     headinclude=false,	% Kopfzeile nicht in den Satzspiegel einbeziehen
@@ -24,7 +25,7 @@
 
 
 %neu durch Franzi
-\usepackage{tocloft}
+% \usepackage{tocloft}
 
 
 % Einstellungen laden
@@ -286,8 +287,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{tikz}
 \usepackage{xcolor}
-\usepackage{../additionalPackages/tikz-uml} % UML Diagramme
-\usepackage[european]{../additionalPackages/circuitikz}
+%\usepackage{../additionalPackages/tikz-uml} % UML Diagramme
+%\usepackage[european]{../additionalPackages/circuitikz}
 %%%%%%% Package Includes %%%%%%%
 
 \usepackage[margin=2.5cm,foot=1cm,top=3cm,bottom=3cm]{geometry}	% Seitenränder und Abstände
@@ -306,9 +307,8 @@
 \usepackage{wrapfig}
 \usepackage{pgffor} % für automatische Kapiteldateieinbindung
 \usepackage[perpage, hang, multiple, stable]{footmisc} % Fussnoten
-\usepackage{acronym}
 \usepackage[absolute]{textpos}
-%\usepackage[printonlyused, footnote]{acronym} % falls gewünscht kann die Option footnote eingefügt werden, dann wird die Erklärung nicht inline sondern in einer Fußnote dargestellt
+\usepackage[printonlyused]{acronym} % falls gewünscht kann die Option footnote eingefügt werden, dann wird die Erklärung nicht inline sondern in einer Fußnote dargestellt
 \usepackage{scrhack} % in Kombination mit listings-Package kommt es zu Warnings, dieses Paket verhindert die Warnings! Ggf. auskommentieren und die Warnings akzeptieren falls Verzeichnisse nicht so dargestellt werden wie gewünscht
 \usepackage{listings} % Code-Listings
 %\usepackage[numbered, framed]{matlab-prettifier}
@@ -373,24 +373,22 @@
 % Literaturverweise (sowohl deutsch als auch englisch)
 \iflang{de}{%
 \usepackage[
-    backend=bibtex % empfohlen. Falls biber Probleme macht: bibtex
-    style=numeric-comp
+    backend=biber,          % empfohlen. Falls biber Probleme macht: bibtex
     %bibwarn=true,
-    %bibencoding=utf8,	% wenn .bib in utf8, sonst ascii
+    %bibencoding=utf8,	    % wenn .bib in utf8, sonst ascii
     sortlocale=de_DE,
-    sorting=none
-    %style=\zitierstil,
+    sorting=none,
+    style=\zitierstil,
 ]{biblatex}
 }
 \iflang{en}{%
 \usepackage[
-    backend=bibtex,		% empfohlen. Falls biber Probleme macht: bibtex
-    style=numeric-comp
+    backend=biber,		    % empfohlen. Falls biber Probleme macht: bibtex
     %bibwarn=true,
-    %bibencoding=utf8,	% wenn .bib in utf8, sonst ascii
+    %bibencoding=utf8,	    % wenn .bib in utf8, sonst ascii
     sortlocale=en_US,
-    sorting=none
-    %style=\zitierstil,
+    sorting=none,
+    style=\zitierstil,
 ]{biblatex}
 }
 
