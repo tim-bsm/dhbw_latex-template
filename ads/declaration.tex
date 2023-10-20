@@ -1,0 +1,42 @@
+%!TEX root = ../document/document.tex
+
+\thispagestyle{plain}
+
+% Sperrvermerk direkt nach Selbstständigkeitserklärung
+%\section*{\\Selbstständigkeitserklärung}
+\section*{\\\langselbsterkl}
+
+
+\vspace*{2em}
+
+
+\iflang{de}{
+    Ich versichere hiermit, dass ich meine {\arbeit} mit dem Thema
+    \begin{center}{\itshape{} \titel{}\/} \end{center}
+    selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe. Ich versichere zudem, dass die eingereichte elektronische Fassung mit der gedruckten Fassung übereinstimmt.
+}
+
+\iflang{en}{
+    I hereby declare that I have completed the present {\arbeit} with the topic 
+    \begin{center}{\itshape{} \titel{}\/} \end{center}
+    independently, using only the sources and tools indicated. I confirm that the electronic version submitted corresponds to the printed version.
+}
+
+
+% Unterschrift einfügen
+\ifshowsignature
+    \vspace{2em}
+
+    \begin{figure}[!htb]
+        \begin{minipage}{0.2\textwidth}
+            \includegraphics[width=\linewidth]{signature.jpg}
+        \end{minipage}
+    \end{figure}
+\else
+    \vspace{7em}
+\fi
+
+\vspace{-5.0ex}
+
+\rule{8cm}{0.4pt}\\
+\autor \hspace{1cm} \abgabeort, \datumAbgabe

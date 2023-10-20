@@ -1,0 +1,49 @@
+%!TEX root = ../document/document.tex
+
+\thispagestyle{plain}
+
+% Sperrvermerk direkt hinter Titelseite
+\section*{\\\langsperrvermerk}
+
+
+\vspace*{2em}
+
+
+\iflang{de}{
+  Die vorliegende {\arbeit} mit dem Titel
+  \begin{center}{\itshape{}\titel{}\/}\end{center}
+  enthält interne bzw. vertrauliche Informationen der {\firma}, ist deshalb mit einem Sperrvermerk versehen und wird ausschließlich zu Prüfungszwecken am Studiengang {\studiengang} der Dualen Hochschule Baden-Württemberg {\dhbw} vorgelegt.\\
+	\\
+	Der Inhalt dieser Arbeit darf weder als Ganzes, noch in Auszügen Personen außerhalb des Prüfungsprozesses und des Evaluationsverfahrens zugänglich gemacht werden, sofern keine anders lautende Genehmigung der {\abteilung} vorliegt.
+}
+
+\iflang{en}{
+  The {\arbeit} on hand 
+  \begin{center}{\itshape{} \titel{}\/}\end{center} 
+  contains internal respective confidential data of {\firma}. It is intended solely for inspection by the assigned examiner, the head of the {\studiengang} department and, if necessary, the Audit Committee \langanderdh{} {\dhbw}. It is strictly forbidden:
+  \begin{itemize}
+    \item to distribute the content of this paper (including data, figures, tables, charts etc.) as a whole or in extracts,
+    \item to make copies or transcripts of this paper or of parts of it,
+    \item to display this paper or make it available in digital, electronic or virtual form.
+  \end{itemize}
+  Exceptional cases may be considered through permission granted in written form by the author and {\firma}.
+}
+
+
+% Unterschrift einfügen
+\ifshowsignature
+    \vspace{2em}
+
+    \begin{figure}[!htb]
+        \begin{minipage}{0.2\textwidth}
+            \includegraphics[width=\linewidth]{signature.jpg}
+        \end{minipage}
+    \end{figure}
+\else
+    \vspace{7em}
+\fi
+
+\vspace{-5.0ex}
+
+\rule{8cm}{0.4pt}\\
+\autor \hspace{1cm} \abgabeort, \datumAbgabe

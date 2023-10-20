@@ -1,0 +1,158 @@
+\input{../settings/header/header.tex}
+\DeclareNewTOC[
+    forcenames,
+    type=formel,
+    name={Formel},
+    listname={\langformelsammlung}
+]{for}
+
+\iflang{de}{%
+    \newcommand*{\formelentry}[1]{%
+     \addcontentsline{for}{formel}{\protect\numberline{\theequation} #1}%
+    }
+}
+\iflang{en}{%
+    \newcommand*{\formelentry}[1]{%
+     \addcontentsline{for}{formel}{\protect\numberline{\theequation} #1}%
+    }
+}
+\makeglossaries
+\input{../ads/glossary}
+\begin{document}
+    \StopCensoring
+
+    % Wasserzeichen einfügen, falls Flag gesetzt
+    \ifwatermark
+        \AddToShipoutPicture{\Watermark}
+    \fi
+
+    \setpagestylehead
+
+    % Deckblatt
+    \begin{spacing}{1}
+        \input{../ads/deckblatt}
+    \end{spacing}
+
+    \newpage
+    %\ifwatermark
+    %    \ClearShipoutPicture
+    %\fi
+    \pagenumbering{Roman}
+    
+    % Sperrvermerk
+    \ifsperrvermerk
+        \input{../ads/confidentiality-statement}
+        \addcontentsline{toc}{chapter}{Sperrvermerk}
+        \newpage
+    \fi
+
+    % Selbstständigkeitserklärung nur einfügen, wenn Flag in den Einstellungen gesetzt ist
+    \ifselbsterkl
+        \input{../ads/declaration}
+        \addcontentsline{toc}{chapter}{Selbstständigkeitserklärung}
+        \newpage
+    \fi
+
+    % Abstract
+    \ifabstract
+        \input{../ads/abstract}
+        \addcontentsline{toc}{chapter}{Abstract}
+        \newpage
+    \fi
+
+    \pagestyle{plain}		% nur Seitenzahlen im Fuß
+
+    %\RedeclareSectionCommand[beforeskip=\kapitelabstand]{chapter} 
+    % Inhaltsverzeichnis
+    \ifinhalt
+        \begin{spacing}{1.1}
+            \begingroup
+                % auskommentieren für Seitenzahlen unter Inhaltsverzeichnis
+                %\renewcommand*{\chapterpagestyle}{empty}
+                %\pagestyle{plain}
+                    
+                    
+                %\setcounter{tocdepth}{1}
+                %für die Anzeige von Unterkapiteln im Inhaltsverzeichnis
+                %\setcounter{tocdepth}{2}
+                \pdfbookmark{\contentsname}{toc}
+                \tableofcontents
+                \clearpage
+            \endgroup
+        \end{spacing}
+        \newpage
+    \fi
+
+    % Abkürzungsverzeichnis
+    \ifabkverz
+        \cleardoublepage
+        \addchap{\langabkverz}
+
+        \begin{acronym}[LOREMIPSUM] % Die Angabe in eckigen Klammern legt die Breite der linken Spalte fest! => ggf. anpassen
+            \IfFileExists{{../ads/sortedAcronyms}}{\input{../ads/sortedAcronyms}}{\input{../ads/acronyms}}
+        \end{acronym}
+    \fi
+
+    % Abbildungsverzeichnis
+    \ifabbverz
+        \cleardoublepage
+        \listoffigures
+        \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+    \fi
+
+    % Tabellenverzeichnis
+    \iftableverz
+        \cleardoublepage
+        \listoftables
+        \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+    \fi
+
+	% Formelgrößenverzeichnis
+	\ifformelgroeverz
+		\cleardoublepage
+		\addchap{\langformelgroeverz}
+		
+		\begin{acronym}[LOREMIPSUM] % Die Angabe in eckigen Klammern legt die Breite der linken Spalte fest! => ggf. anpassen
+			\input{../ads/symbols}
+		\end{acronym}
+	\fi
+
+    % Formelverzeichnis
+    % mit "\formelentry{Formelname}" können neue Einträge erstellt werden. => auslagern in separates File? z.B. \input{ads/formels}
+    \ifformelverz
+        \cleardoublepage
+        \listofformels
+    \fi
+
+    
+    % Listingsverzeichnis
+    \iflistverz
+        \cleardoublepage
+        \lstlistoflistings
+    \fi
+
+    \label{endOfRomanNumbering}
+
+    \cleardoublepage
+
+    %begin of new numbering
+    \setpagestylecontent
+
+    % Inhalt
+    \foreach \i in {01,02,03,04,05,06,07,08,09,...,99} {%
+        \edef\FileName{../content/\i Chapter}%
+            \IfFileExists{\FileName}{%
+                \input{\FileName}
+                
+            }
+            {
+                %file does not exist
+            }
+    }
+    \label{endOfArabicNumbering}
+    \clearpage
+
+    \ifappendix
+        \input{../ads/appendix}
+    \fi
+\end{document}

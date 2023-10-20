@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                   Einstellungen
+%
+% Hier können alle relevanten Einstellungen für diese Arbeit gesetzt werden.
+% Dazu gehören Angaben u.a. über den Autor sowie Formatierungen.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sprache %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Aktuell sind Deutsch und Englisch unterstützt.
+%% Es werden nicht nur alle vom Dokument erzeugten Texte in
+%% der entsprechenden Sprache angezeigt, sondern auch weitere
+%% Aspekte angepasst, wie z.B. die Anführungszeichen und
+%% Datumsformate.
+\setzesprache{de} % de oder en
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Angaben  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Die meisten der folgenden Daten werden auf dem
+%% Deckblatt angezeigt, einige auch im weiteren Verlauf
+%% des Dokuments.
+\setzemartrikelnr{1234567}
+\setzekurs{TINF22ITA}
+\setzetitel{Thema der Arbeit}
+\setzedatumAnfang{01.01.2023}
+\setzedatumAbgabe{31.12.2023}
+\setzefirma{MAHLE International GmbH}
+\setzefirmenort{Stuttgart}
+\setzeabgabeort{Stuttgart}
+\setzeabschluss{Bachelor of Science}
+\setzestudiengang{IT-Automotive}
+\setzedhbw{Stuttgart}
+\setzebetreuer{B. Sc. Joe Mustermann}
+\setzegutachter{-todo-}
+\setzezeitraum{24.04.2023 - 14.08.2023}
+\setzearbeit{T3\_1000}
+\setzeautor{John Doe}
+\setzesemester{4.}
+\setzestudienrichtung{Informatik}
+\setzejahrgang{2022}
+\setzeabteilung{MAHLE chargeBIG GmbH}
+\setzestandort{Stuttgart}
+
+\inhalttrue                 % auskommentieren oder ändern zu \inhaltfalse, falls kein Inhaltsverzeichnis eingefügt werden soll
+\unterschriftenblatttrue    % auskommentieren oder ändern zu \unterschriftenblattfalse, falls kein Unterschriftenblatt eingefügt werden soll
+\selbsterkltrue             % auskommentieren oder ändern zu \selbsterklfalse, wenn keine Selbstständigkeitserklärung benötigt wird
+\sperrvermerktrue           % auskommentieren oder ändern zu \sperrvermerkfalse, wenn kein Sperrvermerk benötigt wird
+\abkverztrue                % auskommentieren oder ändern zu \abkverzfalse, wenn kein Abkürzungsverzeichnis benötigt wird
+\abbverztrue                % auskommentieren oder ändern zu \abbverzfalse, wenn kein Abbildungsverzeichnis benötigt wird
+\tableverztrue              % auskommentieren oder ändern zu \tableverzfalse, wenn kein Tabellenverzeichnis benötigt wird
+%\listverztrue               % auskommentieren oder ändern zu \listverzfalse, wenn kein Listingsverzeichnis benötigt wird
+\formelverztrue             % auskommentieren oder ändern zu \formelverzfalse, wenn kein Formelverzeichnis benötigt wird
+\formelgroeverztrue			% auskommentieren oder ändern zu \formelgroeverzfalse, wenn kein Formelgrößenverzeichnis benötigt wird
+\abstracttrue               % auskommentieren oder ändern zu \abstractfalse, wenn kein Abstract gewünscht ist
+\bothabstractstrue          % auskommentieren oder ändern zu \bothabstractsfalse, wenn nur der Abstract in der Hauptsprache eingefügt werden soll
+\appendixtrue               % auskommentieren oder ändern zu \appendixfalse, wenn kein Anhang gewünscht ist
+\literaturtrue              % auskommentieren oder ändern zu \literaturfalse, wenn kein Literaturverzeichnis gewünscht ist (\appendixtrue muss gesetzt sein!)
+\glossartrue                % auskommentieren oder ändern zu \glossarfalse, wenn kein Glossar gewünscht ist (\appendixtrue muss gesetzt sein!)
+
+%\refWithPagestrue           % ändern zu \refWithPagestrue, wenn die Seitenzahl bei Verweisen auf Kapitel engefügt werden sollen
+
+%\reviewertrue				% auskommentiren oder ändern zu \reviewerfalse wenn kein Gutachter gesetzt werden muss
+
+% Angabe des roten/gelben/grünen Punktes auf dem Titelblatt zur Kennzeichnung der Vertraulichkeitsstufe.
+% Mögliche Angaben sind \greendottrue, \yellowdottrue und \reddottrue. Werden mehrere angegeben, wird der Punkt mit der höheren
+% Vertraulichkeitsstufe angezeigt.
+% Wird keines der Kommandos angegeben, wird kein Punkt gezeichnet.
+%\greendottrue
+%\yellowdottrue
+%\reddottrue
+
+%\watermarktrue              % auskommentieren oder ändern zu \watermarktrue, wenn Wasserzeichen auf dem Titelblatt eingefügt werden soll
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Literaturverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bei Fehlern während der Verarbeitung bitte in ads/header.tex bei der
+%% Einbindung des Pakets biblatex (ungefähr ab Zeile 110,
+%% einmal für jede Sprache), biber in bibtex ändern.
+\newcommand{\ladeliteratur}{
+    \addbibresource{bibliographie.bib}
+    %\addbibresource{weitereDatei.bib}
+}
+
+%% Zitierstil
+%% siehe: http://ctan.mirrorcatalogs.com/macros/latex/contrib/biblatex/doc/biblatex.pdf (3.3.1 Citation Styles)
+%% mögliche Werte z.B numeric-comp, alphabetic, authoryear
+\setzezitierstil{numeric-comp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Verschiedene Schriftarten
+% laut nag Warnung: palatino obsolete, use mathpazo, helvet (option scaled=.95), courier instead
+\setzeschriftart{lmodern} % palatino oder goudysans, lmodern, libertine
+
+%% Abstand vor Kapitelüberschriften zum oberen Seitenrand
+\setzekapitelabstand{20pt}
+
+%% Spaltenabstand
+\setzespaltenabstand{10pt}
+%%Zeilenabstand innerhalb einer Tabelle
+\setzezeilenabstand{1.5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Verschiedenes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Variablen für Bilder
+%\showfirmenlogotrue                 % auskommentieren oder ändern zu \showfirmenlogofalse, falls kein Logo eingefügt werden soll
+\showdhbwlogotrue                   % auskommentieren oder ändern zu \showdhbwlogofalse, falls kein Logo eingefügt werden soll
+\showsignaturetrue                  % auskommentieren oder ändern zu \showsignaturefalse, falls keine Unterschrift eingefügt werden soll
