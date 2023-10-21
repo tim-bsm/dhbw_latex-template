@@ -142,8 +142,8 @@
 \input{../settings/settings_list.tex} % verfügbare Einstellungen
 \input{../settings/settings.tex} % lese Einstellungen
 
-\input{../lang/strings.tex} % verfügbare Strings
-\input{../lang/\sprache.tex} % Übersetzung einlesen
+\input{../settings/lang/strings.tex} % verfügbare Strings
+\input{../settings/lang/\sprache.tex} % Übersetzung einlesen
 
 
 %\lstset{language=Matlab}
@@ -206,12 +206,12 @@
         \ifshowfirmenlogo
             \iflang{de}{
                 \begin{textblock*}{188mm}(26mm,7mm)
-                \includegraphics[height=1.4cm]{../images/mahle.png}
+                \includegraphics[height=1.4cm]{../images/company}
                 \end{textblock*}
             }
             \iflang{en}{
                 \begin{textblock*}{188mm}(26mm,7mm)
-                \includegraphics[height=1.4cm]{../images/mahle.png}
+                \includegraphics[height=1.4cm]{../images/company}
                 \end{textblock*}
             }
         \else
@@ -227,7 +227,7 @@
             }
             \iflang{en}{
                 \begin{textblock*}{188mm}(-5mm,4mm)
-                    \includegraphics[height=1.8cm]{../images/dhbw_en.jpg}
+                    \includegraphics[height=1.8cm]{../images/dhbw_en.png}
                     \end{textblock*}
             }
         \fi
@@ -412,7 +412,7 @@
 \setcounter{biburllcpenalty}{100}
 
 % Bildpfad
-\graphicspath{{../images/}}
+\graphicspath{{../content/nonTexFiles/images/}}
 
 % Einige häufig verwendete Sprachen
 \lstloadlanguages{PHP,Python,Java,C,C++,bash}
@@ -447,7 +447,7 @@
     \put(0,0){%
         \parbox[b][\paperheight]{\paperwidth}{%
             \vfill
-            \includepdf[scale=0.8,angle=50,pages={1},pagecommand={}]{ads/watermark/watermark.pdf}
+            \includepdf[scale=0.8,angle=50,pages={1},pagecommand={}]{../settings/watermark/watermark.pdf}
             \vfill
         }
     }

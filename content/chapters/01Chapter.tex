@@ -1,0 +1,102 @@
+%!TEX root = ../../document/document.tex
+
+\chapter{Beispiele zur Verwendung von LaTeX}
+   
+\section{Unterkapitel, Zitate, Referenzen und Formeln}
+\label{sec:Unterkapitel}
+
+\subsection{Unterunterkapitel}
+
+Dies ist ein Beispiel für die Zitierfunktion. \cite[Vgl.][S. 1 ff.]{Mustermann2023} Des weiteren kann auf die Kapitelnummer referenziert werden: \ref{sec:Unterkapitel}.
+
+
+\vspace{0.5cm}
+Hier ein Beispiel für eine Formel
+
+\begin{equation}
+    \formelentry{Ohm'sches Gesetz}      % Zu Formelverzeichnis hinzufügen
+    {R} = \frac{U}{I}
+    \label{eq:OhmschesGesetz}
+\end{equation}
+\begin{center}
+    Formel \ref{eq:OhmschesGesetz}: Ohm'sches Gesetz
+\end{center}
+
+
+
+\vspace{0.5cm}
+Hier zwei Beispiele für Code (\ref{lst:Beispiel_Code-1} und \ref{lst:Beispiel_Code-2}):
+
+% Code im .tex file --> nicht empfohlen, u.a., da Tabs mitverwendet werden und
+% das .tex file dadurch unübersichtlich wird (s. listing 1.1 im PDF-File)
+\begin{lstlisting}[language=C++, caption={Beispiel: direktes einfügen von Code}, label={lst:Beispiel_Code-1}]
+    #include <iostream>
+
+    int main() {
+        std::cout << "Hello World!" << std::endl;
+        return 0;
+    }
+\end{lstlisting}
+
+% Code in einer externen Datei
+\lstinputlisting[language=C++, caption={Beispiel: indirektes einfügen von Code über externe Datei}, label={lst:Beispiel_Code-2}]
+{../content/nonTexFiles/code/hello-world.cpp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section{Bilder, Tabellen und Listen}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{dhbw.png}
+    \caption{Beispiel: einfügen eines Bildes \cite{Mustermann2023}}
+    \label{fig:Bsp_Bild}
+\end{figure}
+
+Wie in Abbildung \ref{fig:Bsp_Bild} zu sehen, ist das Logo der \ac{DHBW} ein sehr schönes Logo. Das $\lambda$ der \ac{lambda} ist ebenfalls ein sehr schönes Zeichen.
+
+
+\vspace{0.5cm}
+\begin{table}[h]
+    \centering
+    \begin{tabular}[c]{|c|c|c|c|c|c|}
+        \hline
+            \textbf{Spalte 1} & 
+            \textbf{Spalte 2 (\%)} &  
+            \multicolumn{2}{|c|}{\textbf{Spalte 3}} & 
+            \multicolumn{2}{|c|}{\textbf{Spalte 4}}\\
+        \hline
+            A &     10 &    111 &   0,1 &   Dies &      100 \\
+        \hline
+            B &     20 &    222 &   0,2 &   ist &       200 \\
+        \hline
+            C &     30 &    333 &   0,3 &   ein &       300 \\
+        \hline
+            D &     40 &    444 &   0,4 &   Beispiel &  400 \\
+        \hline
+            \textbf{Summe} &
+            \textbf{100} &
+            \textbf{1110} &
+            \textbf{1} &  &
+            \textbf{1000}\\
+        \hline
+            \multicolumn{4}{|c|}{\textbf{Letzte}} & 
+            \multicolumn{2}{|c|}{\textbf{Reihe}} \\
+        \hline
+    \end{tabular}
+    \caption{Beispiel: einfügen einer Tabelle}
+    \label{tab:Bsp_Tabelle}
+\end{table}
+
+Auch hier kann wieder auf die Tabelle referenziert werden: \ref{tab:Bsp_Tabelle}.
+
+
+\vspace{0.5cm}
+Hier ein Beispiel für eine Liste:
+\begin{itemize}[label=\textbullet]
+    \item Punkt 1
+    \item Punkt 2
+    \item Punkt 3
+\end{itemize}

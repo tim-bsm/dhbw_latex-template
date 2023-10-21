@@ -1,9 +1,10 @@
-%!TEX root = ../document/document.tex
+%!TEX root = ../../document/document.tex
+
+% Selbstständigkeitserklärung zum Inhaltsverzeichnis hinzufügen
+\addcontentsline{toc}{chapter}{\langselbsterkl}
 
 \thispagestyle{plain}
 
-% Sperrvermerk direkt nach Selbstständigkeitserklärung
-%\section*{\\Selbstständigkeitserklärung}
 \section*{\\\langselbsterkl}
 
 
@@ -27,10 +28,8 @@
 \ifshowsignature
     \vspace{2em}
 
-    \begin{figure}[!htb]
-        \begin{minipage}{0.2\textwidth}
-            \includegraphics[width=\linewidth]{signature.jpg}
-        \end{minipage}
+    \begin{figure}[!h]
+        \includegraphics[width=4cm]{signature}
     \end{figure}
 \else
     \vspace{7em}
