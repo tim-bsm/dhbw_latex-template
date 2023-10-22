@@ -1,4 +1,4 @@
-% !TeX root = ../../document/document.tex
+%!TEX root = ../../document/document.tex
 
 \setpagestylefoot
 \renewcommand{\thefigure}{A\arabic{figure}}
@@ -22,7 +22,13 @@
 
 
 % Anhang
-%\addchap{\langanhang}
+\ifanhang
+    \addchap{\langanhang}
+
+    % Anhänge hier einfügen:
+    \section*{Anhang 1}
+        Ich bin ein Anhang.
+\fi
 
 
 % Glossar

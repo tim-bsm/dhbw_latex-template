@@ -13,8 +13,7 @@
     headsepline,		% Linie nach Kopfzeile.
     footsepline,		% Linie vor Fusszeile.
     %footheight = 16pt,	% Höhe der Fusszeile
-    %abstracton,		    % Abstract Überschriften
-    abstract=true,
+    abstract=true,      % Abstract Überschriften
     DIV=calc,		    % Satzspiegel berechnen
     BCOR=8mm,		    % Bindekorrektur links: 8mm
     headinclude=false,	% Kopfzeile nicht in den Satzspiegel einbeziehen
@@ -23,9 +22,6 @@
     toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 ]{scrreprt}	% Koma-Script report-Klasse, fuer laengere Bachelorarbeiten alternativ auch: scrbook
 
-
-%neu durch Franzi
-% \usepackage{tocloft}
 
 
 % Einstellungen laden
@@ -118,9 +114,17 @@
 \newif\ifglossar
 \glossarfalse
 
+% Flag für Anhang
+\newif\ifanhang
+\anhangfalse
+
 % Flag für Inhaltsverzeichnis
 \newif\ifinhalt
 \inhaltfalse
+
+% Flag für Formblatt
+\newif\ifformblatt
+\formblattfalse
 
 % Flag für Reviewer
 \newif\ifreviewer
@@ -148,31 +152,28 @@
 
 %\lstset{language=Matlab}
 \newcommand{\citem}[1]{\item[\texttt{#1}]} % Code-Item für description-Liste
-%\newcommand\todo[1]{\textit{\textcolor{red}{TODO: #1}}\message{LaTeX Warning: \noexpand TODO item left in line \the\inputlineno}} % Todo-Item
 \newcommand\todo[1]{\textit{\textcolor{red}{TODO: #1}}} % Todo-Item
-\usepackage{pdfpages}         % pdf-Seiten einbinden
+
 
 %% Farben (Angabe in HTML-Notation mit großen Buchstaben)
 \newcommand{\ladefarben}{%
 	\definecolor{LinkColor}{HTML}{00007A}
 	\definecolor{ListingBackground}{HTML}{FCF7DE}
 }
-%% Mathematikpakete benutzen (Pakete aktivieren)
-%\usepackage{amsmath}
-%\usepackage{amssymb}
+
 
 %% Programmiersprachen Highlighting (Listings)
 \newcommand{\listingsettings}{%
 	\lstset{
 		language=C++,			% Standardsprache des Quellcodes
-		%numbers=left,			% Zeilennummern links
-		%stepnumber=1,			% Jede Zeile nummerieren.
+		numbers=left,			% Zeilennummern links
+		stepnumber=1,			% Jede Zeile nummerieren.
 		%numbersep=5pt,			% 5pt Abstand zum Quellcode
 		%numberstyle=\tiny,		% Zeichengrösse 'tiny' für die Nummern.
 		breaklines=true,		% Zeilen umbrechen wenn notwendig.
 		breakautoindent=true,	% Nach dem Zeilenumbruch Zeile einrücken.
 		postbreak=\space,		% Bei Leerzeichen umbrechen.
-		tabsize=2,				% Tabulatorgrösse 2
+		tabsize=1,				% Tabulatorgrösse 1
 		basicstyle=\ttfamily\footnotesize, % Nichtproportionale Schrift, klein für den Quellcode
 		showspaces=false,		% Leerzeichen nicht anzeigen.
 		showstringspaces=false,	% Leerzeichen auch in Strings ('') nicht anzeigen.
@@ -195,47 +196,66 @@
 
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Kopf-/Fußzeilenwechsel %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength{\headheight}{40pt}
+\setlength{\headheight}{72pt}
 
 %% Define default layout of all pages
 \newcommand{\defaultpagelayout}{
-    \fancyhf{}
     \fancyhead[L]{
         \ifshowfirmenlogo
-            \iflang{de}{
-                \begin{textblock*}{188mm}(26mm,7mm)
-                \includegraphics[height=1.4cm]{../images/company}
-                \end{textblock*}
-            }
-            \iflang{en}{
-                \begin{textblock*}{188mm}(26mm,7mm)
-                \includegraphics[height=1.4cm]{../images/company}
-                \end{textblock*}
-            }
+            % Firmenlogo und DHBW-Logo --> Firmenlogo links
+            \ifshowdhbwlogo
+                \iflang{de}{
+                    %trim=left bottom right top
+                    \includegraphics[height=1.4cm, left, trim=0cm 1.5cm 0cm -1.5cm]{company_de}
+                }
+                \iflang{en}{
+                    \includegraphics[height=1.4cm, left, trim=0cm 1.5cm 0cm -1.5cm]{company_en}
+                }
+            % Nur Firmenlogo --> \langkopfz links
+            \else
+                \vspace{0.5cm}\small \langkopfz \vspace{0.08cm}
+            \fi
+        % Nur DHBW-Logo bzw. kein Logo --> \langkopfz links
         \else
-            \vspace{0.5cm}\small \langkopfz
+            \vspace{0.5cm}\small \langkopfz \vspace{0.08cm}
         \fi
     }
     \fancyhead[R]{
-        \ifshowdhbwlogo
-            \iflang{de}{
-                \begin{textblock*}{188mm}(-5mm,4mm)
-                \includegraphics[height=1.8cm]{../images/dhbw.png}
-                \end{textblock*}
-            }
-            \iflang{en}{
-                \begin{textblock*}{188mm}(-5mm,4mm)
-                    \includegraphics[height=1.8cm]{../images/dhbw_en.png}
-                    \end{textblock*}
-            }
+        \ifshowfirmenlogo
+            % Firmenlogo und DHBW-Logo --> DHBW-Logo rechts
+            \ifshowdhbwlogo
+                \iflang{de}{
+                    \includegraphics[height=1.8cm, right, trim=0cm 2cm 0cm -2cm]{dhbw_de.png}
+                }
+                \iflang{en}{
+                    \includegraphics[height=1.8cm, right, trim=0cm 0.5cm 0cm -0.5cm]{dhbw_en.png}
+                }
+            % Nur Firmenlogo --> Firmenlogo rechts
+            \else
+                \iflang{de}{
+                    \includegraphics[height=1.4cm, right, trim=0cm 1.5cm 0cm -1.5cm]{company_de}
+                }
+                \iflang{en}{
+                    \includegraphics[height=1.4cm, right, trim=0cm 1.5cm 0cm -1.5cm]{company_en}
+                }
+            \fi
+        \else
+            % Nur DHBW-Logo --> DHBW-Logo rechts
+            \ifshowdhbwlogo
+                \iflang{de}{
+                    \includegraphics[height=1.8cm, right, trim=0cm 2cm 0cm -2cm]{dhbw_de.png}
+                }
+                \iflang{en}{
+                    \includegraphics[height=1.8cm, right, trim=0cm 0.5cm 0cm -0.5cm]{dhbw_en.png}
+                }
+            \fi
         \fi
     }
 
     \renewcommand{\footrulewidth}{0.4pt} % Horizontal line -> default is 0pt
-    \fancyfoot[l]{\tiny \autor}
-    \fancyfoot[c]{\tiny \arbeit}
+    \fancyfoot[l]{\autor} % \tiny vor \autor einfügen, um Schriftgröße zu verringern
+    \fancyfoot[c]{\arbeit}
 }
 
 %% Only change pagenumbering
@@ -243,7 +263,7 @@
     \fancypagestyle{plain}{
         \defaultpagelayout{}
 
-        \fancyfoot[r]{\tiny \langseite\ \thepage\ \langseitevon\ \pageref*{endOfRomanNumbering}}
+        \fancyfoot[r]{\langseite\ \thepage\ \langseitevon\ \pageref*{endOfRomanNumbering}}
     }
     \pagestyle{plain}
     \pagenumbering{roman}
@@ -253,7 +273,7 @@
     \fancypagestyle{plain}{
         \defaultpagelayout{}
 
-        \fancyfoot[r]{\tiny \langseite\ \thepage\ \langseitevon\ \pageref*{endOfArabicNumbering}}    
+        \fancyfoot[r]{\langseite\ \thepage\ \langseitevon\ \pageref*{endOfArabicNumbering}}    
     }
     \pagestyle{plain}
     \pagenumbering{arabic}
@@ -263,7 +283,7 @@
     \fancypagestyle{plain}{%
         \defaultpagelayout{}
 
-        \fancyfoot[r]{\tiny \langseite\ \thepage\ \langseitevon\ \pageref*{LastPage}}
+        \fancyfoot[r]{\langseite\ \thepage\ \langseitevon\ \pageref*{LastPage}}
     }
     \pagestyle{plain}
     \pagenumbering{Alph}
@@ -315,6 +335,9 @@
 \usepackage[framed]{matlab-prettifier} % .sty-Datei muss vorhanden sein! Kann auskommentiert werden, falls keine Matlab-Listings in der Arbeit enthalten sind.
 \usepackage{color, colortbl}  %Für Highlighten der Tabellenzeilen
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\usepackage{amssymb}
+\usepackage[export]{adjustbox} % Package, um Bilder in \includegraphics nach links bzw. rechts zu positionieren
+\usepackage{pdfpages}         % pdf-Seiten einbinden
 
 
 % eine Kommentarumgebung "k" (Handhabe mit \begin{k}<Kommentartext>\end{k},
@@ -372,24 +395,24 @@
 
 % Literaturverweise (sowohl deutsch als auch englisch)
 \iflang{de}{%
-\usepackage[
-    backend=biber,          % empfohlen. Falls biber Probleme macht: bibtex
-    %bibwarn=true,
-    %bibencoding=utf8,	    % wenn .bib in utf8, sonst ascii
-    sortlocale=de_DE,
-    sorting=none,
-    style=\zitierstil,
-]{biblatex}
+    \usepackage[
+        backend=biber,          % empfohlen. Falls biber Probleme macht: bibtex
+        %bibwarn=true,
+        %bibencoding=utf8,	    % wenn .bib in utf8, sonst ascii
+        sortlocale=de_DE,
+        sorting=none,
+        style=\zitierstil,
+    ]{biblatex}
 }
 \iflang{en}{%
-\usepackage[
-    backend=biber,		    % empfohlen. Falls biber Probleme macht: bibtex
-    %bibwarn=true,
-    %bibencoding=utf8,	    % wenn .bib in utf8, sonst ascii
-    sortlocale=en_US,
-    sorting=none,
-    style=\zitierstil,
-]{biblatex}
+    \usepackage[
+        backend=biber,		    % empfohlen. Falls biber Probleme macht: bibtex
+        %bibwarn=true,
+        %bibencoding=utf8,	    % wenn .bib in utf8, sonst ascii
+        sortlocale=en_US,
+        sorting=none,
+        style=\zitierstil,
+    ]{biblatex}
 }
 
 

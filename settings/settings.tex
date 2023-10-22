@@ -33,7 +33,7 @@
 \setzeabschluss{Bachelor of Science}
 \setzestudiengang{IT-Automotive}
 \setzedhbw{Stuttgart}
-\setzebetreuer{B. Sc. Joe Mustermann}
+\setzebetreuer{B. Sc. Max Mustermann}
 \setzegutachter{Prof. Dr. rer. nat. Gustaf Gutachter}
 \setzezeitraum{24.04.2023 - 14.08.2023}
 \setzearbeit{T3\_1000}
@@ -41,7 +41,7 @@
 \setzesemester{4.}
 \setzestudienrichtung{Informatik}
 \setzejahrgang{2022}
-\setzeabteilung{MAHLE chargeBIG GmbH}
+\setzeabteilung{Abteilung}
 \setzestandort{Stuttgart}
 
 \inhalttrue                 % auskommentieren oder ändern zu \inhaltfalse, falls kein Inhaltsverzeichnis eingefügt werden soll
@@ -59,8 +59,10 @@
 \appendixtrue               % auskommentieren oder ändern zu \appendixfalse, wenn kein Anhang gewünscht ist
 \literaturtrue              % auskommentieren oder ändern zu \literaturfalse, wenn kein Literaturverzeichnis gewünscht ist (\appendixtrue muss gesetzt sein!)
 \glossartrue                % auskommentieren oder ändern zu \glossarfalse, wenn kein Glossar gewünscht ist (\appendixtrue muss gesetzt sein!)
+\anhangtrue                 % auskommentieren oder ändern zu \anhangfalse, wenn kein Anhang gewünscht ist
+%\formblatttrue              % auskommentieren oder ändern zu \formblattfalse, wenn kein Formblatt gewünscht ist
 
-\refWithPagestrue           % ändern zu \refWithPagestrue, wenn die Seitenzahl bei Verweisen auf Kapitel engefügt werden sollen
+%\refWithPagestrue           % ändern zu \refWithPagestrue, wenn die Seitenzahl bei Verweisen auf Kapitel engefügt werden sollen
 
 \reviewertrue				% auskommentiren oder ändern zu \reviewerfalse wenn kein Gutachter gesetzt werden muss
 
@@ -97,7 +99,7 @@
 \setzeschriftart{lmodern} % palatino oder goudysans, lmodern, libertine
 
 %% Abstand vor Kapitelüberschriften zum oberen Seitenrand
-\setzekapitelabstand{20pt}
+\setzekapitelabstand{10pt}
 
 %% Spaltenabstand
 \setzespaltenabstand{10pt}
@@ -106,19 +108,21 @@
 
 
 %% Flags zum Anzeigen der Bilder
-% Logo der Firma im gesamten Dokument anzeigen
+
+% Logo der Firma im gesamten Dokument anzeigen --> Bild mit Dateinamen
+% "company" im images ordner ablegen & Format muss gegebenenfalls in 
+% content/additionals/cover-sheet.tex und settings/config/config.tex
+% unter "Kopf-/Fußzeilenwechsel" (ca. Z. 200) angepasst werden.
+% Ist die Option nicht gesetzt, wird das Logo durch den Text in der Variable
+% \setzelangkopfz in settings/lang/de.tex bzw. settings/lang/en.tex ersetzt.
 \showfirmenlogotrue                 % auskommentieren oder ändern zu \showfirmenlogofalse, falls kein Logo eingefügt werden soll
 
 % Logo der DHBW im gesamten Dokument anzeigen
 \showdhbwlogotrue                   % auskommentieren oder ändern zu \showdhbwlogofalse, falls kein Logo eingefügt werden soll
 
 % Unterschrift als Bild anzeigen --> Bild mit Dateinamen "signature" im 
-% images ordner ablegen & Format muss gegebenenflls in ads/declaration.tex
-% und ads/confidentiality-statement.tex angepasst werden
+% images ordner ablegen & Format muss gegebenenfalls in content/additionals/
+% declaration.tex und content/additionals/confidentiality-statement.tex
+% angepasst werden
 \showsignaturetrue                  % auskommentieren oder ändern zu \showsignaturefalse, falls keine Unterschrift eingefügt werden soll
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Verschiedenes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

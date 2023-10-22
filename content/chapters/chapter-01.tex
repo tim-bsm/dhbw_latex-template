@@ -1,5 +1,10 @@
 %!TEX root = ../../document/document.tex
 
+% Zum erstellen verschiedener Kapitel, jeweils eine Datei pro Kapitel erstellen
+% und in content/chapters/XXChapter.tex (XX = Kapitelnummer -> 01, 02, 03, ...,
+% 99) einbinden. 
+
+
 \chapter{Beispiele zur Verwendung von LaTeX}
    
 \section{Unterkapitel, Zitate, Referenzen und Formeln}
@@ -7,7 +12,7 @@
 
 \subsection{Unterunterkapitel}
 
-Dies ist ein Beispiel für die Zitierfunktion. \cite[Vgl.][S. 1 ff.]{Mustermann2023} Des weiteren kann auf die Kapitelnummer referenziert werden: \ref{sec:Unterkapitel}.
+Dies ist ein Beispiel für die Zitierfunktion. \cite[Vgl.][S. 1 ff.]{Mustermann2023} 
 
 
 \vspace{0.5cm}
@@ -50,12 +55,12 @@ Hier zwei Beispiele für Code (\ref{lst:Beispiel_Code-1} und \ref{lst:Beispiel_C
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\linewidth]{dhbw.png}
+    \includegraphics[width=0.7\linewidth]{dhbw_de.png}
     \caption{Beispiel: einfügen eines Bildes \cite{Mustermann2023}}
     \label{fig:Bsp_Bild}
 \end{figure}
 
-Wie in Abbildung \ref{fig:Bsp_Bild} zu sehen, ist das Logo der \ac{DHBW} ein sehr schönes Logo. Das $\lambda$ der \ac{lambda} ist ebenfalls ein sehr schönes Zeichen.
+Wie in \autoref{fig:Bsp_Bild} zu sehen, ist das Logo der \ac{DHBW} ein sehr schönes Logo. Das $\lambda$ der \ac{lambda} ist ebenfalls ein sehr schönes Zeichen. Des weiteren kann auf die Kapitelnummer referenziert werden: \autoref{sec:Unterkapitel}.
 
 
 \vspace{0.5cm}

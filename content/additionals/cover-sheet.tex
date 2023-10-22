@@ -1,0 +1,104 @@
+%!TEX root = ../../document/document.tex
+
+\begin{titlepage}
+
+
+\ifshowfirmenlogo
+	\ifshowdhbwlogo
+		\begin{minipage}[c]{0.43\textwidth}
+			\begin{center}
+				\iflang{de}{
+					\includegraphics[width=\textwidth, left]{company_de}
+				}
+				\iflang{en}{
+					\includegraphics[width=\textwidth, left]{company_en}
+				}
+			\end{center}
+		\end{minipage}
+		\begin{minipage}[c]{0.1\textwidth}
+			\hspace{\textwidth}
+		\end{minipage}
+		\begin{minipage}[c]{0.43\textwidth}
+			\begin{center}
+				\iflang{de}{
+					\includegraphics[width=\textwidth, right]{dhbw_de.png}
+				}
+				\iflang{en}{
+					\includegraphics[width=\textwidth, right]{dhbw_en.png}
+				}
+			\end{center}
+		\end{minipage}
+	\else
+		\begin{center}
+			\iflang{de}{
+				\includegraphics[width=0.7\textwidth]{company_de}
+			}
+			\iflang{en}{
+				\includegraphics[width=0.7\textwidth]{company_en}
+			}
+		\end{center}
+	\fi
+\else
+	\ifshowdhbwlogo
+		\begin{center}
+			\iflang{de}{
+				\includegraphics[width=0.7\textwidth]{dhbw_de.png}
+			}
+			\iflang{en}{
+				\includegraphics[width=0.7\textwidth]{dhbw_en.png}
+			}
+		\end{center}
+	\fi
+\fi
+
+\enlargethispage{20mm}
+
+\begin{center}
+	\begin{doublespace}
+		\vspace*{12mm}
+		{\LARGE\textbf \titel}\\
+		\vspace*{5mm}
+	\end{doublespace}
+	
+	\begin{tikzpicture}		
+		\ifreddot
+			\tikz\draw[fill=red,draw=red](-4,2) circle (1.4cm);
+		\else
+			\ifyellowdot
+				\tikz\draw[fill=yellow,draw=yellow](-4,2) circle (1.4cm);
+			\else
+				\ifgreendot
+					\tikz\draw[fill=green,draw=green](-4,2) circle (1.4cm);
+				\fi
+			\fi
+		\fi
+	\end{tikzpicture}
+	\vspace{-1.4cm}\\
+
+	\vspace*{12mm}		{\large\textbf \arbeit }\\
+%	\vspace*{12mm}		\langdeckblattabschlusshinleitung\\
+	\vspace*{3mm}		{\textbf \abschluss}\\
+	\vspace*{12mm}		\langartikelstudiengang{} \langstudiengang{} \studiengang\\
+	\vspace*{3mm}		\langanderdh{} \dhbw\\
+	\vspace*{12mm}		\langvon\\
+	\vspace*{3mm}		{\large\textbf \autor}\\
+	\vspace*{12mm}		\datumAbgabe\\
+\end{center}
+
+\vfill
+
+\begin{spacing}{1.2}
+	\begin{tabbing}
+		mmmmmmmmmmmmmmmmmmmmmmmmmm             	\= 	\kill
+		\textbf{\langdbbearbeitungszeit}       	\>  \zeitraum\\
+		\textbf{\langdbmatriknr, \langdbkurs}  	\>  \martrikelnr, \kurs\\
+		\textbf{\langdbfirma}                  	\> 	\firma, \firmenort\\
+		\textbf{\langdbbetreuer}               	\>  \betreuer\\
+		\ifreviewer
+			\textbf{\langdbgutachter}          	\> 	\gutachter\\
+		\fi
+	\end{tabbing}
+\end{spacing}
+
+
+\end{titlepage}

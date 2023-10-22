@@ -1,10 +1,14 @@
 \input{../settings/config/config.tex}
+
+\addtolength{\topmargin}{15pt}
+
 \DeclareNewTOC[
     forcenames,
     type=formel,
     name={Formel},
-    listname={\langformelsammlung}
+    listname={\langformelsammlung},
 ]{for}
+
 
 \iflang{de}{
     \newcommand*{\formelentry}[1]{
@@ -24,6 +28,7 @@
 \begin{document}
     \StopCensoring
     \setpagestylehead
+    \RedeclareSectionCommand[beforeskip=\kapitelabstand]{chapter} % Abstand zwischen Kapitelüberschrift und dem oberen Rand
 
 
     % Wasserzeichen
@@ -34,7 +39,7 @@
     
     % Deckblatt
     \begin{spacing}{1}
-        \input{../content/additionals/deckblatt}
+        \input{../content/additionals/cover-sheet.tex}
     \end{spacing}
 
 
@@ -51,7 +56,15 @@
 
     % Sperrvermerk
     \ifsperrvermerk
-        \input{../content/additionals/confidentiality-statement.tex}
+        \input{../content/additionals/blocking-note.tex}
+        \newpage
+    \fi
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    % Formblatt
+    \ifformblatt
+        \input{../content/additionals/form.tex}
         \newpage
     \fi
 
@@ -73,9 +86,8 @@
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    %\pagestyle{plain}		% nur Seitenzahlen im Fuß
+    \pagestyle{plain}		% nur Seitenzahlen im Fuß
 
-    \RedeclareSectionCommand[beforeskip=\kapitelabstand]{chapter} 
     % Inhaltsverzeichnis
     \ifinhalt
         \begin{spacing}{1.1}
@@ -162,7 +174,7 @@
 
     % Inhalt
     \foreach \i in {01,02,03,04,05,06,07,08,09,...,99} {
-        \edef\FileName{../content/chapters/\i Chapter.tex}
+        \edef\FileName{../content/chapters/chapter-\i .tex}
         \IfFileExists{\FileName}{
             \input{\FileName}
         }
