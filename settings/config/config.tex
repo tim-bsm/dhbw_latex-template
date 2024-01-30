@@ -255,7 +255,7 @@
 
     \renewcommand{\footrulewidth}{0.4pt} % Horizontal line -> default is 0pt
     \fancyfoot[l]{\autor} % \tiny vor \autor einfügen, um Schriftgröße zu verringern
-    \fancyfoot[c]{\arbeit}
+    \fancyfoot[c]{\fusszmitte}
 }
 
 %% Only change pagenumbering
@@ -338,6 +338,9 @@
 \usepackage{amssymb}
 \usepackage[export]{adjustbox} % Package, um Bilder in \includegraphics nach links bzw. rechts zu positionieren
 \usepackage{pdfpages}         % pdf-Seiten einbinden
+\usepackage{wasysym} % für Promille-Zeichen
+\usepackage{changepage} % für adjustwidth-Umgebung
+\usepackage{makecell} % für Tabellen
 
 
 % eine Kommentarumgebung "k" (Handhabe mit \begin{k}<Kommentartext>\end{k},

@@ -1,7 +1,7 @@
 %!TEX root = ../../document/document.tex
 
 % Zum erstellen verschiedener Kapitel, jeweils eine Datei pro Kapitel erstellen
-% und in content/chapters/XXChapter.tex (XX = Kapitelnummer -> 01, 02, 03, ...,
+% und in content/chapters/chapter-XX.tex (XX = Kapitelnummer -> 01, 02, 03, ...,
 % 99) einbinden. 
 
 
@@ -68,6 +68,7 @@ Wie in \autoref{fig:Bsp_Bild} zu sehen, ist das Logo der \ac{DHBW} ein sehr sch√
     \centering
     \begin{tabular}[c]{|c|c|c|c|c|c|}
         \hline
+            \rowcolor{lightgray} 
             \textbf{Spalte 1} & 
             \textbf{Spalte 2 (\%)} &  
             \multicolumn{2}{|c|}{\textbf{Spalte 3}} & 
@@ -89,6 +90,8 @@ Wie in \autoref{fig:Bsp_Bild} zu sehen, ist das Logo der \ac{DHBW} ein sehr sch√
         \hline
             \multicolumn{4}{|c|}{\textbf{Letzte}} & 
             \multicolumn{2}{|c|}{\textbf{Reihe}} \\
+        \hline
+            \makecell{Multilined \\ cell text} & 1 & 2 & 3 & 4 & 5 \\
         \hline
     \end{tabular}
     \caption{Beispiel: einf√ºgen einer Tabelle}

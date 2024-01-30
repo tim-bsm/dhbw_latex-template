@@ -20,8 +20,11 @@
         \addcontentsline{for}{formel}{\protect\numberline{\theequation} #1}
     }
 }
-\makeglossaries
-\input{../content/additionals/glossary.tex}
+
+\ifglossar
+    \makeglossaries
+    \input{../content/additionals/glossary.tex}
+\fi
 
 
 
