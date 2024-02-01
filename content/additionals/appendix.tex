@@ -1,5 +1,13 @@
 %!TEX root = ../../document/document.tex
 
+\newcommand{\appendixContent}{
+    \section*{Anhang 1}
+    Ich bin ein Anhang.
+}
+
+
+%%%%%%%% Ab hier nicht mehr anfassen! %%%%%%%%
+
 \setpagestylefoot
 \renewcommand{\thefigure}{A\arabic{figure}}
 \renewcommand\thelstlisting{A\arabic{lstlisting}}
@@ -24,10 +32,8 @@
 % Anhang
 \ifanhang
     \addchap{\langanhang}
-
-    % Anhänge hier einfügen:
-    \section*{Anhang 1}
-        Ich bin ein Anhang.
+    
+    \appendixContent
 \fi
 
 

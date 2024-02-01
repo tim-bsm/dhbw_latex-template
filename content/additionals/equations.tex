@@ -1,0 +1,28 @@
+%!TEX root = ../../document/document.tex
+
+\makeatletter
+
+% \saveequation{<ID>}{<equation>}
+\newcommand\saveequation[3]{%
+    \@namedef{equation@#1}{#2}%
+    \@namedef{desc@#1}{#3}%
+}
+
+% \useequation{<ID>}
+\newcommand\useequation[1]{%s
+    \begin{equation}
+        \formelentry{\@nameuse{desc@#1}}      % Zu Formelverzeichnis hinzufügen
+        \@nameuse{equation@#1}
+        \label{eq:#1} % Label setzen
+    \end{equation}
+    \begin{center}
+        Formel \ref{eq:#1}: \@nameuse{desc@#1}
+    \end{center}
+}
+
+\makeatother
+
+
+%%%%%%%%%% EQUATIONS %%%%%%%%%%
+% FORMAT: \saveequation{reference}{equation}{description}
+\saveequation{OhmschesGesetz}{\acs{R} = \frac{U}{I}}{Ohm'sches Gesetz}

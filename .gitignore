@@ -1,5 +1,9 @@
 # Own rules:
 *.DS_Store
+*.for
+*.ist
+*.bbl-SAVE-ERROR
+*.bcf-SAVE-ERROR
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

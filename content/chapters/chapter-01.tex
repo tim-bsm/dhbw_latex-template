@@ -1,8 +1,8 @@
-%!TEX root = ../../document/document.tex
+%!TEX root = ../../../document/document.tex
 
 % Zum erstellen verschiedener Kapitel, jeweils eine Datei pro Kapitel erstellen
-% und in content/chapters/chapter-XX.tex (XX = Kapitelnummer -> 01, 02, 03, ...,
-% 99) einbinden. 
+% und in content/written/chapters/chapter-XX.tex (XX = Kapitelnummer -> 01, 02, 03,
+% ..., 99) einbinden. 
 
 
 \chapter{Beispiele zur Verwendung von LaTeX}
@@ -16,18 +16,8 @@ Dies ist ein Beispiel für die Zitierfunktion. \cite[Vgl.][S. 1 ff.]{Mustermann2
 
 
 \vspace{0.5cm}
-Hier ein Beispiel für eine Formel
-
-\begin{equation}
-    \formelentry{Ohm'sches Gesetz}      % Zu Formelverzeichnis hinzufügen
-    {R} = \frac{U}{I}
-    \label{eq:OhmschesGesetz}
-\end{equation}
-\begin{center}
-    Formel \ref{eq:OhmschesGesetz}: Ohm'sches Gesetz
-\end{center}
-
-
+Hier ein Beispiel für eine Formel (\ref{eq:OhmschesGesetz}):
+\useequation{OhmschesGesetz}          % Ausgelagerte Formel einfügen
 
 \vspace{0.5cm}
 Hier zwei Beispiele für Code (\ref{lst:Beispiel_Code-1} und \ref{lst:Beispiel_Code-2}):
@@ -60,7 +50,7 @@ Hier zwei Beispiele für Code (\ref{lst:Beispiel_Code-1} und \ref{lst:Beispiel_C
     \label{fig:Bsp_Bild}
 \end{figure}
 
-Wie in \autoref{fig:Bsp_Bild} zu sehen, ist das Logo der \ac{DHBW} ein sehr schönes Logo. Das $\lambda$ der \ac{lambda} ist ebenfalls ein sehr schönes Zeichen. Des weiteren kann auf die Kapitelnummer referenziert werden: \autoref{sec:Unterkapitel}.
+Wie in \autoref{fig:Bsp_Bild} zu sehen, ist das Logo der \ac{DHBW} ein sehr schönes Logo. Das $\lambda$ der \ac{lambda} ist ebenfalls ein sehr schönes Zeichen. Des weiteren kann auf die Kapitelnummer referenziert werden: \autoref{sec:Unterkapitel}. Mit \todo{Aufgabe für mich} können Absätze markiert werden.
 
 
 \vspace{0.5cm}
