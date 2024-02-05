@@ -1,0 +1,24 @@
+%!TEX root = ../../../document/document.tex
+
+\makeatletter
+
+% \saveimage{<ID>}{<imageSetting(e.g. !ht)>}{<graphicSettings(e.g. width=0.7)>}{<imageName>}{<description>}
+\newcommand\saveimage[5]{%
+    \@namedef{img@#1}{
+        \begin{figure}[#2]
+            \centering
+            \includegraphics[#3]{#4}
+            \caption{#5}
+            \label{img:#1}
+        \end{figure}
+    }
+}
+
+% \useimage{<ID>}
+\newcommand\useimage[1]{%
+    \@nameuse{img@#1}
+}
+
+\makeatother
+
+\input{../content/additionals/editable/images.tex}

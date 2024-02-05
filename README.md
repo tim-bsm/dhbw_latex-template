@@ -25,6 +25,10 @@ sh sh_clean.sh
 ````
 
 &nbsp;
+## Sonstiges
+Formeln, Bilder und Tabellen müssen nicht in die externen Dateien unter ```/content/additionals/editable``` geschrieben werden. Sie können weiterhin normal verwendet werden.
+
+&nbsp;
 ## Mögliche Fehler
 - Wenn das Flag "formelgroeverz" in der settings.tex auf True gesetzt ist, muss zwangsweise irgendwo mindestens ein Eintrag aus diesem Verzeichnis in den Chaptern verwendet werden, da sonst ein Fehler auftritt und das PDF nicht (richtig) erstellt werden kann.  
 Selbiges gilt für das Akbürzungsverzeichnis mit dem Flag "abkverz".
