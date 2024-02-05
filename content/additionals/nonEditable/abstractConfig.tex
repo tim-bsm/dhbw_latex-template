@@ -1,0 +1,40 @@
+%!TEX root = ../../../document/document.tex
+
+\newcommand{\deAbstract}{%
+    \thispagestyle{plain}
+    \chapter*{\langabstract}
+    \input{../content/additionals/editable/abstract_de.tex}
+}
+
+\newcommand{\enAbstract}{%
+    \thispagestyle{plain}
+    \chapter*{\langabstract}
+    \input{../content/additionals/editable/abstract_en.tex}
+}
+
+
+\iflang{de}{
+    \deAbstract
+    % Abstract zum Inhaltsverzeichnis hinzufügen
+    \addcontentsline{toc}{chapter}{\langabstract}
+
+    \ifbothabstracts
+        \clearpage
+        \begin{otherlanguage}{english}
+            \enAbstract
+        \end{otherlanguage}
+    \fi
+}
+
+\iflang{en}{
+    \enAbstract
+    % Abstract zum Inhaltsverzeichnis hinzufügen
+    \addcontentsline{toc}{chapter}{\langabstract}
+
+    \ifbothabstracts
+        \clearpage
+        \begin{otherlanguage}{ngerman}
+            \deAbstract
+        \end{otherlanguage}
+    \fi
+}

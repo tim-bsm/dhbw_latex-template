@@ -23,7 +23,7 @@
 
 \ifglossar
     \makeglossaries
-    \input{../content/additionals/glossary.tex}
+    \input{../content/additionals/editable/glossary.tex}
 \fi
 
 
@@ -42,7 +42,7 @@
     
     % Deckblatt
     \begin{spacing}{1}
-        \input{../content/additionals/cover-sheet.tex}
+        \input{../content/additionals/nonEditable/coverSheet.tex}
     \end{spacing}
 
 
@@ -59,7 +59,7 @@
 
     % Sperrvermerk
     \ifsperrvermerk
-        \input{../content/additionals/blocking-note.tex}
+        \input{../content/additionals/nonEditable/blockingNote.tex}
         \newpage
     \fi
 
@@ -75,7 +75,7 @@
 
     % Selbstständigkeitserklärung
     \ifselbsterkl
-        \input{../content/additionals/declaration.tex}
+        \input{../content/additionals/nonEditable/declaration.tex}
         \newpage
     \fi
 
@@ -83,7 +83,7 @@
 
     % Abstract
     \ifabstract
-        \input{../content/additionals/abstract.tex}
+        \input{../content/additionals/nonEditable/abstractConfig.tex}
         \newpage
     \fi
 
@@ -115,7 +115,7 @@
         \addchap{\langabkverz}
 
         \begin{acronym}[LOREMIPSUM] % Die Angabe in eckigen Klammern legt die Breite der linken Spalte fest! => ggf. anpassen
-            \input{../content/additionals/acronyms.tex}
+            \input{../content/additionals/editable/acronyms.tex}
         \end{acronym}
     \fi
 
@@ -133,6 +133,7 @@
     \iftableverz
         \cleardoublepage
         \listoftables
+        \input{../content/additionals/nonEditable/tablesConfig.tex}
     \fi
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -143,7 +144,7 @@
 		\addchap{\langformelgroeverz}
 		
 		\begin{acronym}[LOREMIPSUM] % Die Angabe in eckigen Klammern legt die Breite der linken Spalte fest! => ggf. anpassen
-			\input{../content/additionals/symbols.tex}
+			\input{../content/additionals/nonEditable/symbolsConfig.tex}
 		\end{acronym}
 	\fi
 
@@ -155,7 +156,7 @@
     \ifformelverz
         \cleardoublepage
         \listofformels
-        \input{../content/additionals/equations.tex}
+        \input{../content/additionals/nonEditable/equationsConfig.tex}
     \fi
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,6 +191,6 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \ifappendix
-        \input{../content/additionals/appendix.tex}
+        \input{../content/additionals/nonEditable/appendixConfig.tex}
     \fi
 \end{document}

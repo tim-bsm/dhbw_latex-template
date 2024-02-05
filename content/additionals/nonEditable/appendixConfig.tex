@@ -1,12 +1,4 @@
-%!TEX root = ../../document/document.tex
-
-\newcommand{\appendixContent}{
-    \section*{Anhang 1}
-    Ich bin ein Anhang.
-}
-
-
-%%%%%%%% Ab hier nicht mehr anfassen! %%%%%%%%
+%!TEX root = ../../../document/document.tex
 
 \setpagestylefoot
 \renewcommand{\thefigure}{A\arabic{figure}}
@@ -33,7 +25,7 @@
 \ifanhang
     \addchap{\langanhang}
     
-    \appendixContent
+    \input{../content/additionals/editable/appendix.tex}
 \fi
 
 

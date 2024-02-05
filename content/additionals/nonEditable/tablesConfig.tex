@@ -1,0 +1,57 @@
+%!TEX root = ../../../document/document.tex
+
+\makeatletter
+
+% \savetable{<ID>}{<tableSetting(e.g. !ht)>}{<tabularSetting(e.g. |c|c|c|c|c|c|)}{<description>}{<content>}
+\newcommand\savetable[5]{%
+    \@namedef{tab:tableSetting@#1}{#2}%
+    \@namedef{tab:tabularSetting@#1}{#3}%
+    \@namedef{tab:desc@#1}{#4}%
+    \@namedef{tab:content@#1}{#5}%
+}
+\newcommand\tablerow[1]{%
+    #1\\
+    \hline
+}
+
+% \usetable{<ID>}
+\newcommand\usetable[1]{%s
+    \begin{table}[{\@nameuse{tab:tableSetting@#1}}]
+        \centering
+        \begin{tabular}[c]{\@nameuse{tab:tabularSetting@#1}}
+            \hline
+            \@nameuse{tab:content@#1}
+            %     \rowcolor{lightgray} 
+            %     \textbf{Spalte 1} & 
+            %     \textbf{Spalte 2 (\%)} &  
+            %     \multicolumn{2}{|c|}{\textbf{Spalte 3}} & 
+            %     \multicolumn{2}{|c|}{\textbf{Spalte 4}}\\
+            % \hline
+            %     A &     10 &    111 &   0,1 &   Dies &      100 \\
+            % \hline
+            %     B &     20 &    222 &   0,2 &   ist &       200 \\
+            % \hline
+            %     C &     30 &    333 &   0,3 &   ein &       300 \\
+            % \hline
+            %     D &     40 &    444 &   0,4 &   Beispiel &  400 \\
+            % \hline
+            %     \textbf{Summe} &
+            %     \textbf{100} &
+            %     \textbf{1110} &
+            %     \textbf{1} &  &
+            %     \textbf{1000}\\
+            % \hline
+            %     \multicolumn{4}{|c|}{\textbf{Letzte}} & 
+            %     \multicolumn{2}{|c|}{\textbf{Reihe}} \\
+            % \hline
+            %     \makecell{Multilined \\ cell text} & 1 & 2 & 3 & 4 & 5 \\
+            % \hline
+        \end{tabular}
+        \caption{\@nameuse{tab:desc@#1}}
+        \label{tab:#1}
+    \end{table}
+}
+
+\makeatother
+
+\input{../content/additionals/editable/tables.tex}

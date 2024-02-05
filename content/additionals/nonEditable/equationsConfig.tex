@@ -1,0 +1,25 @@
+%!TEX root = ../../../document/document.tex
+
+\makeatletter
+
+% \saveequation{<ID>}{<equation>}{<description>}
+\newcommand\saveequation[3]{%
+    \@namedef{eq:equation@#1}{#2}%
+    \@namedef{eq:desc@#1}{#3}%
+}
+
+% \useequation{<ID>}
+\newcommand\useequation[1]{%s
+    \begin{equation}
+        \formelentry{\@nameuse{eq:desc@#1}}      % Zu Formelverzeichnis hinzufügen
+        \@nameuse{eq:equation@#1}
+        \label{eq:#1} % Label setzen
+    \end{equation}
+    \begin{center}
+        Formel \ref{eq:#1}: \@nameuse{eq:desc@#1}
+    \end{center}
+}
+
+\makeatother
+
+\input{../content/additionals/editable/equations.tex}
