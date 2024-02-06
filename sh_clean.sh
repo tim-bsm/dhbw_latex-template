@@ -1,7 +1,8 @@
 #!/bin/bash
 
 DIRS_TO_BE_CLEANED=(/settings/watermark /document /settings/config)
-FILE_ENDINGS=(-blx.bib .aux .bcf* .fdb_latexmk .fls .glo .lof .log .run.xml .synctex* .toc .lot .bbl* .for .ist .blg .lol)
+#FILE_ENDINGS=(-blx.bib .aux .bcf* .fdb_latexmk .fls .glo .lof .log .run.xml .synctex* .toc .lot .bbl* .for .ist .blg .lol)
+FILE_ENDINGS_TO_BE_SAVED=(.tex .pdf)
 
 
 ################### DO NOT CHANGE SOMETHING BELOW THIS LINE ###################
@@ -9,25 +10,36 @@ FILE_ENDINGS=(-blx.bib .aux .bcf* .fdb_latexmk .fls .glo .lof .log .run.xml .syn
 ##>--- CONSTANTS ---<##
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+
 ##>--- FUNCTIONS ---<##
 clean_dir()
 {
     # Change to the directory to be cleaned and save its path
     cd $SCRIPT_DIR$1
-    CURRENT_DIR=$(pwd)
+    current_dir=$(pwd)
 
-    echo "Cleaning '$CURRENT_DIR'"
-    # Loop through all file endings
-    for i in ${FILE_ENDINGS[@]}; do
-        FILE_PATH=$CURRENT_DIR/*$i
-        # Check if there are files with the ending $i, if so, remove them
-        if ls $FILE_PATH &> /dev/null; then
-            rm $FILE_PATH
-            echo "Removed all files with the ending '$i'"
+    echo "Cleaning '$current_dir'"
+    # Loop through all files in the directory and delete them if they have no ending from the list
+    for F in *; do
+        should_be_removed=true
+
+        # Loop through all file endings
+        for e in ${FILE_ENDINGS_TO_BE_SAVED[@]}; do
+            # Check if the file has an ending from the list and if so, set flag to false
+            if [[ $F == *$e ]]; then
+                should_be_removed=false
+            fi
+        done
+
+        # If the file should be removed, remove it
+        if $should_be_removed; then
+            rm $F
+            echo "Removed file: $F"
         fi
     done
     echo ""
 }
+
 
 ##>--- MAIN ---<##
 # Loop through all directories to be cleaned

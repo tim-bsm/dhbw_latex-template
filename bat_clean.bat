@@ -1,7 +1,7 @@
 @echo off & setlocal enabledelayedexpansion
 
 set DIRS_TO_BE_CLEANED=settings\watermark document settings\config
-set FILE_ENDINGS=-blx.bib .aux .bcf* .fdb_latexmk .fls .glo .lof .log .run.xml .synctex* .toc .lot .bbl* .for .ist .blg .lol
+set FILE_ENDINGS_TO_BE_SAFED=.pdf .tex
 
 
 :::::::::::::::::::::: DO NOT CHANGE SOMETHING BELOW THIS LINE ::::::::::::::::::::::
@@ -21,14 +21,10 @@ goto :main
     set current_dir=%cd%
 
     echo Cleaning '%current_dir%'
-    :: Loop through all file endings
-    for %%e in (%FILE_ENDINGS%) do (
-        set file_path=%current_dir%\*%%e
-        :: Check if there are files with the ending %%e, if so, remove them
-        if exist !file_path! (
-            del /q !file_path!
-            echo Removed all files with the ending '%%e'
-        )
+    :: Loop through all files and delete the ones which donÄt use a file ending of the ones specified in %FILE_ENDINGS_TO_BE_SAFED%
+    for /f "delims=" %%F in ('dir /b /a-d ^| findstr /vile "%FILE_ENDINGS_TO_BE_SAFED%"') do (
+        del %%F
+        echo Removed file '%%F'
     )
     echo.
 exit /b
