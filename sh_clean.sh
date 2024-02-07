@@ -1,7 +1,6 @@
 #!/bin/bash
 
 DIRS_TO_BE_CLEANED=(/settings/watermark /document /settings/config)
-#FILE_ENDINGS=(-blx.bib .aux .bcf* .fdb_latexmk .fls .glo .lof .log .run.xml .synctex* .toc .lot .bbl* .for .ist .blg .lol)
 FILE_ENDINGS_TO_BE_SAVED=(.tex .pdf)
 
 
@@ -19,7 +18,7 @@ clean_dir()
     current_dir=$(pwd)
 
     echo "Cleaning '$current_dir'"
-    # Loop through all files in the directory and delete them if they have no ending from the list
+    # Loop through all files and delete the ones which don't use a file ending of the ones specified in %FILE_ENDINGS_TO_BE_SAFED%
     for F in *; do
         should_be_removed=true
 
@@ -33,7 +32,7 @@ clean_dir()
 
         # If the file should be removed, remove it
         if $should_be_removed; then
-            rm $F
+            rm "$F"
             echo "Removed file: $F"
         fi
     done

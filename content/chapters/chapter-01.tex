@@ -7,7 +7,7 @@
 
 \chapter{Beispiele zur Verwendung von LaTeX}
    
-\section{Unterkapitel, Zitate, Referenzen und Formeln}
+\section{Unterkapitel, Zitate, Referenzen, Formeln und Listings}
 \label{sec:Unterkapitel}
 
 \subsection{Unterunterkapitel}
@@ -48,12 +48,14 @@ Wie in \autoref{img:bsp} zu sehen, ist das Logo der \ac{DHBW} ein sehr schönes 
 
 
 \vspace{0.5cm}
-\usetable{bsp}
+\usetable{bsp_normal}
 
-Auch hier kann wieder auf die Tabelle referenziert werden: \ref{tab:bsp}.
+Auch hier kann wieder auf die Tabellen referenziert werden: \autoref{tab:bsp_normal}, \autoref{tab:bsp_rotiert}.
 
 
-\vspace{0.5cm}
+\newpage
+\usetable{bsp_rotiert}
+
 Hier ein Beispiel für eine Liste:
 \begin{itemize}[label=\textbullet]
     \item Punkt 1

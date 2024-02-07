@@ -2,23 +2,16 @@
 
 \makeatletter
 
-% \savetable{<ID>}{<tableSetting(e.g. !ht)>}{<tabularSetting(e.g. |c|c|c|c|c|c|)>}{<description>}{<content>}
+% \savetable{<ID>}{<adjustSettings(e.g. center)>}{<tabularSetting(e.g. |c|c|c|c|c|c|)>}{<description>}{<content>}
 \newcommand\savetable[5]{%
     \@namedef{tab@#1}{
-        \begin{table}[#2]
-            \centering
+        \begin{adjustbox}{#2, captionbelow={#4\label{tab:#1}}, nofloat=table}
             \begin{tabular}[c]{#3}
                 \hline
                 #5
             \end{tabular}
-            \caption{#4}
-            \label{tab:#1}
-        \end{table}
+        \end{adjustbox}
     }
-}
-\newcommand\tablerow[1]{%
-    #1\\
-    \hline
 }
 
 % \usetable{<ID>}
@@ -26,6 +19,12 @@
     \@nameuse{tab@#1}
 }
 
+\newcommand\tablerow[1]{%
+    #1\\
+    \hline
+}
+
 \makeatother
+
 
 \input{../content/additionals/editable/tables.tex}

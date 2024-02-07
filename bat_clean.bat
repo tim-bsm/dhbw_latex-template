@@ -21,9 +21,9 @@ goto :main
     set current_dir=%cd%
 
     echo Cleaning '%current_dir%'
-    :: Loop through all files and delete the ones which donÄt use a file ending of the ones specified in %FILE_ENDINGS_TO_BE_SAFED%
+    :: Loop through all files and delete the ones which don't use a file ending of the ones specified in %FILE_ENDINGS_TO_BE_SAFED%
     for /f "delims=" %%F in ('dir /b /a-d ^| findstr /vile "%FILE_ENDINGS_TO_BE_SAFED%"') do (
-        del %%F
+        del "%%F"
         echo Removed file '%%F'
     )
     echo.

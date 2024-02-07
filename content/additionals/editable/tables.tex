@@ -1,9 +1,10 @@
 %!TEX root = ../../../document/document.tex
 
-% FORMAT: \savetable{<ID>}{<tableSetting(e.g. !ht)>}{<tabularSetting(e.g. |c|c|c|c|c|c|)}{<description>}{<content>}
+% FORMAT: \savetable{<ID>}{<adjustSettings(e.g. center)>}{<tabularSetting(e.g. |c|c|c|c|c|c|)>}{<description>}{<content>}
+% For <adjustSettings>: http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/adjustbox/adjustbox.pdf
 
 
-\savetable{bsp}{h}{|c|c|c|c|c|c|}{Beispieltabelle}{
+\savetable{bsp_normal}{rotate=0, center}{|c|c|c|c|c|c|}{Beispieltabelle}{
     \tablerow{\rowcolor{lightgray}
         \textbf{Spalte 1} &
         \textbf{Spalte 2 (\%)} &
@@ -28,6 +29,7 @@
     \tablerow{\makecell{Multilined \\ cell text} & 1 & 2 & 3 & 4 & 5}
 }
 
-\savetable{bsp2}{!b}{|c|c|}{Test}{
-    \tablerow{A & 10}
+\savetable{bsp_rotiert}{rotate=90, center}{|c|c|c|}{Rotierte Tabelle}{
+    \tablerow{A & 10 & test}
+    \tablerow{B & 20 & test}
 }
