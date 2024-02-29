@@ -12,7 +12,7 @@
 
 \subsection{Unterunterkapitel}
 
-Dies ist ein Beispiel für die Zitierfunktion. \cite[Vgl.][S. 1 ff.]{Mustermann2023} 
+Dies ist ein Beispiel für die Zitierfunktion. \cite[Vgl.][S. 1 ff.]{2024} 
 
 
 \vspace{0.5cm}
@@ -34,8 +34,9 @@ Hier zwei Beispiele für Code (\ref{lst:Beispiel_Code-1} und \ref{lst:Beispiel_C
 \end{lstlisting}
 
 % Code in einer externen Datei
-\lstinputlisting[language=C++, caption={Beispiel: indirektes einfügen von Code über externe Datei}, label={lst:Beispiel_Code-2}]
-{../content/nonTexFiles/code/hello-world.cpp}
+\uselisting{bsp_code-2}                % Ausgelagerten Code einfügen
+% \lstinputlisting[language=C++, caption={Beispiel: indirektes einfügen von Code über externe Datei}, label={lst:Beispiel_Code-2}]
+% {../content/nonTexFiles/code/hello-world.cpp}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -44,7 +45,7 @@ Hier zwei Beispiele für Code (\ref{lst:Beispiel_Code-1} und \ref{lst:Beispiel_C
 
 \useimage{bsp}
 
-Wie in \autoref{img:bsp} zu sehen, ist das Logo der \ac{DHBW} ein sehr schönes Logo. Das $\lambda$ der \ac{lambda} ist ebenfalls ein sehr schönes Zeichen. Des weiteren kann auf die Kapitelnummer referenziert werden: \autoref{sec:Unterkapitel}. Mit \todo{Aufgabe für mich} können Absätze markiert werden.
+Wie in \autoref{img:bsp} zu sehen, ist das Logo der \ac{DHBW} ein sehr schönes Logo. Das $\lambda$ der \ac{lambda} ist ebenfalls ein sehr schönes Zeichen. Des Weiteren kann auf die Kapitelnummer referenziert werden: \autoref{sec:Unterkapitel} und mit \hyperref[sec:Unterkapitel]{Test Unterkapitel} können eigene Texte für die Referenzen vergeben werden. Mit \todo{Aufgabe für mich} können Absätze markiert werden.
 
 
 \vspace{0.5cm}

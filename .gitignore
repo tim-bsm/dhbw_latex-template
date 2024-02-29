@@ -2,8 +2,8 @@
 *.DS_Store
 *.for
 *.ist
-*.bbl-SAVE-ERROR
-*.bcf-SAVE-ERROR
+*.bbl*
+*.bcf*
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
