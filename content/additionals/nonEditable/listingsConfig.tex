@@ -5,8 +5,7 @@
 % \savelisting{<ID>}{<language>}{<caption>}{<fileName>}
 \newcommand\savelisting[4]{%
     \@namedef{lst@#1}{
-        \lstinputlisting[language={#2}, caption={#3}, label={lst:#1}]
-        {../content/nonTexFiles/code/#4}
+        \lstinputlisting[language={#2}, caption={#3}, label={lst:#1}]{../content/nonTexFiles/code/#4}
     }
 }
 

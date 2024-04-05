@@ -11,8 +11,9 @@ Um diese Vorlage optimal nutzen zu können, sollte am besten "MS Visual Studio C
 
 **Einstellungen:**  
 Folgende Einstellungen sollten für eine bessere Verwendbarkeit in die settings.json von VSC zwischen den bereits bestehenden geschweiften Klammern eingefügt werden.  
-Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "settings" eingeben und das Feld mit "Preferences: Opne User Settings (JSON)" auswählen. Dort bitte folgendes einfügen:
+Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "settings" eingeben und das Feld mit "Preferences: Open User Settings (JSON)" auswählen. Dort bitte Folgendes einfügen:
 ``````
+// LaTeX Settings
 "latex-workshop.latex.tools": [
     {
         "name": "latexmk",
@@ -26,15 +27,76 @@ Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "sett
             "%DOC%"
         ],
         "env": {}
-    }
+    },
+    {
+        "name": "xelatex",
+        "command": "xelatex",
+        "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOC%"
+        ],
+        "env": {}
+    },
+    {
+        "name": "pdflatex",
+        "command": "pdflatex",
+        "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOC%"
+        ],
+        "env": {}
+    },
+    {
+        "name": "bibtex",
+        "command": "bibtex",
+        "args": [
+            "%DOCFILE%"
+        ],
+        "env": {}
+    }       
 ],
 "latex-workshop.latex.recipes": [
     {
-        "name": "latexmk 🔃",
+        "name": "pdfLaTeX",
+        "tools": [
+            "pdflatex"
+        ]
+    },
+    {
+        "name": "latexmk",
         "tools": [
             "latexmk"
         ]
+    },
+    {
+        "name": "xelatex",
+        "tools": [
+            "xelatex"
+        ]
+    },
+    {
+        "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
+        "tools": [
+            "pdflatex",
+            "bibtex",
+            "pdflatex",
+            "pdflatex"
+        ]
+    },
+    {
+        "name": "xelatex ➞ bibtex ➞ xelatex`×2",
+        "tools": [
+            "xelatex",
+            "bibtex",
+            "xelatex",
+            "xelatex"
+        ]
     }
+        
 ],
 "ltex.language": "de-DE",
 "editor.wordWrap": "on",
@@ -42,7 +104,7 @@ Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "sett
 
 ### JabRef
 **[Browser Extension:](https://docs.jabref.org/collect/jabref-browser-extension)**  
-Bei mir waren sowohl die Python, als auch die JSON Datei nicht vorhanden. Diese musste ich manuell noch installieren. Die JSON ist im obigen Link erklärt, der Pfad für die Python Datei zwar auch, die Datei selber ist allerdings nicht verlinkt. Man findet diese [hier](https://github.com/JabRef/jabref/), wenn man nach "jabrefHost" sucht und die passende Datei herunterläft.
+Bei mir waren sowohl die Python, als auch die JSON Datei nicht vorhanden. Diese musste ich manuell noch installieren. Die JSON ist im obigen Link erklärt, der Pfad für die Python Datei zwar auch, die Datei selber ist allerdings nicht verlinkt. Man findet diese [hier](https://github.com/JabRef/jabref/), wenn man nach "jabrefHost" sucht und die passende Datei herunterlädt.
 
 **Template:**  
 Das Template ```bibliographie.bib``` in ```./settings``` beinhaltet bereits weitere Einstellungen von JabRef, welche einfach so übernommen werden können. Hierfür muss JabRef nur gestartet werden und dann mithilfe des Explorers die Datei ausgewählt werden. Bitte keine neue Library anlegen.
@@ -79,7 +141,7 @@ Formeln, Bilder und Tabellen müssen nicht in die externen Dateien unter ```/con
 &nbsp;
 ## Mögliche Fehler
 - Wenn das Flag "formelgroeverz" in der settings.tex auf True gesetzt ist, muss zwangsweise irgendwo mindestens ein Eintrag aus diesem Verzeichnis in den Chaptern verwendet werden, da sonst ein Fehler auftritt und das PDF nicht (richtig) erstellt werden kann.  
-Selbiges gilt für das Akbürzungsverzeichnis mit dem Flag "abkverz".
+Selbiges gilt für das Abkürzungsverzeichnis mit dem Flag "abkverz".
 
 &nbsp;
 ## Hilfreiche Links

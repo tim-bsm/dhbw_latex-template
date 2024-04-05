@@ -2,14 +2,16 @@
 
 \makeatletter
 
-% \saveimage{<ID>}{<imageSetting(e.g. !ht)>}{<graphicSettings(e.g. width=0.7)>}{<imageName>}{<description>}
-\newcommand\saveimage[5]{%
-    \@namedef{img@#1}{
-        \begin{figure}[#2]
+% \saveimage[OPTIONAL: <linewidth=0px, padding=0mm>]{<ID>}{<imageSetting(e.g. !ht)>}{<graphicSettings(e.g. width=0.7)>}{<imageName>}{<description>} -> OPTIONAL um grauen Rahmen um Bild zu platzieren
+\newcommand\saveimage[6][]{%
+    \@namedef{img@#2}{
+        \begin{figure}[#3]
             \centering
-            \includegraphics[#3]{#4}
-            \caption{#5}
-            \label{img:#1}
+            \ifthenelse{\isempty{#1}}
+                {\includegraphics[#4]{#5}}%True
+                {\gradientframe[#1]{\includegraphics[#4]{#5}}}%False
+            \caption{#6}
+            \label{img:#2}
         \end{figure}
     }
 }

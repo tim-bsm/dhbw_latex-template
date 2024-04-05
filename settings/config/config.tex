@@ -335,11 +335,14 @@
 \usepackage{color, colortbl}  %Für Highlighten der Tabellenzeilen
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
 \usepackage{amssymb}
+\usepackage{pdfpages} % PDF-Dateien einbinden
 \usepackage[export]{adjustbox} % Package, um Bilder in \includegraphics nach links bzw. rechts zu positionieren
 \usepackage{pdfpages}         % pdf-Seiten einbinden
 \usepackage{wasysym} % für Promille-Zeichen
 \usepackage{changepage} % für adjustwidth-Umgebung
 \usepackage{makecell} % für Tabellen
+\usepackage{gradientframe} % für Rahmen um Bilder
+\usepackage{xifthen} % für \isempty test
 
 
 % eine Kommentarumgebung "k" (Handhabe mit \begin{k}<Kommentartext>\end{k},
@@ -497,9 +500,3 @@
 \usepackage{amssymb} % Erweiterung der Symbole in Mathematikumgebung
 
 \iflang{de}{\usepackage{icomma}} % Europäiches Komma in Formeln
-
-
-
-
-%selbst hinzugefügt
-\usepackage{pdfpages}
