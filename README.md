@@ -14,6 +14,7 @@ Folgende Einstellungen sollten für eine bessere Verwendbarkeit in die settings.
 Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "settings" eingeben und das Feld mit "Preferences: Open User Settings (JSON)" auswählen. Dort bitte Folgendes einfügen:
 ``````
 // LaTeX Settings
+"ltex.language": "de-DE",
 "latex-workshop.latex.tools": [
     {
         "name": "latexmk",
@@ -61,15 +62,15 @@ Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "sett
 ],
 "latex-workshop.latex.recipes": [
     {
-        "name": "pdfLaTeX",
-        "tools": [
-            "pdflatex"
-        ]
-    },
-    {
         "name": "latexmk",
         "tools": [
             "latexmk"
+        ]
+    },
+    {
+        "name": "pdfLaTeX",
+        "tools": [
+            "pdflatex"
         ]
     },
     {
@@ -98,7 +99,10 @@ Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "sett
     }
         
 ],
-"ltex.language": "de-DE",
+"latex-workshop.intellisense.citation.backend": "biblatex",
+"latex-workshop.latex.recipe.default": "first",
+
+// VS Code Settings
 "editor.wordWrap": "on",
 ``````
 
