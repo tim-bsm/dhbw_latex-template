@@ -1,4 +1,3 @@
-\setzelangdeckblattabschlusshinleitung{für die Prüfung zum}
 \setzelangartikelstudiengang{des}
 \setzelangstudiengang{Studiengangs}
 \setzelanganderdh{an der Dualen Hochschule Baden-Württemberg}
@@ -7,22 +6,31 @@
 \setzelangdbmatriknr{Matrikelnummer}
 \setzelangdbkurs{Kurs}
 \setzelangdbfirma{Ausbildungsfirma}
-\setzelangdbbetreuer{Betreuer}
+\ifshowdhbwlogo
+    \ifshowfirmenlogo
+        \setzelangdbbetreuer{Betreuer}
+    \else
+        \setzelangdbbetreuer{Dozent}
+    \fi
+\else
+    \setzelangdbbetreuer{Betreuer}
+\fi
 \setzelangdbgutachter{Gutachter}
 \setzelangsperrvermerk{Sperrvermerk}
 \setzelangabkverz{Abk\"urzungsverzeichnis}
 \setzelangglossar{Glossar}
 \setzelanganhang{Anhang}
 \setzelangabstract{Abstract}
-\setzelanglistingname{Listing}
-\setzelanglistlistingname{Listings}
-\setzelanglistingautorefname{Listing}
+\setzelanglistingname{Code}
+\setzelanglistlistingname{Code-Abschnitte}
+\setzelanglistingautorefname{Code}
 \setzelangselbsterkl{Selbstst\"andigkeitserkl\"arung}
 \setzelangformelsammlung{Formelverzeichnis}
-\setzelangkopfz{MAHLE International GmbH\\IT-Automotive}
-\setzelangfussz{\todo{Fußzeile}}
 \setzelangseite{Seite}
 \setzelangseitevon{von}
 \setzelangstand{Stand}
 \setzelangformelgroeverz{Formelgrößenverzeichnis}
 \setzelangformel{Formel}
+\setzelangliteratur{Literatur}
+\setzelangweblinks{Weblinks}
+\setzelangweiterequellen{Weitere Quellen}

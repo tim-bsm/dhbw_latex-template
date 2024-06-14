@@ -100,7 +100,7 @@ Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "sett
         
 ],
 "latex-workshop.intellisense.citation.backend": "biblatex",
-"latex-workshop.latex.recipe.default": "first",
+"latex-workshop.latex.recipe.default": "first", // set latexmk as default
 
 // VS Code Settings
 "editor.wordWrap": "on",
@@ -108,7 +108,7 @@ Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "sett
 
 ### JabRef
 **[Browser Extension:](https://docs.jabref.org/collect/jabref-browser-extension)**  
-Bei mir waren sowohl die Python, als auch die JSON Datei nicht vorhanden. Diese musste ich manuell noch installieren. Die JSON ist im obigen Link erklärt, der Pfad für die Python Datei zwar auch, die Datei selber ist allerdings nicht verlinkt. Man findet diese [hier](https://github.com/JabRef/jabref/), wenn man nach "jabrefHost" sucht und die passende Datei herunterlädt.
+Bei mir waren sowohl die Python, als auch die JSON Datei nicht vorhanden. Diese musste ich manuell installieren. Die JSON ist im obigen Link erklärt, der Pfad für die Python Datei zwar auch, die Datei selber ist allerdings nicht verlinkt. Man findet diese [hier](https://github.com/JabRef/jabref/), wenn man nach "jabrefHost" sucht und die passende Datei herunterlädt.
 
 **Template:**  
 Das Template ```bibliographie.bib``` in ```./settings``` beinhaltet bereits weitere Einstellungen von JabRef, welche einfach so übernommen werden können. Hierfür muss JabRef nur gestartet werden und dann mithilfe des Explorers die Datei ausgewählt werden. Bitte keine neue Library anlegen.

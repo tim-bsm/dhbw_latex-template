@@ -9,16 +9,18 @@
 
 
 
-% Quellenverzeichnis nach Literatur und Weblinks trennen
-% \ifliteratur
-%   \printbibliography[heading=subbibintoc,title={Literatur},nottype=online]
-%   \printbibliography[heading=subbibintoc,title={Weblinks},type=online]
-% \fi
-
-% Quellenverzeichnis nicht trennen
 \ifliteratur
-    \nocite{*}
-    \printbibliography
+    % Quellenverzeichnis nach Literatur und Weblinks trennen
+    \ifsplitbibliography
+        \printbibliography[category=cited, heading=subbibintoc, title={\langliteratur}, nottype=online]
+        \printbibliography[category=cited, heading=subbibintoc, title={\langweblinks}, type=online]
+    % Quellenverzeichnis nicht trennen
+    \else
+        \printbibliography[category=cited]
+    \fi
+
+    % Literaturverzeichnis um weitere Quellen (nicht zitiert) ergänzen
+    \printbibliography[title={\langweiterequellen}, notcategory=cited]
 \fi
 
 

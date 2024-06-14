@@ -76,7 +76,6 @@
 	\vspace{-1.4cm}\\
 
 	\vspace*{12mm}		{\large\textbf \arbeit }\\
-%	\vspace*{12mm}		\langdeckblattabschlusshinleitung\\
 	\vspace*{3mm}		{\textbf \abschluss}\\
 	\vspace*{12mm}		\langartikelstudiengang{} \langstudiengang{} \studiengang\\
 	\vspace*{3mm}		\langanderdh{} \dhbw\\
@@ -92,7 +91,9 @@
 		mmmmmmmmmmmmmmmmmmmmmmmmmm             	\= 	\kill
 		\textbf{\langdbbearbeitungszeit}       	\>  \zeitraum\\
 		\textbf{\langdbmatriknr, \langdbkurs}  	\>  \martrikelnr, \kurs\\
-		\textbf{\langdbfirma}                  	\> 	\firma, \firmenort\\
+		\ifshowfirmenlogo
+			\textbf{\langdbfirma}                  	\> 	\firma, \firmenort\\
+		\fi
 		\textbf{\langdbbetreuer}               	\>  \betreuer\\
 		\ifreviewer
 			\textbf{\langdbgutachter}          	\> 	\gutachter\\

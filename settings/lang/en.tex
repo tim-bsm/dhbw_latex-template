@@ -1,4 +1,3 @@
-\setzelangdeckblattabschlusshinleitung{for the}
 \setzelangartikelstudiengang{from}
 \setzelangstudiengang{the Course of Studies}
 \setzelanganderdh{at the Cooperative State University Baden-W\"urttemberg}
@@ -8,21 +7,31 @@
 \setzelangdbkurs{Course}
 \setzelangdbfirma{Company}
 \setzelangdbbetreuer{Supervisor in the Company}
+\ifshowdhbwlogo
+    \ifshowfirmenlogo
+        \setzelangdbbetreuer{Supervisor in the Company}
+    \else
+        \setzelangdbbetreuer{Lecturer}
+    \fi
+\else
+    \setzelangdbbetreuer{Supervisor in the Company}
+\fi
 \setzelangdbgutachter{Reviewer}
 \setzelangsperrvermerk{Confidentiality Statement}
 \setzelangglossar{Glossary}
 \setzelangabkverz{Acronyms}
 \setzelangabstract{Abstract}
 \setzelanganhang{Appendix}
-\setzelanglistingname{Listing}
-\setzelanglistlistingname{Listings}
-\setzelanglistingautorefname{Listing}
+\setzelanglistingname{Code}
+\setzelanglistlistingname{Code sections}
+\setzelanglistingautorefname{Code}
 \setzelangselbsterkl{Self-Declaration of independence}
 \setzelangformelsammlung{Formulary}
-\setzelangkopfz{MAHLE International GmbH\\IT-Automotive}
-\setzelangfussz{\todo{Footer}}
 \setzelangseite{Page}
 \setzelangseitevon{of}
 \setzelangstand{Last Review}
 \setzelangformelgroeverz{Symbols}
 \setzelangformel{Formula}
+\setzelangliteratur{Literature}
+\setzelangweblinks{Web Links}
+\setzelangweiterequellen{Further Reading}

@@ -118,10 +118,6 @@
 \newif\ifinhalt
 \inhaltfalse
 
-% Flag für Formblatt
-\newif\ifformblatt
-\formblattfalse
-
 % Flag für Reviewer
 \newif\ifreviewer
 \reviewerfalse
@@ -137,6 +133,10 @@
 % Flag für Anzeigen der Unterschrift; default: false
 \newif\ifshowsignature
 \showsignaturefalse
+
+% Flag zum Trennen des Literaturverzeichnisses; default: false
+\newif\ifsplitbibliography
+\splitbibliographyfalse
 
 
 \input{../settings/settings_list.tex} % verfügbare Einstellungen
@@ -201,50 +201,33 @@
         \ifshowfirmenlogo
             % Firmenlogo und DHBW-Logo --> Firmenlogo links
             \ifshowdhbwlogo
-                \iflang{de}{
-                    %trim=left bottom right top
-                    \includegraphics[height=1.4cm, left, trim=0cm 1.5cm 0cm -1.5cm]{company_de}
-                }
-                \iflang{en}{
-                    \includegraphics[height=1.4cm, left, trim=0cm 1.5cm 0cm -1.5cm]{company_en}
-                }
-            % Nur Firmenlogo --> \langkopfz links
+                \iflang{de}{\companyDeL}
+                \iflang{en}{\companyEnL}
+            % Nur Firmenlogo --> \kopfz links
             \else
-                \vspace{0.5cm}\small \langkopfz \vspace{0.08cm}
+                \vspace{0.5cm}\small \kopfz \vspace{0.08cm}
             \fi
-        % Nur DHBW-Logo bzw. kein Logo --> \langkopfz links
+        % Nur DHBW-Logo bzw. kein Logo --> \kopfz links
         \else
-            \vspace{0.5cm}\small \langkopfz \vspace{0.08cm}
+            \vspace{0.5cm}\small \kopfz \vspace{0.08cm}
         \fi
     }
     \fancyhead[R]{
         \ifshowfirmenlogo
             % Firmenlogo und DHBW-Logo --> DHBW-Logo rechts
             \ifshowdhbwlogo
-                \iflang{de}{
-                    \includegraphics[height=1.8cm, right, trim=0cm 2cm 0cm -2cm]{dhbw_de.png}
-                }
-                \iflang{en}{
-                    \includegraphics[height=1.8cm, right, trim=0cm 0.5cm 0cm -0.5cm]{dhbw_en.png}
-                }
+                \iflang{de}{\dhbwDe}
+                \iflang{en}{\dhbwEn}
             % Nur Firmenlogo --> Firmenlogo rechts
             \else
-                \iflang{de}{
-                    \includegraphics[height=1.4cm, right, trim=0cm 1.5cm 0cm -1.5cm]{company_de}
-                }
-                \iflang{en}{
-                    \includegraphics[height=1.4cm, right, trim=0cm 1.5cm 0cm -1.5cm]{company_en}
-                }
+                \iflang{de}{\companyDeR}
+                \iflang{en}{\companyEnR}
             \fi
         \else
             % Nur DHBW-Logo --> DHBW-Logo rechts
             \ifshowdhbwlogo
-                \iflang{de}{
-                    \includegraphics[height=1.8cm, right, trim=0cm 2cm 0cm -2cm]{dhbw_de.png}
-                }
-                \iflang{en}{
-                    \includegraphics[height=1.8cm, right, trim=0cm 0.5cm 0cm -0.5cm]{dhbw_en.png}
-                }
+                \iflang{de}{\dhbwDe}
+                \iflang{en}{\dhbwEn}
             \fi
         \fi
     }
@@ -417,7 +400,13 @@
 }
 
 
+% Nicht zitierte Quellen werden extra aufgeführt
+\DeclareBibliographyCategory{cited}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+\nocite{*}
+
 \ladeliteratur{}
+
 
 % Glossar
 \usepackage[nonumberlist,toc]{glossaries}

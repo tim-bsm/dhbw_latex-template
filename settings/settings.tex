@@ -45,6 +45,7 @@
 \setzeabteilung{Abteilung}
 \setzestandort{Stuttgart}
 \setzefusszmitte{\arbeit}
+\setzekopfz{MAHLE International GmbH\\IT-Automotive} % wird angezeigt, falls eins oder beide Logos nicht gesetzt sind
 
 \sperrvermerktrue           % auskommentieren oder ändern zu \sperrvermerkfalse, wenn kein Sperrvermerk benötigt wird
 \selbsterkltrue             % auskommentieren oder ändern zu \selbsterklfalse, wenn keine Selbstständigkeitserklärung benötigt wird
@@ -57,11 +58,10 @@
 \formelgroeverztrue			% auskommentieren oder ändern zu \formelgroeverzfalse, wenn kein Formelgrößenverzeichnis benötigt wird
 \formelverztrue             % auskommentieren oder ändern zu \formelverzfalse, wenn kein Formelverzeichnis benötigt wird
 \listverztrue               % auskommentieren oder ändern zu \listverzfalse, wenn kein Listingsverzeichnis benötigt wird
-\appendixtrue               % auskommentieren oder ändern zu \appendixfalse, wenn kein die folgenden drei Einstellungen nicht gewünscht sind
+\appendixtrue               % auskommentieren oder ändern zu \appendixfalse, wenn die folgenden drei Einstellungen nicht gewünscht sind
 \literaturtrue              % auskommentieren oder ändern zu \literaturfalse, wenn kein Literaturverzeichnis gewünscht ist (\appendixtrue muss gesetzt sein!)
 \glossartrue                % auskommentieren oder ändern zu \glossarfalse, wenn kein Glossar gewünscht ist (\appendixtrue muss gesetzt sein!)
 \anhangtrue                 % auskommentieren oder ändern zu \anhangfalse, wenn kein Anhang gewünscht ist
-%\formblatttrue              % auskommentieren oder ändern zu \formblattfalse, wenn kein Formblatt gewünscht ist
 
 %\refWithPagestrue           % ändern zu \refWithPagestrue, wenn die Seitenzahl bei Verweisen auf Kapitel engefügt werden sollen
 
@@ -86,6 +86,8 @@
 \newcommand{\ladeliteratur}{
     \addbibresource{../settings/bibliographie.bib}
 }
+
+% \splitbibliographytrue       % auskommentieren oder ändern zu \splitbibliographyfalse, wenn Literaturverzeichnis nicht geteilt werden soll
 
 %% Zitierstil
 %% mögliche Werte z.B für dhbw: chicago-authordate, mla, apa ; sonstige: ieee, numeric-comp, alphabetic, authoryear
@@ -114,7 +116,7 @@
 % content/additionals/cover-sheet.tex und settings/config/config.tex
 % unter "Kopf-/Fußzeilenwechsel" (ca. Z. 200) angepasst werden.
 % Ist die Option nicht gesetzt, wird das Logo durch den Text in der Variable
-% \setzelangkopfz in settings/lang/de.tex bzw. settings/lang/en.tex ersetzt.
+% \setzekopfz in ersetzt.
 \showfirmenlogotrue                 % auskommentieren oder ändern zu \showfirmenlogofalse, falls kein Logo eingefügt werden soll
 
 % Logo der DHBW im gesamten Dokument anzeigen
