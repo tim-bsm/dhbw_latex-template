@@ -73,10 +73,15 @@
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    % Abstract
-    \ifabstract
+    % 
+    \ifabstractde
         \input{../content/additionals/nonEditable/abstractConfig.tex}
         \newpage
+    \else
+        \ifabstracten
+            \input{../content/additionals/nonEditable/abstractConfig.tex}
+            \newpage
+        \fi
     \fi
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%

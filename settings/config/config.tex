@@ -62,10 +62,6 @@
 \newif\ifrefWithPages
 \refWithPagesfalse
 
-% Flag für Einfügen der Abstracts in deutsch und englisch, default: false
-\newif\ifbothabstracts
-\bothabstractsfalse
-
 % Flag für Einfügen des Abkürzungsverzeichnis
 \newif\ifabkverz
 \abkverzfalse
@@ -94,9 +90,13 @@
 \newif\ifsperrvermerk
 \sperrvermerkfalse
 
-% Flag für Einfügen des Abstracts
-\newif\ifabstract
-\abstractfalse
+% Flag für Einfügen des deutschen Abstracts
+\newif\ifabstractde
+\abstractdefalse
+
+% Flag für Einfügen des englischen Abstracts
+\newif\ifabstracten
+\abstractenfalse
 
 % Flag für Anhang
 \newif\ifappendix
@@ -384,8 +384,9 @@
         %bibwarn=true,
         %bibencoding=utf8,	    % wenn .bib in utf8, sonst ascii
         sortlocale=de_DE,
-        sorting=none,
+        sorting=none,           % sortierung nach Reihenfolge der Zitate
         style=\zitierstil,
+        defernumbers=true,
     ]{biblatex}
 }
 \iflang{en}{%
@@ -394,8 +395,9 @@
         %bibwarn=true,
         %bibencoding=utf8,	    % wenn .bib in utf8, sonst ascii
         sortlocale=en_US,
-        sorting=none,
+        sorting=none,           % sortierung nach Reihenfolge der Zitate
         style=\zitierstil,
+        defernumbers=true,
     ]{biblatex}
 }
 
@@ -403,8 +405,6 @@
 % Nicht zitierte Quellen werden extra aufgeführt
 \DeclareBibliographyCategory{cited}
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
-\nocite{*}
-
 \ladeliteratur{}
 
 
@@ -435,7 +435,7 @@
 \renewcommand\lstlistingname{\langlistingname}
 \renewcommand\lstlistlistingname{\langlistlistingname}
 \def\lstlistingautorefname{\langlistingautorefname}
-\input{../content/additionals/nonEditable/listingsConfig.tex} % externe Listings einbinden
+\input{../content/additionals/nonEditable/codeConfig.tex} % externe Listings einbinden
 
 % Abstände in Tabellen
 \setlength{\tabcolsep}{\spaltenabstand}

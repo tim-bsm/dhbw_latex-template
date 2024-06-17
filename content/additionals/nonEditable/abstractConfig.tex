@@ -14,27 +14,45 @@
 
 
 \iflang{de}{
-    \deAbstract
-    % Abstract zum Inhaltsverzeichnis hinzufügen
-    \addcontentsline{toc}{chapter}{\langabstract}
+    \ifabstractde
+        \deAbstract
 
-    \ifbothabstracts
-        \clearpage
+        % Abstract zum Inhaltsverzeichnis hinzufügen
+        \addcontentsline{toc}{chapter}{\langabstract}
+        
+        \ifabstracten
+            \clearpage
+            \begin{otherlanguage}{english}
+                \enAbstract
+            \end{otherlanguage}
+        \fi
+    \else
         \begin{otherlanguage}{english}
             \enAbstract
         \end{otherlanguage}
+        
+        % Abstract zum Inhaltsverzeichnis hinzufügen
+        \addcontentsline{toc}{chapter}{\langabstract}
     \fi
 }
 
 \iflang{en}{
-    \enAbstract
-    % Abstract zum Inhaltsverzeichnis hinzufügen
-    \addcontentsline{toc}{chapter}{\langabstract}
-
-    \ifbothabstracts
-        \clearpage
+    \ifabstractde
         \begin{otherlanguage}{ngerman}
             \deAbstract
         \end{otherlanguage}
+
+        % Abstract zum Inhaltsverzeichnis hinzufügen
+        \addcontentsline{toc}{chapter}{\langabstract}
+        
+        \ifabstractde
+            \clearpage
+            \enAbstract
+        \fi
+    \else
+        \enAbstract
+
+        % Abstract zum Inhaltsverzeichnis hinzufügen
+        \addcontentsline{toc}{chapter}{\langabstract}
     \fi
 }
