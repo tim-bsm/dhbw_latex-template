@@ -144,8 +144,13 @@ Formeln, Bilder und Tabellen müssen nicht in die externen Dateien unter ```/con
 
 &nbsp;
 ## Mögliche Fehler
-- Wenn das Flag "formelgroeverz" in der settings.tex auf True gesetzt ist, muss zwangsweise irgendwo mindestens ein Eintrag aus diesem Verzeichnis in den Chaptern verwendet werden, da sonst ein Fehler auftritt und das PDF nicht (richtig) erstellt werden kann.  
+
+### Flag "formelgroeverz" oder "abkverz" gesetzt
+Wenn das Flag "formelgroeverz" in der settings.tex auf True gesetzt ist, muss zwangsweise irgendwo mindestens ein Eintrag aus diesem Verzeichnis in den Chaptern verwendet werden, da sonst ein Fehler auftritt und das PDF nicht (richtig) erstellt werden kann.  
 Selbiges gilt für das Abkürzungsverzeichnis mit dem Flag "abkverz".
+
+### "empty bibliography"
+Wenn als Fehler "empty bibliography" ausgegeben wird, ist es einen Versuch wert, in der settings.tex die Einstellung für das "zitierbackend" auf die jeweilige andere Variante - die im Kommentar darüber genannt wird - zu stellen.
 
 &nbsp;
 ## Hilfreiche Links
