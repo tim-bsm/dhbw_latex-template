@@ -2,15 +2,15 @@
 
 \makeatletter
 
-% \savelisting{<ID>}{<language>}{<caption>}{<fileName>}
-\newcommand\savelisting[4]{%
+% \savecode{<ID>}{<language>}{<caption>}{<fileName>}
+\newcommand\savecode[4]{%
     \@namedef{lst@#1}{
         \lstinputlisting[language={#2}, caption={#3}, label={lst:#1}]{../content/nonTexFiles/code/#4}
     }
 }
 
-% \uselisting{<ID>}
-\newcommand\uselisting[1]{%
+% \usecode{<ID>}
+\newcommand\usecode[1]{%
     \@nameuse{lst@#1}
 }
 
