@@ -23,7 +23,7 @@ clean_dir()
         should_be_removed=true
 
         # Loop through all file endings
-        for e in ${FILES_TO_BE_SAFED[@]}; do
+        for e in ${FILES_TO_BE_SAVED[@]}; do
             # Check if the file has an ending from the list and if so, set flag to false
             if [[ $F == *$e ]]; then
                 should_be_removed=false

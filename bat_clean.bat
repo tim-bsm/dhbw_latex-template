@@ -1,7 +1,7 @@
 @echo off & setlocal enabledelayedexpansion
 
 set DIRS_TO_BE_CLEANED=settings\watermark document settings\config
-set FILES_TO_BE_SAFED=.pdf .tex latexmkrc
+set FILES_TO_BE_SAVED=.pdf .tex latexmkrc
 
 
 :::::::::::::::::::::: DO NOT CHANGE SOMETHING BELOW THIS LINE ::::::::::::::::::::::
@@ -22,7 +22,7 @@ goto :main
 
     echo Cleaning '%current_dir%'
     :: Loop through all files and delete the ones which don't use a file ending of the ones specified in %FILES_TO_BE_SAFED%
-    for /f "delims=" %%F in ('dir /b /a-d ^| findstr /vile "%FILES_TO_BE_SAFED%"') do (
+    for /f "delims=" %%F in ('dir /b /a-d ^| findstr /vile "%FILES_TO_BE_SAVED%"') do (
         del "%%F"
         echo Removed file '%%F'
     )
