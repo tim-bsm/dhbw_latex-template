@@ -1,17 +1,11 @@
 %!TEX root = ../../../document/document.tex
 
+% Aufruf mit \gls{name} oder \glspl{name} für Plural
 %
-% vorher in Konsole folgendes aufrufen:
-%	makeglossaries makeglossaries dokumentation.acn && makeglossaries dokumentation.glo
-%
-% oder makeglossaries dokumentation
-%
-% Um das auszuführen, braucht man ActivePerl oder ein ähnliches Programm
+% Glossar wird nur angezeigt, wenn Glossareintrag im Text referenziert wird
 
-%
-% Glossareintraege --> referenz, name, beschreibung
-% Aufruf mit \gls{...}
-%
-% Glossar wird nur angezeigt, wenn Glossareintrag in Text referenziert wird
-
-\newglossaryentry{Glossareintrag}{name={Glossareintrag},plural={Glossareinträge},description={Ein Glossar beschreibt verschiedenste Dinge in kurzen Worten}}
+\newglossaryentry{Glossareintrag}{
+    name={Glossareintrag},
+    plural={Glossareinträge},
+    description={Ein Glossar beschreibt verschiedenste Dinge in kurzen Worten}
+}

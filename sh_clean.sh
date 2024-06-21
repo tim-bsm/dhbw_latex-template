@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIRS_TO_BE_CLEANED=(/settings/watermark /document /settings/config)
-FILE_ENDINGS_TO_BE_SAVED=(.tex .pdf)
+FILES_TO_BE_SAVED=(.tex .pdf latexmkrc)
 
 
 ################### DO NOT CHANGE SOMETHING BELOW THIS LINE ###################
@@ -23,7 +23,7 @@ clean_dir()
         should_be_removed=true
 
         # Loop through all file endings
-        for e in ${FILE_ENDINGS_TO_BE_SAVED[@]}; do
+        for e in ${FILES_TO_BE_SAFED[@]}; do
             # Check if the file has an ending from the list and if so, set flag to false
             if [[ $F == *$e ]]; then
                 should_be_removed=false
