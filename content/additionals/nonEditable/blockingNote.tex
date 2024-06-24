@@ -27,19 +27,33 @@
 }
 
 
-% Unterschrift einfügen
+% Create place for the signature with a scope for the \newcommand
 \ifshowsignature
     \vspace{0.5cm}
-
     \signature
 \else
     \vspace{2.7cm}
 \fi
 
 \vspace{-0.8cm}
+{
+  \newcommand{\signcont}{\autor \hspace{1cm} \abgabeort, \today}
+  \let\signlen\relax % enable reusability of \signlen if already defined
+  \newlength{\signlen}
+  \setlength{\signlen}{\widthof{\signcont}}
 
-\rule{8cm}{0.4pt}\\
-\autor \hspace{1cm} \abgabeort, \datumAbgabe
+  % Depending on the size of the content below the line, change its width (if greater than 200pt)
+  \ifdimcomp{\signlen}{<}{200pt}
+    {%true
+      \rule{200pt}{0.4pt}
+    }
+    {%false
+      \rule{\signlen}{0.4pt}
+    }
+  \\
+  \signcont
+}
+
 
 % Sperrvermerk zum Inhaltsverzeichnis hinzufügen
 \addcontentsline{toc}{chapter}{\langsperrvermerk}
