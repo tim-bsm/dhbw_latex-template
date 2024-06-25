@@ -19,7 +19,8 @@
 		captionpos=b,			% sets the caption-position to bottom
 		%backgroundcolor=\color{ListingBackground}, % Hintergrundfarbe des Quellcodes setzen.
 		xleftmargin=0pt,		% Rand links
-		xrightmargin=0.2em,		% Rand rechts
+		xrightmargin=0.8em,		% Rand rechts
+		framexrightmargin=0.5em,
 		frame=single,			% Rahmen an
 		frameround=ffff,
 		rulecolor=\color{darkgray},	% Rahmenfarbe
@@ -56,7 +57,7 @@
 				caption={#3},
 				label={code:#1},
 				% position line numbers depending on the amount of lines in the file
-				xleftmargin=\fpeval{2+\amndig*0.5}em,
+				xleftmargin=\fpeval{1.8+\amndig*0.5}em,
 				framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
 			]{../content/nonTexFiles/code/#4}
 		}
