@@ -1,32 +1,140 @@
-\einstellung{martrikelnr}
-\einstellung{titel}
-\einstellung{kurs}
-\einstellung{datumAnfang}
-\einstellung{datumAbgabe}
-\einstellung{firma}
-\einstellung{firmenort}
-\einstellung{abgabeort}
-\einstellung{abschluss}
-\einstellung{studiengang}
-\einstellung{dhbw}
-\einstellung{hochschule}
-\einstellung{betreuer}
-\einstellung{gutachter}
-\einstellung{zeitraum}
-\einstellung{arbeit}
-\einstellung{autor}
-\einstellung{sprache}
-\einstellung{schriftart}
-\einstellung{kapitelabstand}
-\einstellung{spaltenabstand}
-\einstellung{zeilenabstand}
-\einstellung{zitierstil}
-\einstellung{zitierbackend}
-\einstellung{selbsterkl}
-\einstellung{semester}
-\einstellung{studienrichtung}
-\einstellung{jahrgang}
-\einstellung{abteilung}
-\einstellung{standort}
-\einstellung{fusszmitte}
-\einstellung{kopfz}
+\newcommand{\createsettings}{
+    \einstellung{martrikelnr}
+    \einstellung{titel}
+    \einstellung{kurs}
+    \einstellung{datumAnfang}
+    \einstellung{datumAbgabe}
+    \einstellung{firma}
+    \einstellung{firmenort}
+    \einstellung{abgabeort}
+    \einstellung{abschluss}
+    \einstellung{studiengang}
+    \einstellung{dhbw}
+    \einstellung{hochschule}
+    \einstellung{betreuer}
+    \einstellung{gutachter}
+    \einstellung{zeitraum}
+    \einstellung{arbeit}
+    \einstellung{autor}
+    \einstellung{sprache}
+    \einstellung{schriftart}
+    \einstellung{kapitelabstand}
+    \einstellung{spaltenabstand}
+    \einstellung{zeilenabstand}
+    \einstellung{zitierstil}
+    \einstellung{zitierbackend}
+    \einstellung{selbsterkl}
+    \einstellung{semester}
+    \einstellung{studienrichtung}
+    \einstellung{jahrgang}
+    \einstellung{abteilung}
+    \einstellung{standort}
+    \einstellung{fusszmitte}
+    \einstellung{kopfz}
+}
+
+% Create flags for some settings accross the document; default set on 'false'
+\newcommand{\createifs}{
+    % Flag für die Selbstständigkeitserklärung
+    \newif\ifselbsterkl
+    \selbsterklfalse
+
+    % Flag für das Wasserzeichen auf dem Deckblatt
+    \newif\ifwatermark
+    \watermarkfalse
+
+    % Flaf für das Anzeigen der Vertraulichkeitsstufe
+    \newif\ifgreendot
+    \greendotfalse
+
+    % Flag für roten Vertraulichkeitspunkt
+    \newif\ifreddot
+    \reddotfalse
+
+    % Flag für gelben Vertraulichkeitspunkt
+    \newif\ifyellowdot
+    \yellowdotfalse
+
+    % Flag für Einfügen der Seitenzahl bei Verweis auf Kapitel/Abschnitt
+    \newif\ifrefWithPages
+    \refWithPagesfalse
+
+    % Flag für Einfügen des Abkürzungsverzeichnis
+    \newif\ifabkverz
+    \abkverzfalse
+
+    % Flag für Einfügen des Abbildungsverzeichnisses
+    \newif\ifabbverz
+    \abbverzfalse
+
+    % Flag für Einfügen des Formelverzeichnisses
+    \newif\ifformelverz
+    \formelverzfalse
+
+    % Flag für Einfügen des Formelgroessenverzeichnisses
+    \newif\ifformelgroeverz
+    \formelgroeverzfalse 
+
+    % Flag für Einfügen des Listingsverzeichnisses
+    \newif\iflistverz
+    \listverzfalse
+
+    % Flag für Einfügen des Tabellenverzeichnisses
+    \newif\iftableverz
+    \tableverzfalse
+
+    % Flag für Einfügen des Sperrvermerks
+    \newif\ifsperrvermerk
+    \sperrvermerkfalse
+
+    % Flag für Einfügen des deutschen Abstracts
+    \newif\ifabstractde
+    \abstractdefalse
+
+    % Flag für Einfügen des englischen Abstracts
+    \newif\ifabstracten
+    \abstractenfalse
+
+    % Flag für Anhang
+    \newif\ifappendix
+    \appendixfalse
+
+    % Flag für Literaturverzeichnis
+    \newif\ifliteratur
+    \literaturfalse
+
+    % Flag für Glossar
+    \newif\ifglossar
+    \glossarfalse
+
+    % Flag für Anhang
+    \newif\ifanhang
+    \anhangfalse
+
+    % Flag für Inhaltsverzeichnis
+    \newif\ifinhalt
+    \inhaltfalse
+
+    % Flag für Reviewer
+    \newif\ifreviewer
+    \reviewerfalse
+
+    % Flag für Anzeigen des Firmenlogos
+    \newif\ifshowfirmenlogo
+    \showfirmenlogofalse
+
+    % Flag für Anzeigen des DHBW-Logos
+    \newif\ifshowdhbwlogo
+    \showdhbwlogofalse
+
+    % Flag für Anzeigen der Unterschrift
+    \newif\ifshowsignature
+    \showsignaturefalse
+
+    % Flag zum Trennen des Literaturverzeichnisses
+    \newif\ifsplitbibliography
+    \splitbibliographyfalse
+}
+
+\createsettings
+\createifs %# TODO move config of additionals in config 

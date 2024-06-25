@@ -14,17 +14,16 @@
 
 \enquote{Dies ist ein Beispiel für die Zitierfunktion} \cite[Vgl.][S. 1 ff.]{2024}. Zitate werden in der Reihenfolge ihres Auftretens im Text nummeriert. Nicht verwendete Zitate werden im Literaturverzeichnis unter \enquote{Weitere Quellen} aufgeführt. 
 
+Man kann ebenfalls einen \gls{Glossareintrag} oder mehrere \glspl{Glossareintrag} verwenden.
 
-\vspace{0.5cm}
 Hier ein Beispiel für eine Formel (\ref{eq:OhmschesGesetz}):
 \useequation{OhmschesGesetz}          % Ausgelagerte Formel einfügen
 
-\vspace{0.5cm}
-Hier zwei Beispiele für Code (\ref{lst:Beispiel_Code-1} und \ref{lst:Beispiel_Code-2}):
+Hier zwei Beispiele für Code (\ref{code:Beispiel_Code-1} und \ref{code:Beispiel_Code-2}):
 
 % Code im .tex file --> nicht empfohlen, u.a., da Tabs mitverwendet werden und
 % das .tex file dadurch unübersichtlich wird (s. listing 1.1 im PDF-File)
-\begin{lstlisting}[language=C++, caption={Beispiel: direktes einfügen von Code}, label={lst:Beispiel_Code-1}]
+\begin{lstlisting}[language=C++, caption={Beispiel: direktes einfügen von Code}, label={code:Beispiel_Code-1}]
     #include <iostream>
 
     int main() {

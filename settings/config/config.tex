@@ -38,105 +38,7 @@
 }
 \newcommand{\langstr}[1]{\einstellung{lang#1}}
 
-% Flag für die Selbstständigkeitserklärung, Default: true
-\newif\ifselbsterkl
-\selbsterklfalse
 
-% Flag für das Wasserzeichen auf dem Deckblatt, default: false
-\newif\ifwatermark
-\watermarkfalse
-
-% Flaf für das Anzeigen der Vertraulichkeitsstufe, default: false
-\newif\ifgreendot
-\greendotfalse
-
-% Flag für roten Vertraulichkeitspunkt, default: false
-\newif\ifreddot
-\reddotfalse
-
-% Flag für gelben Vertraulichkeitspunkt, default: false
-\newif\ifyellowdot
-\yellowdotfalse
-
-% Flag für Einfügen der Seitenzahl bei Verweis auf Kapitel/Abschnitt, default: false
-\newif\ifrefWithPages
-\refWithPagesfalse
-
-% Flag für Einfügen des Abkürzungsverzeichnis
-\newif\ifabkverz
-\abkverzfalse
-
-% Flag für Einfügen des Abbildungsverzeichnisses
-\newif\ifabbverz
-\abbverzfalse
-
-% Flag für Einfügen des Formelverzeichnisses
-\newif\ifformelverz
-\formelverzfalse
-
-% Flag für Einfügen des Formelgroessenverzeichnisses
-\newif\ifformelgroeverz
-\formelgroeverzfalse 
-
-% Flag für Einfügen des Listingsverzeichnisses
-\newif\iflistverz
-\listverzfalse
-
-% Flag für Einfügen des Tabellenverzeichnisses
-\newif\iftableverz
-\tableverzfalse
-
-% Flag für Einfügen des Sperrvermerks
-\newif\ifsperrvermerk
-\sperrvermerkfalse
-
-% Flag für Einfügen des deutschen Abstracts
-\newif\ifabstractde
-\abstractdefalse
-
-% Flag für Einfügen des englischen Abstracts
-\newif\ifabstracten
-\abstractenfalse
-
-% Flag für Anhang
-\newif\ifappendix
-\appendixfalse
-
-% Flag für Literaturverzeichnis
-\newif\ifliteratur
-\literaturfalse
-
-% Flag für Glossar
-\newif\ifglossar
-\glossarfalse
-
-% Flag für Anhang
-\newif\ifanhang
-\anhangfalse
-
-% Flag für Inhaltsverzeichnis
-\newif\ifinhalt
-\inhaltfalse
-
-% Flag für Reviewer
-\newif\ifreviewer
-\reviewerfalse
-
-% Flag für Anzeigen des Firmenlogos; default: false
-\newif\ifshowfirmenlogo
-\showfirmenlogofalse
-
-% Flag für Anzeigen des DHBW-Logos; default: false
-\newif\ifshowdhbwlogo
-\showdhbwlogofalse
-
-% Flag für Anzeigen der Unterschrift; default: false
-\newif\ifshowsignature
-\showsignaturefalse
-
-% Flag zum Trennen des Literaturverzeichnisses; default: false
-\newif\ifsplitbibliography
-\splitbibliographyfalse
 
 
 \input{../settings/settings_list.tex} % verfügbare Einstellungen
@@ -156,40 +58,6 @@
 	\definecolor{LinkColor}{HTML}{00007A}
 	\definecolor{ListingBackground}{HTML}{FCF7DE}
 }
-
-
-%% Programmiersprachen Highlighting (Listings)
-\newcommand{\listingsettings}{%
-	\lstset{
-		language=C++,			% Standardsprache des Quellcodes
-		numbers=left,			% Zeilennummern links
-		stepnumber=1,			% Jede Zeile nummerieren.
-		%numbersep=5pt,			% 5pt Abstand zum Quellcode
-		%numberstyle=\tiny,		% Zeichengrösse 'tiny' für die Nummern.
-		breaklines=true,		% Zeilen umbrechen wenn notwendig.
-		breakautoindent=true,	% Nach dem Zeilenumbruch Zeile einrücken.
-		postbreak=\space,		% Bei Leerzeichen umbrechen.
-		tabsize=1,				% Tabulatorgrösse 1
-		basicstyle=\ttfamily\footnotesize, % Nichtproportionale Schrift, klein für den Quellcode
-		showspaces=false,		% Leerzeichen nicht anzeigen.
-		showstringspaces=false,	% Leerzeichen auch in Strings ('') nicht anzeigen.
-		extendedchars=true,		% Alle Zeichen vom Latin1 Zeichensatz anzeigen.
-		captionpos=b,			% sets the caption-position to bottom
-		%backgroundcolor=\color{ListingBackground}, % Hintergrundfarbe des Quellcodes setzen.
-		xleftmargin=0pt,		% Rand links
-		xrightmargin=0pt,		% Rand rechts
-		frame=single,			% Rahmen an
-		frameround=ffff,
-		rulecolor=\color{darkgray},	% Rahmenfarbe
-		%fillcolor=\color{ListingBackground},
-		keywordstyle=\color[rgb]{0.133,0.133,0.6},
-		commentstyle=\color[rgb]{0.133,0.545,0.133},
-		stringstyle=\color[rgb]{0.627,0.126,0.941},
-        aboveskip=1.5em,
-	}
-}
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Kopf-/Fußzeilenwechsel %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -297,7 +165,7 @@
 \usepackage{longtable}
 \usepackage{enumitem}	% mehr Optionen bei Aufzählungen
 \usepackage{graphicx}
-\usepackage{xcolor} 	% für HTML-Notation
+\usepackage[table, dvipsnames]{xcolor}
 \usepackage{float}
 \usepackage{array}
 \usepackage{calc}		% zum Rechnen (Bildtabelle in Deckblatt)
@@ -311,7 +179,6 @@
 \usepackage{listings} % Code-Listings
 %\usepackage[numbered, framed]{matlab-prettifier}
 \usepackage[framed]{matlab-prettifier} % .sty-Datei muss vorhanden sein! Kann auskommentiert werden, falls keine Matlab-Listings in der Arbeit enthalten sind.
-\usepackage{color, colortbl}  %Für Highlighten der Tabellenzeilen
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
 \usepackage{amssymb}
 \usepackage{pdfpages} % PDF-Dateien einbinden
@@ -430,12 +297,12 @@
 
 % Einige häufig verwendete Sprachen
 \lstloadlanguages{PHP,Python,Java,C,C++,bash}
-\listingsettings{}
 % Umbennung des Listings
 \renewcommand\lstlistingname{\langlistingname}
 \renewcommand\lstlistlistingname{\langlistlistingname}
 \def\lstlistingautorefname{\langlistingautorefname}
 \input{../content/additionals/nonEditable/codeConfig.tex} % externe Listings einbinden
+\listingsettings{}
 
 % Abstände in Tabellen
 \setlength{\tabcolsep}{\spaltenabstand}
