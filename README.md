@@ -114,7 +114,7 @@ Bei mir waren sowohl die Python, als auch die JSON Datei nicht vorhanden. Diese 
 Das Template ```bibliographie.bib``` in ```./settings``` beinhaltet bereits weitere Einstellungen von JabRef, welche einfach so übernommen werden können. Hierfür muss JabRef nur gestartet werden und dann mithilfe des Explorers die Datei ausgewählt werden. Bitte keine neue Library anlegen.
 
 &nbsp;
-## Was sind die clean Skripte?
+## Was sind die clean-Skripte?
 Die clean Skripte werden dafür verwendet, um (unnötige) Files aus Unterordnern zu löschen. Die Files sind unnötig, wenn man die Vorlage weitergeben will bzw. wenn man fertig mit schreiben ist. Sie werden automatisch beim Builden erstellt und beschleunigen dieses für den nächsten Build. Wenn man diese also löscht, wird der nächste Build deutlich länger dauern.  
 Allerdings ist es manchmal hilfreich diese Dateien zu löschen, da beim Builden irgendetwas schiefgeht. Hierfür müssen einfach die Skripte (abhängig vom jeweiligen Betriebssystem) ausgeführt werden.
 
@@ -144,6 +144,12 @@ Formeln, Bilder und Tabellen müssen nicht in die externen Dateien unter ```/con
 
 &nbsp;
 ## Mögliche Fehler
+
+### Watermark wird kompiliert
+Sollte das Problem bestehen, dass die Datei watermark.tex kompiliert wird - nicht document.tex -, dann sollten die folgenden Schritte durchgeführt werden:
+1. Das clean-Skript ausführen. Alternativ können auch alle Dateien im watermark Ordner - abgesehen von .tex und .pdf - manuell gelöscht werden.
+2. Die config-Datei öffnen
+3. In der config-Datei neu kompilieren (rechts oben auf den grünen Pfeil drücken)
 
 ### Flag "formelgroeverz" oder "abkverz" gesetzt
 Wenn das Flag "formelgroeverz" in der settings.tex auf True gesetzt ist, muss zwangsweise irgendwo mindestens ein Eintrag aus diesem Verzeichnis in den Chaptern verwendet werden, da sonst ein Fehler auftritt und das PDF nicht (richtig) erstellt werden kann.  
