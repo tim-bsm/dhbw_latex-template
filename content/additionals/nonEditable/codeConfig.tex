@@ -37,19 +37,20 @@
 \makeatletter
 
 % \savecode[OPTIONAL: e.g. <morekeywords=type>]{<ID>}{<language>}{<caption>}{<fileName>}
+\newread\lstread % create read for counting the lines in a file
 \newcommand\savecode[5][]{%
     \@namedef{code@#2}{
 		{
 			% Count the lines in the file to adjust the spacing of the code-block based on the result
-			\newread\myread
 			\newcount\linecnt
-			\openin\myread=../content/nonTexFiles/code/#5
-			\@whilesw\unless\ifeof\myread\fi{%
+			\openin\lstread=../content/nonTexFiles/code/#5
+			\@whilesw\unless\ifeof\lstread\fi{%
 				\advance\linecnt by \@ne
-				\readline\myread t\expandafter o\csname line-\number\linecnt\endcsname
+				\readline\lstread t\expandafter o\csname line-\number\linecnt\endcsname
 			}
 			\advance\linecnt by -1 % correct by one
 			\newcommand{\amndig}{\fpeval{ ceil( ln(\linecnt+1)/ln(10) ) }} % get amount of digits in number of lines
+			\closein\lstread
 
 			% Check if optional values were given. If so, use these
 			\ifthenelse{\isempty{#1}}
