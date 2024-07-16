@@ -30,21 +30,20 @@
 		stringstyle=\color[rgb]{0.627,0.126,0.941},
         aboveskip=1.5em,
 	}
-	
 	\ownlstlanguages
 }
 
 
 \makeatletter
 
-% \savecode{<ID>}{<language>}{<caption>}{<fileName>}
-\newcommand\savecode[4]{%
-    \@namedef{code@#1}{
+% \savecode[OPTIONAL: e.g. <morekeywords=type>]{<ID>}{<language>}{<caption>}{<fileName>}
+\newcommand\savecode[5][]{%
+    \@namedef{code@#2}{
 		{
 			% Count the lines in the file to adjust the spacing of the code-block based on the result
 			\newread\myread
 			\newcount\linecnt
-			\openin\myread=../content/nonTexFiles/code/#4
+			\openin\myread=../content/nonTexFiles/code/#5
 			\@whilesw\unless\ifeof\myread\fi{%
 				\advance\linecnt by \@ne
 				\readline\myread t\expandafter o\csname line-\number\linecnt\endcsname
@@ -52,14 +51,30 @@
 			\advance\linecnt by -1 % correct by one
 			\newcommand{\amndig}{\fpeval{ ceil( ln(\linecnt+1)/ln(10) ) }} % get amount of digits in number of lines
 
-			\lstinputlisting[
-				language={#2},
-				caption={#3},
-				label={code:#1},
-				% position line numbers depending on the amount of lines in the file
-				xleftmargin=\fpeval{1.8+\amndig*0.5}em,
-				framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
-			]{../content/nonTexFiles/code/#4}
+			% Check if optional values were given. If so, use these
+			\ifthenelse{\isempty{#1}}
+				{%true
+					\lstinputlisting[
+						language={#3},
+						caption={#4},
+						label={code:#2},
+						% position line numbers depending on the amount of lines in the file
+						xleftmargin=\fpeval{1.8+\amndig*0.5}em,
+						framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
+					]{../content/nonTexFiles/code/#5}
+				}
+				{%false
+					\lstinputlisting[
+						language={#3},
+						caption={#4},
+						label={code:#2},
+						% position line numbers depending on the amount of lines in the file
+						xleftmargin=\fpeval{1.8+\amndig*0.5}em,
+						framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
+						#1
+					]{../content/nonTexFiles/code/#5}
+				}
+			
 		}
     }
 }
@@ -75,18 +90,30 @@
 \input{../content/additionals/editable/code.tex}
 
 
-% Eigene Sprachen
+% Define own languages for listings
 \newcommand{\ownlstlanguages}{
 	\lstdefinelanguage{ini}{
 		basicstyle=\ttfamily\small,
 		columns=fullflexible,
+		commentstyle=\color{gray}\ttfamily,
 		morecomment=[s][\color{Orchid}\bfseries]{[}{]},
 		morecomment=[l]{\#},
 		morecomment=[l]{;},
-		commentstyle=\color{gray}\ttfamily,
 		morekeywords={},
 		otherkeywords={=},
-		otherkeywords={:},
+		% otherkeywords={:},
 		keywordstyle={\color{red}\bfseries}
+	}
+
+	\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+	\lstdefinelanguage{XML}{
+		columns=fullflexible,
+		commentstyle=\color{gray}\upshape,
+		morestring=[b]",
+		morestring=[s]{>}{<},
+		morecomment=[s]{<?}{?>},
+		stringstyle=\color{black},
+		identifierstyle=\color{darkblue},
+		keywordstyle=\color{cyan},
 	}
 }
