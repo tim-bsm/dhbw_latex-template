@@ -110,11 +110,14 @@
 	\lstdefinelanguage{XML}{
 		columns=fullflexible,
 		commentstyle=\color{gray}\upshape,
-		morestring=[b]",
-		morestring=[s]{>}{<},
-		morecomment=[s]{<?}{?>},
 		stringstyle=\color{black},
-		identifierstyle=\color{darkblue},
-		keywordstyle=\color{cyan},
+		morestring=[b]",
+		moredelim=[s][\bfseries\color{darkblue}]{<}{\ },
+		moredelim=[s][\bfseries\color{darkblue}]{</}{>},
+		moredelim=[l][\bfseries\color{darkblue}]{/>},
+		moredelim=[l][\bfseries\color{darkblue}]{>},
+		morecomment=[s]{<?}{?>},
+		morecomment=[s]{<!--}{-->},
+		identifierstyle=\color{cyan}
 	}
 }
