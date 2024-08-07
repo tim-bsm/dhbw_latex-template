@@ -133,7 +133,7 @@
         \fancyfoot[r]{\langseite\ \thepage\ \langseitevon\ \pageref*{LastPage}}
     }
     \pagestyle{plain}
-    \pagenumbering{Alph}
+    \pagenumbering{AlphAlph}
 }
 
 
@@ -189,6 +189,8 @@
 \usepackage{makecell} % für Tabellen
 \usepackage{gradientframe} % für Rahmen um Bilder
 \usepackage{xifthen} % für \isempty test
+\usepackage{alphalph,etoolbox} % more than 26 (A-Z) appendices in appendix
+\usepackage[toc,title,titletoc]{appendix} % Appendices added
 
 
 % eine Kommentarumgebung "k" (Handhabe mit \begin{k}<Kommentartext>\end{k},
@@ -197,6 +199,12 @@
 \usepackage{comment}
 \specialcomment{k}{\begingroup\color{red}}{\endgroup}
 %\excludecomment{k}
+
+% Adds AlphAlph as option to \pagenumbering
+\makeatletter
+\newcommand{\@AlphAlph}{}% Check that \@AlphAlph is undefined.
+\let\@AlphAlph=\AlphAlph
+\makeatother
 
 
 %%%%%% Configuration %%%%%

@@ -4,6 +4,13 @@
 \appendix
 \setpagestylefoot
 
+% Add an 'A' before the figure, table, listing and equation numbers in the appendix
+\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand{\thelstlisting}{A\arabic{lstlisting}}
+\renewcommand{\thetable}{A\arabic{table}}
+\renewcommand{\theequation}{A\arabic{equation}}
+
+
 
 \ifliteratur
     % Quellenverzeichnis nach Literatur und Weblinks trennen
