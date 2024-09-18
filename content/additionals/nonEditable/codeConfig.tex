@@ -94,7 +94,6 @@
 % Define own languages for listings
 \newcommand{\ownlstlanguages}{
 	\definecolor{darkblue}{RGB}{42,0.0,255}
-	\colorlet{numb}{magenta!60!black}
 	
 
 	\lstdefinelanguage{ini}{
@@ -110,31 +109,26 @@
 	}	
 
 	\lstdefinelanguage{JSON}{
-		commentstyle=\color{darkblue}, % style of comment
-		stringstyle=\color{Orchid}, % style of strings
-		numbers=left,
-		numberstyle=\scriptsize,
-		stepnumber=1,
-		% numbersep=8pt,
-		showstringspaces=false,
-		breaklines=true,
-		% frame=lines,
+		commentstyle=\color{gray}\upshape,
+		stringstyle=\bfseries\color{Orchid},
 		string=[s]{"}{"},
-		comment=[l]{:\ "},
-		morecomment=[l]{:"},
+		comment=[l]{//},
+		morecomment=[s]{/*}{*/},
+		delim=[l][\bfseries\color{darkblue}]{:\ "},
+		moredelim=[l][\bfseries\color{darkblue}]{:"},
+		identifierstyle=\color{darkblue},
 		literate=
-			*{0}{{{\color{numb}0}}}{1}
-			{1}{{{\color{numb}1}}}{1}
-			{2}{{{\color{numb}2}}}{1}
-			{3}{{{\color{numb}3}}}{1}
-			{4}{{{\color{numb}4}}}{1}
-			{5}{{{\color{numb}5}}}{1}
-			{6}{{{\color{numb}6}}}{1}
-			{7}{{{\color{numb}7}}}{1}
-			{8}{{{\color{numb}8}}}{1}
-			{9}{{{\color{numb}9}}}{1}
+			*{0}{{{\bfseries\color{cyan}0}}}{1}
+			{1}{{{\bfseries\color{cyan}1}}}{1}
+			{2}{{{\bfseries\color{cyan}2}}}{1}
+			{3}{{{\bfseries\color{cyan}3}}}{1}
+			{4}{{{\bfseries\color{cyan}4}}}{1}
+			{5}{{{\bfseries\color{cyan}5}}}{1}
+			{6}{{{\bfseries\color{cyan}6}}}{1}
+			{7}{{{\bfseries\color{cyan}7}}}{1}
+			{8}{{{\bfseries\color{cyan}8}}}{1}
+			{9}{{{\bfseries\color{cyan}9}}}{1}
 	}
-
 	
 	\lstdefinelanguage{XML}{
 		columns=fullflexible,
