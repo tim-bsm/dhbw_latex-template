@@ -1,4 +1,4 @@
-%!TEX root = ../../document/document.tex
+%!TEX root = ../document/document.tex
 
 \RequirePackage[l2tabu, orthodox]{nag}	% weist in Commandozeile bzw. log auf veraltete LaTeX Syntax hin
 
@@ -41,11 +41,11 @@
 
 
 
-\input{../settings/settings_list.tex} % verfügbare Einstellungen
-\input{../settings/settings.tex} % lese Einstellungen
+\input{../config/settings_list.tex} % verfügbare Einstellungen
+\input{../content/settings.tex} % lese Einstellungen
 
-\input{../settings/lang/strings.tex} % verfügbare Strings
-\input{../settings/lang/\sprache.tex} % Übersetzung einlesen
+\input{../config/language/strings.tex} % verfügbare Strings
+\input{../config/language/langs/\sprache.tex} % Übersetzung einlesen
 
 
 %\lstset{language=Matlab}
@@ -300,8 +300,8 @@
 \setcounter{biburllcpenalty}{100}
 
 % Bildpfad
-\graphicspath{{../content/nonTexFiles/images/}}
-\input{../content/additionals/nonEditable/imagesConfig.tex} % externe Bilder einbinden
+\graphicspath{{../content/non_tex_files/images/}}
+\input{../config/additionals/images.tex} % externe Bilder einbinden
 
 % Einige häufig verwendete Sprachen
 \lstloadlanguages{PHP,Python,Java,C,C++,bash}
@@ -309,7 +309,7 @@
 \renewcommand\lstlistingname{\langlistingname}
 \renewcommand\lstlistlistingname{\langlistlistingname}
 \def\lstlistingautorefname{\langlistingautorefname}
-\input{../content/additionals/nonEditable/codeConfig.tex} % externe Listings einbinden
+\input{../config/additionals/code.tex} % externe Listings einbinden
 \listingsettings{}
 
 % Abstände in Tabellen
@@ -332,16 +332,6 @@
 %\usepackage{rotating}
 %% Paket um Seite im Querformat anzuzeigen
 %\usepackage{lscape}
-
-\newcommand\Watermark{%
-    \put(0,0){%
-        \parbox[b][\paperheight]{\paperwidth}{%
-            \vfill
-            \includepdf[scale=0.8,angle=50,pages={1},pagecommand={}]{../settings/watermark/watermark.pdf}
-            \vfill
-        }
-    }
-}
 
 \ifrefWithPages
     %RJG8FE: add a pageref to autoref whenever the referenced page is not the same as the current one

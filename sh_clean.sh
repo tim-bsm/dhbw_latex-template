@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIRS_TO_BE_CLEANED=(/settings/watermark /document /settings/config)
+DIRS_TO_BE_CLEANED=(/document)
 FILES_TO_BE_SAVED=(.tex .pdf latexmkrc)
 
 

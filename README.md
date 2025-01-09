@@ -145,12 +145,6 @@ Formeln, Bilder und Tabellen müssen nicht in die externen Dateien unter ```/con
 &nbsp;
 ## Mögliche Fehler
 
-### Watermark wird kompiliert
-Sollte das Problem bestehen, dass die Datei watermark.tex kompiliert wird - nicht document.tex -, dann sollten die folgenden Schritte durchgeführt werden:
-1. Das clean-Skript ausführen. Alternativ können auch alle Dateien im watermark Ordner - abgesehen von .tex und .pdf - manuell gelöscht werden.
-2. Die config-Datei öffnen
-3. In der config-Datei neu kompilieren (rechts oben auf den grünen Pfeil drücken)
-
 ### Flag "formelgroeverz" oder "abkverz" gesetzt
 Wenn das Flag "formelgroeverz" in der settings.tex auf True gesetzt ist, muss zwangsweise irgendwo mindestens ein Eintrag aus diesem Verzeichnis in den Chaptern verwendet werden, da sonst ein Fehler auftritt und das PDF nicht (richtig) erstellt werden kann.  
 Selbiges gilt für das Abkürzungsverzeichnis mit dem Flag "abkverz".

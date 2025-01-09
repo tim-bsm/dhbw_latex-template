@@ -1,0 +1,76 @@
+%!TEX root = ../../document/document.tex
+
+%%%%%%%%%% Default sizes %%%%%%%%%%
+\setlength{\headheight}{72pt}
+
+\newcommand{\defaultpagelayout}{
+    \fancyhead[L]{
+        \ifshowfirmenlogo
+            % Firmenlogo und DHBW-Logo --> Firmenlogo links
+            \ifshowdhbwlogo
+                \iflang{de}{\companyDeL}
+                \iflang{en}{\companyEnL}
+            % Nur Firmenlogo --> \kopfz links
+            \else
+                \vspace{0.5cm}\small \kopfz \vspace{0.08cm}
+            \fi
+        % Nur DHBW-Logo bzw. kein Logo --> \kopfz links
+        \else
+            \vspace{0.5cm}\small \kopfz \vspace{0.08cm}
+        \fi
+    }
+    \fancyhead[R]{
+        \ifshowfirmenlogo
+            % Firmenlogo und DHBW-Logo --> DHBW-Logo rechts
+            \ifshowdhbwlogo
+                \iflang{de}{\dhbwDe}
+                \iflang{en}{\dhbwEn}
+            % Nur Firmenlogo --> Firmenlogo rechts
+            \else
+                \iflang{de}{\companyDeR}
+                \iflang{en}{\companyEnR}
+            \fi
+        \else
+            % Nur DHBW-Logo --> DHBW-Logo rechts
+            \ifshowdhbwlogo
+                \iflang{de}{\dhbwDe}
+                \iflang{en}{\dhbwEn}
+            \fi
+        \fi
+    }
+
+    \renewcommand{\footrulewidth}{0.4pt} % Horizontal line -> default is 0pt
+    \fancyfoot[l]{\autor} % \tiny vor \autor einfügen, um Schriftgröße zu verringern
+    \fancyfoot[c]{\fusszmitte}
+}
+
+%% Only change pagenumbering
+\newcommand{\setpagestylehead}{
+    \fancypagestyle{plain}{
+        \defaultpagelayout{}
+
+        \fancyfoot[r]{\langseite\ \thepage\ \langseitevon\ \pageref*{endOfRomanNumbering}}
+    }
+    \pagestyle{plain}
+    \pagenumbering{roman}
+}
+
+\newcommand{\setpagestylecontent}{
+    \fancypagestyle{plain}{
+        \defaultpagelayout{}
+
+        \fancyfoot[r]{\langseite\ \thepage\ \langseitevon\ \pageref*{endOfArabicNumbering}}    
+    }
+    \pagestyle{plain}
+    \pagenumbering{arabic}
+}
+
+\newcommand{\setpagestylefoot}{
+    \fancypagestyle{plain}{%
+        \defaultpagelayout{}
+
+        \fancyfoot[r]{\langseite\ \thepage\ \langseitevon\ \pageref*{LastPage}}
+    }
+    \pagestyle{plain}
+    \pagenumbering{AlphAlph}
+}

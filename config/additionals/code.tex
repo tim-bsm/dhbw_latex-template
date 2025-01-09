@@ -1,4 +1,4 @@
-%!TEX root = ../../../document/document.tex
+%!TEX root = ../../document/document.tex
 
 %% Programmiersprachen Highlighting (Listings)
 \newcommand{\listingsettings}{%
@@ -43,7 +43,7 @@
 		{
 			% Count the lines in the file to adjust the spacing of the code-block based on the result
 			\newcount\linecnt
-			\openin\lstread=../content/nonTexFiles/code/#5
+			\openin\lstread=../content/non_tex_files/code/#5
 			\@whilesw\unless\ifeof\lstread\fi{%
 				\advance\linecnt by \@ne
 				\readline\lstread t\expandafter o\csname line-\number\linecnt\endcsname
@@ -62,7 +62,7 @@
 						% position line numbers depending on the amount of lines in the file
 						xleftmargin=\fpeval{1.8+\amndig*0.5}em,
 						framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
-					]{../content/nonTexFiles/code/#5}
+					]{../content/non_tex_files/code/#5}
 				}
 				{%false
 					\lstinputlisting[
@@ -73,7 +73,7 @@
 						xleftmargin=\fpeval{1.8+\amndig*0.5}em,
 						framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
 						#1
-					]{../content/nonTexFiles/code/#5}
+					]{../content/non_tex_files/code/#5}
 				}
 			
 		}
@@ -88,7 +88,7 @@
 \makeatother
 
 
-\input{../content/additionals/editable/code.tex}
+\input{../content/additionals/code.tex}
 
 
 % Define own languages for listings

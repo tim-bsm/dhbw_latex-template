@@ -1,6 +1,6 @@
 @echo off & setlocal enabledelayedexpansion
 
-set DIRS_TO_BE_CLEANED=settings\watermark document settings\config
+set DIRS_TO_BE_CLEANED=document
 set FILES_TO_BE_SAVED=.pdf .tex latexmkrc
 
 

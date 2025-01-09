@@ -1,4 +1,4 @@
-%!TEX root = ../../../document/document.tex
+%!TEX root = ../../document/document.tex
 
 \makeatletter
 
@@ -7,8 +7,8 @@
     \@namedef{eq:equation@#1}{
         \begin{equation}
             \formelentry{#3}        % Zu Formelverzeichnis hinzufügen
-            #2                      % Formel setzen
             \label{eq:#1}           % Label setzen
+            #2                      % Formel setzen
         \end{equation}
         \begin{center}
             \langformel\ \ref{eq:#1}: #3
@@ -24,4 +24,4 @@
 \makeatother
 
 
-\input{../content/additionals/editable/equations.tex}
+\input{../content/additionals/equations.tex}

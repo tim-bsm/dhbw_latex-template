@@ -1,4 +1,4 @@
-\input{../settings/config/config.tex}
+\input{../config/config.tex}
 
 \addtolength{\topmargin}{15pt}
 
@@ -31,24 +31,10 @@
     \setpagestylehead
     \RedeclareSectionCommand[beforeskip=\kapitelabstand]{chapter} % Abstand zwischen Kapitelüberschrift und dem oberen Rand
 
-
-    % Wasserzeichen
-    \ifwatermark
-        \AddToShipoutPicture{\Watermark}
-    \fi
-
-    
     % Deckblatt
     \begin{spacing}{1}
-        \input{../content/additionals/nonEditable/coverSheet.tex}
+        \input{../config/additionals/cover_sheet.tex}
     \end{spacing}
-
-
-    % "Vertraulich"-Wasserzeichen von allen Seiten außer dem Deckblat
-    % entfernen (falls Flag gesetzt) --> Kommentare entfernen
-    % \ifwatermark
-    %     \ClearShipoutPicture
-    % \fi
 
     \newpage
     \pagenumbering{Roman}
@@ -57,7 +43,7 @@
 
     % Sperrvermerk
     \ifsperrvermerk
-        \input{../content/additionals/nonEditable/blockingNote.tex}
+        \input{../config/additionals/blocking_note.tex}
         \newpage
     \fi
 
@@ -65,7 +51,7 @@
 
     % Selbstständigkeitserklärung
     \ifselbsterkl
-        \input{../content/additionals/nonEditable/declaration.tex}
+        \input{../config/additionals/declaration.tex}
         \newpage
     \fi
 
@@ -73,11 +59,11 @@
 
     % 
     \ifabstractde
-        \input{../content/additionals/nonEditable/abstractConfig.tex}
+        \input{../config/additionals/abstract.tex}
         \newpage
     \else
         \ifabstracten
-            \input{../content/additionals/nonEditable/abstractConfig.tex}
+            \input{../config/additionals/abstract.tex}
             \newpage
         \fi
     \fi
@@ -107,11 +93,7 @@
     % Abkürzungsverzeichnis
     \ifabkverz
         \cleardoublepage
-        \addchap{\langabkverz}
-
-        \begin{acronym}[LOREMIPSUM] % Die Angabe in eckigen Klammern legt die Breite der linken Spalte fest! => ggf. anpassen
-            \input{../content/additionals/editable/acronyms.tex}
-        \end{acronym}
+        \input{../config/additionals/acronyms.tex}
     \fi
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,7 +110,7 @@
     \iftableverz
         \cleardoublepage
         \listoftables
-        \input{../content/additionals/nonEditable/tablesConfig.tex}
+        \input{../config/additionals/tables.tex}
     \fi
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -136,11 +118,7 @@
 	% Formelgrößenverzeichnis
 	\ifformelgroeverz
 		\cleardoublepage
-		\addchap{\langformelgroeverz}
-		
-		\begin{acronym}[LOREMIPSUM] % Die Angabe in eckigen Klammern legt die Breite der linken Spalte fest! => ggf. anpassen
-			\input{../content/additionals/nonEditable/symbolsConfig.tex}
-		\end{acronym}
+        \input{../config/additionals/symbols.tex}
 	\fi
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,7 +129,7 @@
     \ifformelverz
         \cleardoublepage
         \listofformels
-        \input{../content/additionals/nonEditable/equationsConfig.tex}
+        \input{../config/additionals/equations.tex}
     \fi
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -186,6 +164,6 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \ifappendix
-        \input{../content/additionals/nonEditable/appendixConfig.tex}
+        \input{../config/additionals/appendix.tex}
     \fi
 \end{document}
