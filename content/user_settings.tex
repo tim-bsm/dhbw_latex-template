@@ -1,3 +1,5 @@
+%!TEX root = ../document/document.tex
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                   Einstellungen
 %
@@ -15,6 +17,7 @@
 %% Aspekte angepasst, wie z.B. die Anführungszeichen und
 %% Datumsformate.
 \setzesprache{de} % de oder en
+% # TODO: no glossar in english
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -65,7 +68,7 @@
 \glossartrue                % auskommentieren oder ändern zu \glossarfalse, wenn kein Glossar gewünscht ist (\appendixtrue muss gesetzt sein!)
 \anhangtrue                 % auskommentieren oder ändern zu \anhangfalse, wenn kein Anhang gewünscht ist
 
-%\refWithPagestrue           % ändern zu \refWithPagestrue, wenn die Seitenzahl bei Verweisen auf Kapitel engefügt werden sollen
+% \refWithPagestrue           % ändern zu \refWithPagestrue, wenn die Seitenzahl bei Verweisen auf Kapitel engefügt werden sollen
 
 \reviewertrue	            % auskommentieren oder ändern zu \reviewerfalse wenn kein Gutachter gesetzt werden muss
 
@@ -75,7 +78,9 @@
 % Wird keines der Kommandos angegeben, wird kein Punkt gezeichnet.
 %\greendottrue
 %\yellowdottrue
-%\reddottrue
+\reddottrue
+
+\showtodonotestrue          % auskommentieren oder ändern zu \showtodonotesfalse, wenn die ToDos nicht angezeigt werden sollen
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -84,11 +89,8 @@
 %% Bei Fehlern während der Verarbeitung bitte in settings/header/header.tex
 %% bei der Einbindung des Pakets biblatex (ungefähr ab Zeile 110,
 %% einmal für jede Sprache), biber in bibtex ändern.
-\newcommand{\ladeliteratur}{
-    \addbibresource{../config/bibliographie.bib}
-}
 
-% \splitbibliographytrue       % auskommentieren oder ändern zu \splitbibliographyfalse, wenn Literaturverzeichnis nicht geteilt werden soll
+\splitbibliographytrue       % auskommentieren oder ändern zu \splitbibliographyfalse, wenn Literaturverzeichnis nicht geteilt werden soll
 
 %% Zitierstil
 %% mögliche Werte z.B für dhbw: chicago-authordate, mla, apa ; sonstige: ieee, numeric-comp, alphabetic, authoryear

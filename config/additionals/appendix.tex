@@ -11,20 +11,46 @@
 \renewcommand{\theequation}{A\arabic{equation}}
 
 
-
 \ifliteratur
     % Quellenverzeichnis nach Literatur und Weblinks trennen
     \ifsplitbibliography
-        \printbibliography[category=cited, heading=subbibintoc, title={\langliteratur}, nottype=online]
-        \printbibliography[category=cited, heading=subbibintoc, title={\langweblinks}, type=online]
+        \addchap{\langusedsources}
+            \printbibliography[
+                category=cited,
+                heading=subbibintoc,
+                title=\langliteratur,
+                nottype=online]
+            \printbibliography[
+                category=cited,
+                heading=subbibintoc,
+                title=\langweblinks,
+                type=online]
+            % # TODO: fix overfull hhbox über rand raus
+        % Literaturverzeichnis um weitere Quellen (nicht zitiert) ergänzen
+        \nocite{*}
+        \addchap{\langweiterequellen}
+            \printbibliography[
+                notcategory=cited,
+                heading=subbibintoc,
+                title=\langliteratur,
+                nottype=online]
+            \printbibliography[
+                notcategory=cited,
+                heading=subbibintoc,
+                title=\langweblinks,
+                type=online]
     % Quellenverzeichnis nicht trennen
     \else
-        \printbibliography[category=cited]
-    \fi
+        \printbibliography[
+            category=cited,
+            title=\langusedsources]
 
-    % Literaturverzeichnis um weitere Quellen (nicht zitiert) ergänzen
-    \nocite{*}
-    \printbibliography[title={\langweiterequellen}, notcategory=cited]
+        % Literaturverzeichnis um weitere Quellen (nicht zitiert) ergänzen
+        \nocite{*}
+        \printbibliography[
+            notcategory=cited,
+            title=\langweiterequellen]
+    \fi
 \fi
 
 
@@ -38,5 +64,5 @@
 % Glossar
 \ifglossar
     \input{../content/additionals/glossary.tex}
-    \printglossary[style=altlist,title=\langglossar]
+    \printglossary[style=altlist, title=\langglossar]
 \fi

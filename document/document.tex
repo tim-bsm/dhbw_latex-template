@@ -1,35 +1,18 @@
 \input{../config/config.tex}
 
-\addtolength{\topmargin}{15pt}
-
-\DeclareNewTOC[
-    forcenames,
-    type=formel,
-    name={Formel},
-    listname={\langformelsammlung},
-]{for}
-
-
-\iflang{de}{
-    \newcommand*{\formelentry}[1]{
-        \addcontentsline{for}{formel}{\protect\numberline{\theequation} #1}
-    }
-}
-\iflang{en}{
-    \newcommand*{\formelentry}[1]{
-        \addcontentsline{for}{formel}{\protect\numberline{\theequation} #1}
-    }
-}
-
-\ifglossar
-    \makeglossaries
-\fi
-
-
 \begin{document}
-    \StopCensoring
     \setpagestylehead
     \RedeclareSectionCommand[beforeskip=\kapitelabstand]{chapter} % Abstand zwischen Kapitelüberschrift und dem oberen Rand
+
+    
+    \ifshowtodonotes
+        % Add ToDo-List
+        \listoftodos
+    \else
+        % Disable todo notes
+        \presetkeys{todonotes}{disable}{}
+    \fi
+
 
     % Deckblatt
     \begin{spacing}{1}
@@ -57,7 +40,7 @@
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    % 
+    % # TODO: quellen unterverz aus toc raus und generell nur eine überschrift
     \ifabstractde
         \input{../config/additionals/abstract.tex}
         \newpage
@@ -128,7 +111,6 @@
     % => auslagern in separates File? z.B. \input{ads/formels}
     \ifformelverz
         \cleardoublepage
-        \listofformels
         \input{../config/additionals/equations.tex}
     \fi
 
@@ -147,7 +129,7 @@
 
     \cleardoublepage
 
-    % begin of new numbering
+    % Begin of new numbering
     \setpagestylecontent
 
     % Inhalt

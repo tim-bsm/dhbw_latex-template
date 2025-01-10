@@ -1,13 +1,15 @@
 %!TEX root = ../../document/document.tex
 
+% Rename listings
+\renewcommand\lstlistingname{\langlistingname}
+\renewcommand\lstlistlistingname{\langlistlistingname}
+\def\lstlistingautorefname{\langlistingautorefname}
+
 %% Programmiersprachen Highlighting (Listings)
 \newcommand{\listingsettings}{%
 	\lstset{
-		language=C++,			% Standardsprache des Quellcodes
 		numbers=left,			% Zeilennummern links
 		stepnumber=1,			% Jede Zeile nummerieren.
-		%numbersep=5pt,			% 5pt Abstand zum Quellcode
-		%numberstyle=\tiny,		% Zeichengrösse 'tiny' für die Nummern.
 		breaklines=true,		% Zeilen umbrechen wenn notwendig.
 		breakautoindent=true,	% Nach dem Zeilenumbruch Zeile einrücken.
 		postbreak=\space,		% Bei Leerzeichen umbrechen.
@@ -17,14 +19,12 @@
 		showstringspaces=false,	% Leerzeichen auch in Strings ('') nicht anzeigen.
 		extendedchars=true,		% Alle Zeichen vom Latin1 Zeichensatz anzeigen.
 		captionpos=b,			% sets the caption-position to bottom
-		%backgroundcolor=\color{ListingBackground}, % Hintergrundfarbe des Quellcodes setzen.
 		xleftmargin=0pt,		% Rand links
 		xrightmargin=0.8em,		% Rand rechts
 		framexrightmargin=0.5em,
 		frame=single,			% Rahmen an
 		frameround=ffff,
 		rulecolor=\color{darkgray},	% Rahmenfarbe
-		%fillcolor=\color{ListingBackground},
 		keywordstyle=\color[rgb]{0.133,0.133,0.6},
 		commentstyle=\color[rgb]{0.133,0.545,0.133},
 		stringstyle=\color[rgb]{0.627,0.126,0.941},
@@ -91,11 +91,9 @@
 \input{../content/additionals/code.tex}
 
 
-% Define own languages for listings
-\newcommand{\ownlstlanguages}{
-	\definecolor{darkblue}{RGB}{42,0.0,255}
-	
+%%%%%%%%%% Define own languages for listings %%%%%%%%%%
 
+\newcommand{\ownlstlanguages}{
 	\lstdefinelanguage{ini}{
 		columns=fullflexible,
 		commentstyle=\color{gray}\ttfamily,
@@ -144,3 +142,5 @@
 		identifierstyle=\color{darkblue}
 	}
 }
+
+\listingsettings

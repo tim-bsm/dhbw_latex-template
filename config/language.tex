@@ -1,8 +1,17 @@
-%!TEX root = ../../../document/document.tex
+%!TEX root = ../document/document.tex
+
+%%%%%%%%%% Define language %%%%%%%%%%
 
 \newcommand{\iflang}[2]{%
   \IfStrEq{\sprache}{#1}{#2}{}
 }
+
+% define in packages.tex
+
+
+%%%%%%%%%% Define language strings %%%%%%%%%%
+
+\newcommand{\langstr}[1]{\setting{lang#1}}
 
 \langstr{abkverz}
 \langstr{anhang}
@@ -32,3 +41,9 @@
 \langstr{literatur}
 \langstr{weblinks}
 \langstr{weiterequellen}
+\langstr{usedsources}
+
+
+%%%%%%%%%% Load language %%%%%%%%%%
+
+\input{../config/langs/\sprache.tex}

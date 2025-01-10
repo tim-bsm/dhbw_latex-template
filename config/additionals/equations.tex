@@ -1,5 +1,18 @@
 %!TEX root = ../../document/document.tex
 
+\DeclareNewTOC[
+    forcenames,
+    type=formel,
+    name={Formel},
+    listname={\langformelsammlung},
+]{for}
+
+% Adds a formel to the formular list
+\newcommand*{\formelentry}[1]{
+    \addcontentsline{for}{formel}{\protect\numberline{\theequation} #1}
+}
+
+
 \makeatletter
 
 % \saveequation{<ID>}{<equation>}{<description>}
@@ -25,3 +38,5 @@
 
 
 \input{../content/additionals/equations.tex}
+
+\listofformels
