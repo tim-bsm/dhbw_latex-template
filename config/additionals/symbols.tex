@@ -1,10 +1,18 @@
 %!TEX root = ../../document/document.tex
 
+
+%%%%%%%%%% Settings %%%%%%%%%%
+
 \newcommand{\acrounit}[1]{
 	\acroextra{\makebox[35mm][l]{#1}}
 }
 
-\addchap{\langformelgroeverz}
-\begin{acronym}
+
+%%%%%%%%%% Content %%%%%%%%%%#
+
+% Create a chapter without a number but include it in the table of contents
+\addchap{\langsymbols}
+
+\begin{acronym}[ABCD] % Change the letters to the longest acronym
 	\input{../content/additionals/symbols.tex}
 \end{acronym}

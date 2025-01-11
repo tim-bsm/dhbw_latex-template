@@ -1,59 +1,34 @@
 %!TEX root = ../../document/document.tex
 
-\thispagestyle{plain}
 
+%%%%%%%%%% Content %%%%%%%%%%
 
-\chapter*{\langsperrvermerk}
-
+% Create a chapter without a number but include it in the table of contents
+\addchap{\langblockingnote}
 
 \iflang{de}{
-  Die vorliegende {\arbeit} mit dem Titel
-  \begin{center}{\itshape{}\titel{}\/}\end{center}
-  enthält interne bzw. vertrauliche Informationen der {\firma}, ist deshalb mit einem Sperrvermerk versehen und wird ausschließlich zu Prüfungszwecken des Studiengangs {\studiengang} an die {\hochschule} in {\dhbw} weitergegeben.
+  Die vorliegende \papertype\ mit dem Titel
+  \begin{center}
+    \itshape\titlestr
+  \end{center}
+  enthält interne bzw. vertrauliche Informationen der \company\, ist deshalb mit einem Sperrvermerk versehen und wird ausschließlich zu Prüfungszwecken des Studiengangs \studycourse\ an die \uni\ in \unilocation\ weitergegeben.
 
-	Der Inhalt dieser Arbeit darf weder als Ganzes, noch in Auszügen Personen außerhalb des Prüfungsprozesses und des Evaluationsverfahrens zugänglich gemacht werden, sofern keine anders lautende Genehmigung der {\abteilung} vorliegt.
+	Der Inhalt dieser Arbeit darf weder als Ganzes, noch in Auszügen Personen außerhalb des Prüfungsprozesses und des Evaluationsverfahrens zugänglich gemacht werden, sofern keine anders lautende Genehmigung der \department\ vorliegt.
 }
 
 \iflang{en}{
-  The {\arbeit} on hand 
-  \begin{center}{\itshape{} \titel{}\/}\end{center} 
-  contains internal respective confidential data of {\firma}. It is intended solely for inspection by the assigned examiner, the head of the {\studiengang} department and, if necessary, the Audit Committee \langanderdh{} {\dhbw}. It is strictly forbidden:
+  The \papertype\ with the title
+  \begin{center}
+    \itshape\titlestr
+  \end{center} 
+  contains internal respective confidential data of \company. It is intended solely for inspection by the assigned examiner, the head of the \studycourse\ department and, if necessary, the Audit Committee at the Cooperative State University Baden-Württemberg \unilocation. It is strictly forbidden:
   \begin{itemize}
     \item to distribute the content of this paper (including data, figures, tables, charts etc.) as a whole or in extracts,
     \item to make copies or transcripts of this paper or of parts of it,
     \item to display this paper or make it available in digital, electronic or virtual form.
   \end{itemize}
-  Exceptional cases may be considered through permission granted in written form by the author and {\firma}.
+  Exceptional cases may be considered through permission granted in written form by the author and \company.
 }
 
-
-% Create place for the signature with a scope for the \newcommand
-\ifshowsignature
-    \vspace{0.5cm}
-    \signature
-\else
-    \vspace{2.7cm}
-\fi
-
-\vspace{-0.8cm}
-{
-  \newcommand{\signcont}{\autor \hspace{1cm} \abgabeort, \singingdate}
-  \let\signlen\relax % enable reusability of \signlen if already defined
-  \newlength{\signlen}
-  \setlength{\signlen}{\widthof{\signcont}}
-
-  % Depending on the size of the content below the line, change its width (if greater than 200pt)
-  \ifdimcomp{\signlen}{<}{200pt}
-    {%true
-      \rule{200pt}{0.4pt}
-    }
-    {%false
-      \rule{\signlen}{0.4pt}
-    }
-  \\
-  \signcont
-}
-
-
-% Sperrvermerk zum Inhaltsverzeichnis hinzufügen
-\addcontentsline{toc}{chapter}{\langsperrvermerk}
+% Create a field for the signature
+\addsignature

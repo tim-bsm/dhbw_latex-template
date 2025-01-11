@@ -1,11 +1,11 @@
 %!TEX root = ../document/document.tex
 
 \documentclass[%
-    oneside,            % Print one sided
-    12pt,				% Font size
-    parskip=half,		% Half empty line for new paragraphs
-    listof=totoc,		% Show Image, Table, ... lists in the table of contents
-]{scrreprt}	% KOMA-script report 
+    oneside,                % Print one sided
+    fontsize=\fontsizestr,  % Set the font size
+    parskip=half,		    % Half empty line for new paragraphs
+    listof=totoc,		    % Show Image, Table, ... lists in the table of contents
+]{scrreprt}	% KOMA-script report
 
 % Set dimensions of the pages
 \usepackage[
@@ -18,4 +18,100 @@
 ]{geometry} % Adds page layout settings
 
 % Set line spacing
-\usepackage[onehalfspacing]{setspace} % onehalfspacing sets line spacing to 1.5
+\usepackage{xifthen} % Adds if-then-else commands (e.g. \ifempty)
+\ifthenelse{\equal{\linespace}{1}}{
+    \usepackage[singlespacing]{setspace}
+}{
+    \ifthenelse{\equal{\linespace}{1.5}}{
+        \usepackage[onehalfspacing]{setspace}
+    }{
+        \ifthenelse{\equal{\linespace}{2}}{
+            \usepackage[doublespacing]{setspace}
+        }{
+            \PackageError{config}{Invalid line spacing}{Valid options are: 1, 1.5, 2}
+        }
+    }
+}
+
+
+%%%%%%%%%% Create the pagestyles %%%%%%%%%%
+
+% Create a default pagestyle with header and footer
+\newcommand{\defaultpagelayout}{
+    %% HEADER
+    \fancyhead[L]{
+        \ifshowcompanylogo
+            % Company logo and DHBW-Logo --> Company logo left
+            \ifshowdhbwlogo
+                \iflang{de}{\companyDeL}
+                \iflang{en}{\companyEnL}
+            % Only company logo --> \headerleft left
+            \else
+                \vspace{0.5cm}\small \headerleft \vspace{0.08cm}
+            \fi
+        % Only DHBW-Logo or no logo --> \headerleft left
+        \else
+            \vspace{0.5cm}\small \headerleft \vspace{0.08cm}
+        \fi
+    }
+    \fancyhead[R]{
+        \ifshowcompanylogo
+            % Company logo and DHBW-Logo --> DHBW-Logo right
+            \ifshowdhbwlogo
+                \iflang{de}{\dhbwDe}
+                \iflang{en}{\dhbwEn}
+            % Only company logo --> Company logo right
+            \else
+                \iflang{de}{\companyDeR}
+                \iflang{en}{\companyEnR}
+            \fi
+        \else
+            % Only DHBW-Logo --> DHBW-Logo right
+            \ifshowdhbwlogo
+                \iflang{de}{\dhbwDe}
+                \iflang{en}{\dhbwEn}
+            \fi
+        \fi
+    }
+
+    %% FOOTER
+    \renewcommand{\footrulewidth}{0.4pt} % Horizontal line
+    \fancyfoot[l]{\authorstr}
+    \fancyfoot[c]{\footermiddle}
+}
+
+
+%% Create different pagestyles to set different page numbering
+
+% Set the pagestyle for everything before the first chapter
+\newcommand{\setpagestylepre}{
+    \fancypagestyle{plain}{
+        \defaultpagelayout{}
+
+        \fancyfoot[r]{\langpage\ \thepage\ \langpageof\ \pageref*{endOfRomanNumbering}}
+    }
+    \pagestyle{plain}
+    \pagenumbering{roman}
+}
+
+% Set the pagestyle for the chapters
+\newcommand{\setpagestylechapter}{
+    \fancypagestyle{plain}{
+        \defaultpagelayout{}
+
+        \fancyfoot[r]{\langpage\ \thepage\ \langpageof\ \pageref*{endOfArabicNumbering}}    
+    }
+    \pagestyle{plain}
+    \pagenumbering{arabic}
+}
+
+% Set the pagestyle for the appendix
+\newcommand{\setpagestyleappendix}{
+    \fancypagestyle{plain}{%
+        \defaultpagelayout{}
+
+        \fancyfoot[r]{\langpage\ \thepage\ \langpageof\ \pageref*{LastPage}}
+    }
+    \pagestyle{plain}
+    \pagenumbering{AlphAlph}
+}

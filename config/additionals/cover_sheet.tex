@@ -1,10 +1,14 @@
 %!TEX root = ../../document/document.tex
 
+
+%%%%%%%%%% Content %%%%%%%%%%
+
 \begin{titlepage}
 
-
-\ifshowfirmenlogo
+% Depending on the settings, the company logo, the DHBW logo or both are displayed
+\ifshowcompanylogo
 	\ifshowdhbwlogo
+		% Both logos are displayed
 		\begin{minipage}[c]{0.43\textwidth}
 			\begin{center}
 				\iflang{de}{
@@ -29,6 +33,7 @@
 			\end{center}
 		\end{minipage}
 	\else
+		% Only the company logo is displayed
 		\begin{center}
 			\iflang{de}{
 				\includegraphics[width=0.7\textwidth]{company_de}
@@ -40,6 +45,7 @@
 	\fi
 \else
 	\ifshowdhbwlogo
+		% Only the DHBW logo is displayed
 		\begin{center}
 			\iflang{de}{
 				\includegraphics[width=0.7\textwidth]{dhbw_de}
@@ -51,15 +57,19 @@
 	\fi
 \fi
 
-\enlargethispage{20mm}
+% Create spacing
+\enlargethispage{2cm}
 
+% Middle part of the cover sheet (title, ...)
 \begin{center}
+	% Place the title
 	\begin{doublespace}
 		\vspace*{12mm}
-		{\LARGE\textbf \titel}\\
+		{\LARGE\textbf \titlestr}\\
 		\vspace*{5mm}
 	\end{doublespace}
 	
+	% Place the colored dot in the middle right of the page
 	\begin{tikzpicture}		
 		\ifreddot
 			\tikz\draw[fill=red,draw=red](-4,2) circle (1.4cm);
@@ -75,31 +85,33 @@
 	\end{tikzpicture}
 	\vspace{-1.4cm}\\
 
-	\vspace*{12mm}		{\large\textbf \arbeit }\\
-	\vspace*{3mm}		{\textbf \abschluss}\\
-	\vspace*{12mm}		\langartikelstudiengang{} \langstudiengang{} \studiengang\\
-	\vspace*{3mm}		\langanderdh{} \dhbw\\
-	\vspace*{12mm}		\langvon\\
-	\vspace*{3mm}		{\large\textbf \autor}\\
-	\vspace*{12mm}		\datumAbgabe\\
+	% Place further information of the paper
+	\vspace*{12mm}		\large\textbf\papertype\\
+	\vspace*{3mm}		\textbf\degree\\
+	\vspace*{12mm}		\langstudycourse\ \studycourse\\
+	\vspace*{3mm}		\langatthedhbw\ \unilocation\\
+	\vspace*{12mm}		\langby\\
+	\vspace*{3mm}		\large\textbf\authorstr\\
+	\vspace*{12mm}		\submissiondate\\
 \end{center}
 
+% Create spacing
 \vfill
 
+% Lower part of the cover sheet (name, ...)
 \begin{spacing}{1.2}
 	\begin{tabbing}
 		mmmmmmmmmmmmmmmmmmmmmmmmmm             	\= 	\kill
-		\textbf{\langdbbearbeitungszeit}       	\>  \zeitraum\\
-		\textbf{\langdbmatriknr, \langdbkurs}  	\>  \martrikelnr, \kurs\\
-		\ifshowfirmenlogo
-			\textbf{\langdbfirma}                  	\> 	\firma, \firmenort\\
+		\textbf\langprocessingtime       		\>  \processingtime\\
+		\textbf{\langstudentid, \langcourse}  	\>  \studentid, \course\\
+		\ifshowcompanylogo
+			\textbf\langcompany	               	\> 	\company, \companylocation\\
 		\fi
-		\textbf{\langdbbetreuer}               	\>  \betreuer\\
+		\textbf\langsupervisor               	\>  \supervisor\\
 		\ifreviewer
-			\textbf{\langdbgutachter}          	\> 	\gutachter\\
+			\textbf\langreviewer	          	\> 	\reviewer\\
 		\fi
 	\end{tabbing}
 \end{spacing}
-
 
 \end{titlepage}

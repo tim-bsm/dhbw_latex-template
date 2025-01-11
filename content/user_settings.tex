@@ -1,136 +1,76 @@
 %!TEX root = ../document/document.tex
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                   Einstellungen
-%
-% Hier können alle relevanten Einstellungen für diese Arbeit gesetzt werden.
-% Dazu gehören Angaben u.a. über den Autor sowie Formatierungen.
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file contains all user settings that are used in the document.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sprache %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Aktuell sind Deutsch und Englisch unterstützt.
-%% Es werden nicht nur alle vom Dokument erzeugten Texte in
-%% der entsprechenden Sprache angezeigt, sondern auch weitere
-%% Aspekte angepasst, wie z.B. die Anführungszeichen und
-%% Datumsformate.
-\setzesprache{de} % de oder en
-% # TODO: no glossar in english
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Language %%%%%%%%%%
+
+% Currently the following languages are supported:
+% - German (de)
+% - English (en)
+\setlang{de}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Angaben  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Die meisten der folgenden Daten werden auf dem
-%% Deckblatt angezeigt, einige auch im weiteren Verlauf
-%% des Dokuments.
-\setzemartrikelnr{1234567}
-\setzekurs{TINF12ITA}
-\setzetitel{Thema der Arbeit}
-\setzedatumAnfang{01.01.2023}
-\setzedatumAbgabe{31.12.2023}
-\setzefirma{Firma GmbH}
-\setzefirmenort{Stuttgart}
-\setzeabgabeort{Stuttgart}
-\setzeabschluss{Bachelor of Science}
-\setzestudiengang{IT-Automotive}
-\setzedhbw{Stuttgart}
-\setzehochschule{Duale Hochschule Baden-Württemberg}
-\setzebetreuer{B. Sc. Max Mustermann}
-\setzegutachter{Prof. Dr. rer. nat. Gustaf Gutachter}
-\setzezeitraum{\datumAnfang\ - 14.08.2023}
-\setzearbeit{T3\_1000}
-\setzeautor{John Doe}
-\setzesemester{1.}
-\setzestudienrichtung{Informatik}
-\setzejahrgang{2022}
-\setzeabteilung{Abteilung}
-\setzestandort{Stuttgart}
-\setzefusszmitte{\arbeit}
-\setzekopfz{Firma GmbH\\IT-Automotive} % wird angezeigt, falls eins oder beide Logos nicht gesetzt sind
-\setzesingingdate{\today} % adjust the date that appears on the blocking notice and the declaration -> \today for date of compilation
+%%%%%%%%%% Infill Settings %%%%%%%%%%
+
+% String settings
+\settitlestr{Thema der Arbeit}
+\setpapertype{T3\_1000}
+\setdegree{Bachelor of Science}
+
+\setstudycourse{IT-Automotive}
+\setuni{Duale Hochschule Baden-Württemberg}
+\setunilocation{Stuttgart}
+\setauthorstr{John Doe}
+\setsubmissiondate{31.12.2023}
+\setstartdate{01.01.2023}
+\setprocessingtime{\startdate\ - 14.08.2023}
+\setstudentid{1234567}
+\setcourse{TINF22ITA}
+\setcompany{Firma GmbH}
+\setcompanylocation{Stuttgart}
+\setsupervisor{B. Sc. Max Mustermann}
+\setreviewer{Prof. Dr. rer. nat. Robert Reviewer}
+\setheaderleft{\company\\\studycourse}  % Is shown if one or both logos are disabled
+\setdepartment{Abteilung}
+\setsubmissionlocation{Stuttgart}
+\setsigningdate{\today}                 % Adjust the date that appears on the blocking notice and the declaration -> \today for date of compilation
+\setfootermiddle{\papertype}
+
+\setfontstr{lmodern}        % chicago-authordate, mla, apa; sonstige: ieee, numeric-comp, alphabetic, authoryear
+\setfontsizestr{12pt}       % Size of the font
+\setlinespace{1.5}          % Sets the line space. Choose between: 1, 1.5, 2
+
+\setcitingstyle{ieee}       % ieee, apa, mla, chicago-authordate, alphabetic, numeric-comp, authoryear
+\setchapterdistance{10pt}   % Distance between chapter title and the header
 
 
-\sperrvermerktrue           % auskommentieren oder ändern zu \sperrvermerkfalse, wenn kein Sperrvermerk benötigt wird
-\selbsterkltrue             % auskommentieren oder ändern zu \selbsterklfalse, wenn keine Selbstständigkeitserklärung benötigt wird
-\abstractdetrue             % auskommentieren oder ändern zu \abstractdefalse, wenn kein deutscher Abstract gewünscht ist
-\abstractentrue             % auskommentieren oder ändern zu \abstractenfalse, wenn kein englischer Abstract gewünscht ist
-\inhalttrue                 % auskommentieren oder ändern zu \inhaltfalse, falls kein Inhaltsverzeichnis eingefügt werden soll
-\abkverztrue                % auskommentieren oder ändern zu \abkverzfalse, wenn kein Abkürzungsverzeichnis benötigt wird
-\abbverztrue                % auskommentieren oder ändern zu \abbverzfalse, wenn kein Abbildungsverzeichnis benötigt wird
-\tableverztrue              % auskommentieren oder ändern zu \tableverzfalse, wenn kein Tabellenverzeichnis benötigt wird
-\formelgroeverztrue			% auskommentieren oder ändern zu \formelgroeverzfalse, wenn kein Formelgrößenverzeichnis benötigt wird
-\formelverztrue             % auskommentieren oder ändern zu \formelverzfalse, wenn kein Formelverzeichnis benötigt wird
-\codeverztrue               % auskommentieren oder ändern zu \codeverzfalse, wenn kein Listingsverzeichnis benötigt wird
-\appendixtrue               % auskommentieren oder ändern zu \appendixfalse, wenn die folgenden drei Einstellungen nicht gewünscht sind
-\literaturtrue              % auskommentieren oder ändern zu \literaturfalse, wenn kein Literaturverzeichnis gewünscht ist (\appendixtrue muss gesetzt sein!)
-\glossartrue                % auskommentieren oder ändern zu \glossarfalse, wenn kein Glossar gewünscht ist (\appendixtrue muss gesetzt sein!)
-\anhangtrue                 % auskommentieren oder ändern zu \anhangfalse, wenn kein Anhang gewünscht ist
+%%%%%%%%%% Applyable Settings %%%%%%%%%%
 
-% \refWithPagestrue           % ändern zu \refWithPagestrue, wenn die Seitenzahl bei Verweisen auf Kapitel engefügt werden sollen
+\blockingnotetrue           % comment out if no blocking note is needed
+\declarationtrue            % comment out if no self-declaration is needed
+\abstractdetrue             % comment out if no German abstract is needed
+\abstractentrue             % comment out if no English abstract is needed
+\tableofcontentstrue        % comment out if no table of contents is needed
+\acronymstrue               % comment out if no list of acronyms is needed
+\imagelisttrue              % comment out if no list of images is needed
+\tablelisttrue              % comment out if no list of tables is needed
+\symbolstrue                % comment out if no list of symbols is needed
+\formularytrue              % comment out if no list of formulas is needed
+\codelisttrue               % comment out if no list of code is needed
+\sourcestrue                % comment out if no list of sources is needed
+\appendixtrue               % comment out if no appendix is needed
+\glossarytrue               % comment out if no glossary is needed
 
-\reviewertrue	            % auskommentieren oder ändern zu \reviewerfalse wenn kein Gutachter gesetzt werden muss
+\showcompanylogotrue        % comment out if no company logo should be inserted
+\showdhbwlogotrue           % comment out if no DHBW logo should be inserted
+\showsignaturetrue          % comment out if no signature should be inserted
 
-% Angabe des roten/gelben/grünen Punktes auf dem Titelblatt zur Kennzeichnung der Vertraulichkeitsstufe.
-% Mögliche Angaben sind \greendottrue, \yellowdottrue und \reddottrue. Werden mehrere angegeben, wird der Punkt mit der höheren
-% Vertraulichkeitsstufe angezeigt.
-% Wird keines der Kommandos angegeben, wird kein Punkt gezeichnet.
-%\greendottrue
-%\yellowdottrue
-\reddottrue
+% \refwithpagestrue           % comment out if no page number should be added to references
+\reviewertrue	            % comment out if no reviewer is needed
+\showtodonotestrue          % comment out if no todos are needed
 
-\showtodonotestrue          % auskommentieren oder ändern zu \showtodonotesfalse, wenn die ToDos nicht angezeigt werden sollen
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% Literaturverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Bei Fehlern während der Verarbeitung bitte in settings/header/header.tex
-%% bei der Einbindung des Pakets biblatex (ungefähr ab Zeile 110,
-%% einmal für jede Sprache), biber in bibtex ändern.
-
-\splitbibliographytrue       % auskommentieren oder ändern zu \splitbibliographyfalse, wenn Literaturverzeichnis nicht geteilt werden soll
-
-%% Zitierstil
-%% mögliche Werte z.B für dhbw: chicago-authordate, mla, apa ; sonstige: ieee, numeric-comp, alphabetic, authoryear
-\setzezitierstil{ieee}
-
-%% Zitierbackend
-%% mögliche Werte: biber, bibtex -> bei Problemen mit dem Literaturverzeichnis
-%% jeweiligen anderen Wert probieren
-\setzezitierbackend{bibtex}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Verschiedene Schriftarten
-% laut nag Warnung: palatino obsolete, use mathpazo, helvet (option scaled=.95), courier instead
-\setzeschriftart{lmodern} % palatino oder goudysans, lmodern, libertine
-
-%% Abstand vor Kapitelüberschriften zum oberen Seitenrand
-\setzekapitelabstand{10pt}
-
-%% Spaltenabstand
-\setzespaltenabstand{10pt}
-%% Zeilenabstand innerhalb einer Tabelle
-\setzezeilenabstand{1.5}
-
-
-%% Flags zum Anzeigen der Bilder
-
-% Logo der Firma im gesamten Dokument anzeigen --> Bild mit Dateinamen
-% "company" im images ordner ablegen & Format muss gegebenenfalls in 
-% content/additionals/editable/images.tex angepasst werden.
-% Ist die Option nicht gesetzt, wird das Logo durch den Text in der
-% Variable \setzekopfz ersetzt.
-\showfirmenlogotrue                 % auskommentieren oder ändern zu \showfirmenlogofalse, falls kein Logo eingefügt werden soll
-
-% Logo der DHBW im gesamten Dokument anzeigen
-\showdhbwlogotrue                   % auskommentieren oder ändern zu \showdhbwlogofalse, falls kein Logo eingefügt werden soll
-
-% Unterschrift als Bild anzeigen --> Bild mit Dateinamen "signature" im 
-% images ordner ablegen & Format muss gegebenenfalls in content/additionals/
-% editable/images.tex angepasst werden.
-\showsignaturetrue                  % auskommentieren oder ändern zu \showsignaturefalse, falls keine Unterschrift eingefügt werden soll
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Display a green, yellow or red dot on the cover sheet to indicate the privacy level
+% \greendottrue               % comment out if no green dot is needed
+% \yellowdottrue              % comment out if no yellow dot is needed
+% \reddottrue                 % comment out if no red dot is needed

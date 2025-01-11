@@ -1,150 +1,83 @@
 %!TEX root = ../document/document.tex
 
+
+%%%%%%%%%% Settings %%%%%%%%%%
+
 % Add possibility for custom settings through key-value pairs
 \newcommand{\setting}[1]{
     \expandafter\newcommand\csname #1\endcsname{}
-    \expandafter\newcommand\csname setze#1\endcsname[1]{\expandafter\renewcommand\csname#1\endcsname{##1}}
+    \expandafter\newcommand\csname set#1\endcsname[1]{\expandafter\renewcommand\csname#1\endcsname{##1}}
 }
 
 
-%%%%%%%%%% Create settings %%%%%%%%%%
+%%%%%%%%%% Content %%%%%%%%%%
 
-\setting{martrikelnr}
-\setting{titel}
-\setting{kurs}
-\setting{datumAnfang}
-\setting{datumAbgabe}
-\setting{firma}
-\setting{firmenort}
-\setting{abgabeort}
-\setting{abschluss}
-\setting{studiengang}
-\setting{dhbw}
-\setting{hochschule}
-\setting{betreuer}
-\setting{gutachter}
-\setting{zeitraum}
-\setting{arbeit}
-\setting{autor}
-\setting{sprache}
-\setting{schriftart}
-\setting{kapitelabstand}
-\setting{spaltenabstand}
-\setting{zeilenabstand}
-\setting{zitierstil}
-\setting{zitierbackend}
-\setting{selbsterkl}
-\setting{semester}
-\setting{studienrichtung}
-\setting{jahrgang}
-\setting{abteilung}
-\setting{standort}
-\setting{fusszmitte}
-\setting{kopfz}
-\setting{singingdate}
+\setting{lang}
+
+\setting{titlestr}
+\setting{papertype}
+\setting{degree}
+\setting{studycourse}
+\setting{uni}
+\setting{unilocation}
+\setting{authorstr}
+\setting{submissiondate}
+\setting{startdate}
+\setting{processingtime}
+\setting{studentid}
+\setting{course}
+\setting{company}
+\setting{companylocation}
+\setting{supervisor}
+\setting{reviewer}
+\setting{headerleft}
+\setting{department}
+\setting{submissionlocation}
+\setting{signingdate}
+\setting{footermiddle}
+
+\setting{fontstr}
+\setting{fontsizestr}
+\setting{linespace}
+
+\setting{citingstyle}
+\setting{chapterdistance}
 
 
 %%%%%%%%%% Create ifs %%%%%%%%%%
 
-% Flag für die Selbstständigkeitserklärung
-\newif\ifselbsterkl
-\selbsterklfalse
+%%\newif\ifname             default behaviour
 
-% Flag für das Anzeigen der Vertraulichkeitsstufe
-\newif\ifgreendot
-\greendotfalse
+% Ifs for specific pages
+\newif\ifblockingnote       \blockingnotefalse
+\newif\ifdeclaration        \declarationfalse
+\newif\ifabstractde         \abstractdefalse
+\newif\ifabstracten         \abstractenfalse
+\newif\iftableofcontents    \tableofcontentsfalse
+\newif\ifacronyms           \acronymsfalse
+\newif\ifimagelist          \imagelistfalse
+\newif\iftablelist          \tablelistfalse
+\newif\ifsymbols            \symbolsfalse
+\newif\ifformulary          \formularyfalse
+\newif\ifcodelist           \codelistfalse
+\newif\ifsources            \sourcesfalse
+\newif\ifappendix           \appendixfalse
+\newif\ifglossary           \glossaryfalse
 
-% Flag für roten Vertraulichkeitspunkt
-\newif\ifreddot
-\reddotfalse
+% Ifs for images
+\newif\ifshowcompanylogo    \showcompanylogofalse
+\newif\ifshowdhbwlogo       \showdhbwlogofalse
+\newif\ifshowsignature      \showsignaturefalse
 
-% Flag für gelben Vertraulichkeitspunkt
-\newif\ifyellowdot
-\yellowdotfalse
+% Other ifs
+\newif\ifrefwithpages       \refwithpagesfalse
+\newif\ifreviewer           \reviewerfalse
+\newif\ifshowtodonotes      \showtodonotesfalse
 
-% Flag für Einfügen der Seitenzahl bei Verweis auf Kapitel/Abschnitt
-\newif\ifrefWithPages
-\refWithPagesfalse
-
-% Flag für Einfügen des Abkürzungsverzeichnis
-\newif\ifabkverz
-\abkverzfalse
-
-% Flag für Einfügen des Abbildungsverzeichnisses
-\newif\ifabbverz
-\abbverzfalse
-
-% Flag für Einfügen des Formelverzeichnisses
-\newif\ifformelverz
-\formelverzfalse
-
-% Flag für Einfügen des Formelgroessenverzeichnisses
-\newif\ifformelgroeverz
-\formelgroeverzfalse 
-
-% Flag für Einfügen des Listingsverzeichnisses
-\newif\ifcodeverz
-\codeverzfalse
-
-% Flag für Einfügen des Tabellenverzeichnisses
-\newif\iftableverz
-\tableverzfalse
-
-% Flag für Einfügen des Sperrvermerks
-\newif\ifsperrvermerk
-\sperrvermerkfalse
-
-% Flag für Einfügen des deutschen Abstracts
-\newif\ifabstractde
-\abstractdefalse
-
-% Flag für Einfügen des englischen Abstracts
-\newif\ifabstracten
-\abstractenfalse
-
-% Flag für Anhang
-\newif\ifappendix
-\appendixfalse
-
-% Flag für Literaturverzeichnis
-\newif\ifliteratur
-\literaturfalse
-
-% Flag für Glossar
-\newif\ifglossar
-\glossarfalse
-
-% Flag für Anhang
-\newif\ifanhang
-\anhangfalse
-
-% Flag für Inhaltsverzeichnis
-\newif\ifinhalt
-\inhaltfalse
-
-% Flag für Reviewer
-\newif\ifreviewer
-\reviewerfalse
-
-% Flag für Anzeigen des Firmenlogos
-\newif\ifshowfirmenlogo
-\showfirmenlogofalse
-
-% Flag für Anzeigen des DHBW-Logos
-\newif\ifshowdhbwlogo
-\showdhbwlogofalse
-
-% Flag für Anzeigen der Unterschrift
-\newif\ifshowsignature
-\showsignaturefalse
-
-% Flag zum Trennen des Literaturverzeichnisses
-\newif\ifsplitbibliography
-\splitbibliographyfalse
-
-% Flag to show or hide todo notes
-\newif\ifshowtodonotes
-\showtodonotesfalse
+% Ifs for the dot on the cover sheet
+\newif\ifgreendot           \greendotfalse
+\newif\ifyellowdot          \yellowdotfalse
+\newif\ifreddot             \reddotfalse
 
 
 %%%%%%%%%% Load settings %%%%%%%%%%

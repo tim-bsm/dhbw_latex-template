@@ -1,9 +1,14 @@
 %!TEX root = ../../document/document.tex
 
-% Change spaces of tables
-\setlength{\tabcolsep}{\spaltenabstand}
-\renewcommand{\arraystretch}{\zeilenabstand}
 
+%%%%%%%%%% Settings %%%%%%%%%%
+
+% Change spaces of tables
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.5}
+
+
+%%%%%%%%%% Create new save command %%%%%%%%%%
 
 \makeatletter
 
@@ -24,6 +29,7 @@
     \@nameuse{tab@#1}
 }
 
+% Adds a shortcut to create a new row in a table
 \newcommand\tablerow[1]{%
     #1\\
     \hline
@@ -31,5 +37,7 @@
 
 \makeatother
 
+
+%%%%%%%%%% Content %%%%%%%%%%
 
 \input{../content/additionals/tables.tex}

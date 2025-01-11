@@ -1,14 +1,17 @@
 %!TEX root = ../../document/document.tex
 
-% Nur verwendete Akronyme werden letztlich im Abkürzungsverzeichnis des Dokuments angezeigt
-% Verwendung: 
-% \acro{BSP}{Board Support Package} % Beispielabkürzung
-% 		\ac{Abk.}   --> fügt die Abkürzung ein, beim ersten Aufruf wird zusätzlich automatisch die ausgeschriebene Version davor eingefügt bzw. in einer Fußnote (hierfür muss in header.tex \usepackage[printonlyused,footnote]{acronym} stehen) dargestellt
-% 		\acf{Abk.}   --> fügt die Abkürzung UND die Erklärung ein
-% 		\acl{Abk.}   --> fügt nur die Erklärung ein
-% 		\acp{Abk.}  --> gibt Plural aus (angefügtes 's'); das zusätzliche 'p' funktioniert auch bei obigen Befehlen
-% 		\acs{Abk.}   -->  fügt die Abkürzung ein
-% für weitere Optionen siehe: http://www.namsu.de/Extra/pakete/Acronym.pdf
+% Only used acronyms will be displayed in the list of acronyms.
+% For more options see: http://www.namsu.de/Extra/pakete/Acronym.pdf
+
+% Usage:
+% \acro{BSP}{Board Support Package} % Example acronym
+% \ac{Abbr.}   --> inserts the abbreviation, at the first call the full version is inserted
+% \acf{Abbr.}   --> inserts the abbreviation AND the explanation
+% \acl{Abbr.}   --> inserts only the explanation
+% \acp{Abbr.}  --> inserts the plural form (adds 's'); the additional 'p' works with the above commands as well
+% \acs{Abbr.}   --> inserts the abbreviation
+
+% If the space between the acronym and the explanation is too small, you can adjust it by going into the config/additionals/acronyms.tex file and changing the 'ABCDEFGHIJ' to the longest acronym you have. 
 
 
 %A:

@@ -1,51 +1,26 @@
 %!TEX root = ../../document/document.tex
 
-\thispagestyle{plain}
+%%%%%%%%%% Content %%%%%%%%%%
 
-
-\chapter*{\langselbsterkl}
+% Create a chapter without a number but include it in the table of contents
+\addchap{\langdeclaration}
 
 
 \iflang{de}{
-    Ich versichere hiermit, dass ich meine {\arbeit} mit dem Thema
-    \begin{center}{\itshape{} \titel{}\/} \end{center}
-    selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe. Ich versichere zudem, dass die eingereichte elektronische Fassung mit der gedruckten Fassung übereinstimmt.
+  Ich versichere hiermit, dass ich meine \papertype mit dem Thema
+  \begin{center}
+    \itshape\titlestr
+  \end{center}
+  selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe. Ich versichere zudem, dass die eingereichte elektronische Fassung mit der gedruckten Fassung übereinstimmt.
 }
 
 \iflang{en}{
-    I hereby declare that I have completed the present {\arbeit} with the topic 
-    \begin{center}{\itshape{} \titel{}\/} \end{center}
-    independently, using only the sources and tools indicated. I confirm that the electronic version submitted corresponds to the printed version.
+  I hereby declare that I have completed the present \papertype\ with the topic 
+  \begin{center}
+    \itshape\titlestr
+  \end{center}
+  independently, using only the sources and tools indicated. I confirm that the electronic version submitted corresponds to the printed version.
 }
 
-
-% Create place for the signature with a scope for the \newcommand
-\ifshowsignature
-    \vspace{0.5cm}
-    \signature
-\else
-    \vspace{2.7cm}
-\fi
-
-\vspace{-0.8cm}
-{
-  \newcommand{\signcont}{\autor \hspace{1cm} \abgabeort, \singingdate}
-  \let\signlen\relax % enable reusability of \signlen if already defined
-  \newlength{\signlen}
-  \setlength{\signlen}{\widthof{\signcont}}
-
-  % Depending on the size of the content below the line, change its width (if greater than 200pt)
-  \ifdimcomp{\signlen}{<}{200pt}
-    {%true
-      \rule{200pt}{0.4pt}
-    }
-    {%false
-      \rule{\signlen}{0.4pt}
-    }
-  \\
-  \signcont
-}
-
-
-% Selbstständigkeitserklärung zum Inhaltsverzeichnis hinzufügen
-\addcontentsline{toc}{chapter}{\langselbsterkl}
+% Create a field for the signature
+\addsignature

@@ -1,50 +1,26 @@
 %!TEX root = ../document/document.tex
 
-%%%%%%%%%% Packages %%%%%%%%%%
+%%%%%%%%%% Language package %%%%%%%%%%
 
-% # TODO: sort alphabetically 
-\usepackage{amsfonts} % Extended set of fonts for mathematical use
 \usepackage{xstring} % Adds string manipulation functions and if... (e.g. \iflang)
-\usepackage{lastpage} % Get last page number (e.g. for footer)
-\usepackage{fancyhdr} % Adds styled headers and footers
-\usepackage{textcomp} % Adds more symbols (e.g. \textdegree)
-\usepackage[utf8x]{inputenc} % Adds more characters
-\usepackage[T1]{fontenc} % Adds more characters (e.g. for German Umlauts)
-\usepackage{tikz} % Adds drawing capabilities
-\usepackage[activate]{microtype} % Adjustments for better typography
-\usepackage{csquotes} % Used for quoting (e.g. \enquote)
-\usepackage{enumitem} % Add better enumeration options
-\usepackage[table, dvipsnames]{xcolor} % Adds colors (to tables (table) and even more colors (dvipsnames))
-\usepackage[printonlyused]{acronym} % Adds acronyms; add 'footnote' next to 'printonlyused' to show the acronym in the footnote
-\usepackage{scrhack} % Adds compatibility for KOMA-scripts with other packages
-\usepackage{listings} % Adds code sections
-\usepackage{amsmath} % Adds math environments (e.g. equation)
-\usepackage{amssymb} % Adds math symbols (e.g. \square)
-\usepackage[export]{adjustbox} % Adds more options for \includegraphics (e.g. placing to the left)
-\usepackage{makecell} % Adds more options for cells in tables (e.g. line breaks)
-\usepackage{gradientframe} % Adds gradient frames (e.g. for images)
-\usepackage{xifthen} % Adds if-then-else commands (e.g. \ifempty)
-\usepackage{alphalph, etoolbox} % Adds possibility to use more than 26 (A-Z) appendices in appendix
+\iflang{de}{\usepackage[english, ngerman]{babel}} % Select german language
+\iflang{en}{\usepackage[ngerman, english]{babel}} % Select english language
 \iflang{de}{\usepackage{icomma}} % Use comma as decimal separator in equations when using German language
-\usepackage[toc]{glossaries} % Add glossaries and add them to the table of contents
-\usepackage{xspace} % Adds possibility to add a space after a command
-\usepackage{todonotes} % Adds todo notes and a list of todos
-\usepackage{\schriftart} % Adds the chosen font
 
 
 %%%%%%%%%% PDF Settings %%%%%%%%%%
 
 \usepackage[%
-    pdftitle=\titel,
-    pdfauthor=\autor,
-    pdfsubject=\arbeit,
+    pdftitle=\titlestr,
+    pdfauthor=\authorstr,
+    pdfsubject=\papertype,
     pdfcreator={latexmk, LaTeX with KOMA-Script},
-    pdfpagemode=UseOutlines, 		% Beim Oeffnen Inhaltsverzeichnis anzeigen
-    pdfdisplaydoctitle=true, 		% Dokumenttitel statt Dateiname anzeigen.
-    pdflang={\sprache}, 			% Sprache des Dokuments.
+    pdfpagemode=UseOutlines, 		% Show bookmarks when opening the pdfviewer
+    pdfdisplaydoctitle=true, 		% Show title of document in PDF viewer
+    pdflang=\lang, 			    % Language of the document
 ]{hyperref}
 \hypersetup{
-    colorlinks=true, 		% Use colord links
+    colorlinks=true, 		% Use colored links
     linkcolor=black, 	    % Set color of links
     citecolor=LinkColor,
     filecolor=LinkColor,
@@ -60,35 +36,57 @@
 
 \iflang{de}{%
     \usepackage[
-        backend=\zitierbackend,
+        backend=biber,          % biber or bibtex
         bibwarn=true,
         bibencoding=utf8,	    % if .bib in utf8. if not: ascii
         sortlocale=de_DE,
         sorting=none,           % sort by order of citation
-        style=\zitierstil,
+        style=\citingstyle,
         defernumbers=true,
     ]{biblatex}
 }
 \iflang{en}{%
     \usepackage[
-        backend=\zitierbackend,
+        backend=biber,          % biber or bibtex
         bibwarn=true,
         bibencoding=utf8,	    % if .bib in utf8. if not: ascii
         sortlocale=en_US,
         sorting=none,           % sort by order of citation
-        style=\zitierstil,
+        style=\citingstyle,
         defernumbers=true,
     ]{biblatex}
 }
 
 
-%%%%%%%%%% Language package %%%%%%%%%%
+%%%%%%%%%% Silence warnings %%%%%%%%%%
 
-\iflang{de}{
-    \usepackage[english, ngerman]{babel}
-    \selectlanguage{ngerman}
-}
-\iflang{en}{
-    \usepackage[ngerman, english]{babel}
-    \selectlanguage{english}
-}
+\usepackage{silence} % Silence warnings and errors
+\WarningFilter{scrreprt}{Usage of package `fancyhdr' together} % Filter out warning regarding fancyhdr and KOMA-script
+
+
+%%%%%%%%%% Additional Packages %%%%%%%%%%
+
+\usepackage{amsfonts} % Extended set of fonts for mathematical use
+\usepackage{lastpage} % Get last page number (e.g. for footer)
+\usepackage{fancyhdr} % Adds styled headers and footers
+\usepackage{textcomp} % Adds more symbols (e.g. \textdegree)
+\usepackage[T1]{fontenc} % Adds more characters (e.g. for German Umlauts)
+\usepackage{tikz} % Adds drawing capabilities
+\usepackage[activate]{microtype} % Adjustments for better typography
+\usepackage{csquotes} % Used for quoting (e.g. \enquote)
+\usepackage{enumitem} % Add better enumeration options
+\usepackage[table, dvipsnames]{xcolor} % Adds colors (to tables (table) and even more colors (dvipsnames))
+\usepackage[printonlyused]{acronym} % Adds acronyms; add 'footnote' next to 'printonlyused' to show the acronym in the footnote
+\usepackage{scrhack} % Adds compatibility for KOMA-scripts with other packages
+\usepackage{listings} % Adds code sections
+\usepackage{amsmath} % Adds math environments (e.g. equation)
+\usepackage{amssymb} % Adds math symbols (e.g. \square)
+\usepackage[export]{adjustbox} % Adds more options for \includegraphics (e.g. placing to the left)
+\usepackage{makecell} % Adds more options for cells in tables (e.g. line breaks)
+\usepackage{gradientframe} % Adds gradient frames (e.g. for images)
+\usepackage{alphalph, etoolbox} % Adds possibility to use more than 26 (A-Z) appendices in appendix
+\usepackage[toc]{glossaries} % Add glossaries and add them to the table of contents
+\usepackage{xspace} % Adds possibility to add a space after a command
+\setlength{\marginparwidth}{2cm}\usepackage{todonotes} % Adds todo notes and a list of todos
+\usepackage{\fontstr} % Adds the chosen font
+\usepackage{xurl} % Adds line breaks in URLs

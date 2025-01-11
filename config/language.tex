@@ -1,49 +1,45 @@
 %!TEX root = ../document/document.tex
 
-%%%%%%%%%% Define language %%%%%%%%%%
 
+%%%%%%%%%% Settings %%%%%%%%%%
+
+% New if to check which language is set
 \newcommand{\iflang}[2]{%
-  \IfStrEq{\sprache}{#1}{#2}{}
+  \IfStrEq{\lang}{#1}{#2}{}
 }
 
-% define in packages.tex
+% New command to save the specific translations of the language
+\newcommand{\langstr}[1]{\setting{lang#1}}
 
 
 %%%%%%%%%% Define language strings %%%%%%%%%%
 
-\newcommand{\langstr}[1]{\setting{lang#1}}
-
-\langstr{abkverz}
-\langstr{anhang}
-\langstr{glossar}
-\langstr{artikelstudiengang}
-\langstr{studiengang}
-\langstr{anderdh}
-\langstr{von}
-\langstr{dbbearbeitungszeit}
-\langstr{dbmatriknr}
-\langstr{dbkurs}
-\langstr{dbfirma}
-\langstr{dbbetreuer}
-\langstr{dbgutachter}
-\langstr{sperrvermerk}
+\langstr{studycourse}
+\langstr{atthedhbw}
+\langstr{by}
+\langstr{processingtime}
+\langstr{studentid}
+\langstr{course}
+\langstr{company}
+\langstr{supervisor}
+\langstr{reviewer}
+\langstr{page}
+\langstr{pageof}
+\langstr{blockingnote}
+\langstr{declaration}
 \langstr{abstract}
-\langstr{listingname}
-\langstr{listlistingname}
-\langstr{listingautorefname}
-\langstr{selbsterkl}
-\langstr{formelsammlung}
-\langstr{seite}
-\langstr{seitevon}
-\langstr{stand}
-\langstr{formelgroeverz}
-\langstr{formel}
-\langstr{literatur}
-\langstr{weblinks}
-\langstr{weiterequellen}
-\langstr{usedsources}
+\langstr{acronyms}
+\langstr{symbols}
+\langstr{formula}
+\langstr{formulary}
+\langstr{code}
+\langstr{codelist}
+\langstr{sources}
+\langstr{furthersources}
+\langstr{appendix}
+\langstr{glossary}
 
 
 %%%%%%%%%% Load language %%%%%%%%%%
 
-\input{../config/langs/\sprache.tex}
+\input{../config/langs/\lang.tex}

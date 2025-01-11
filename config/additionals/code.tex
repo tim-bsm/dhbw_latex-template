@@ -1,98 +1,14 @@
 %!TEX root = ../../document/document.tex
 
-% Rename listings
-\renewcommand\lstlistingname{\langlistingname}
-\renewcommand\lstlistlistingname{\langlistlistingname}
-\def\lstlistingautorefname{\langlistingautorefname}
 
-%% Programmiersprachen Highlighting (Listings)
-\newcommand{\listingsettings}{%
-	\lstset{
-		numbers=left,			% Zeilennummern links
-		stepnumber=1,			% Jede Zeile nummerieren.
-		breaklines=true,		% Zeilen umbrechen wenn notwendig.
-		breakautoindent=true,	% Nach dem Zeilenumbruch Zeile einrücken.
-		postbreak=\space,		% Bei Leerzeichen umbrechen.
-		tabsize=1,				% Tabulatorgrösse 1
-		basicstyle=\ttfamily\footnotesize, % Nichtproportionale Schrift, klein für den Quellcode
-		showspaces=false,		% Leerzeichen nicht anzeigen.
-		showstringspaces=false,	% Leerzeichen auch in Strings ('') nicht anzeigen.
-		extendedchars=true,		% Alle Zeichen vom Latin1 Zeichensatz anzeigen.
-		captionpos=b,			% sets the caption-position to bottom
-		xleftmargin=0pt,		% Rand links
-		xrightmargin=0.8em,		% Rand rechts
-		framexrightmargin=0.5em,
-		frame=single,			% Rahmen an
-		frameround=ffff,
-		rulecolor=\color{darkgray},	% Rahmenfarbe
-		keywordstyle=\color[rgb]{0.133,0.133,0.6},
-		commentstyle=\color[rgb]{0.133,0.545,0.133},
-		stringstyle=\color[rgb]{0.627,0.126,0.941},
-        aboveskip=1.5em,
-	}
-	\ownlstlanguages
-}
+%%%%%%%%%% Settings %%%%%%%%%%
 
+% Rename listings for \autoref to work
+\renewcommand\lstlistingname{\langcode}
+\renewcommand\lstlistlistingname{\langcodelist}
+\def\lstlistingautorefname{\langcode}
 
-\makeatletter
-
-% \savecode[OPTIONAL: e.g. <morekeywords=type>]{<ID>}{<language>}{<caption>}{<fileName>}
-\newread\lstread % create read for counting the lines in a file
-\newcommand\savecode[5][]{%
-    \@namedef{code@#2}{
-		{
-			% Count the lines in the file to adjust the spacing of the code-block based on the result
-			\newcount\linecnt
-			\openin\lstread=../content/non_tex_files/code/#5
-			\@whilesw\unless\ifeof\lstread\fi{%
-				\advance\linecnt by \@ne
-				\readline\lstread t\expandafter o\csname line-\number\linecnt\endcsname
-			}
-			\advance\linecnt by -1 % correct by one
-			\newcommand{\amndig}{\fpeval{ ceil( ln(\linecnt+1)/ln(10) ) }} % get amount of digits in number of lines
-			\closein\lstread
-
-			% Check if optional values were given. If so, use these
-			\ifthenelse{\isempty{#1}}
-				{%true
-					\lstinputlisting[
-						language={#3},
-						caption={#4},
-						label={code:#2},
-						% position line numbers depending on the amount of lines in the file
-						xleftmargin=\fpeval{1.8+\amndig*0.5}em,
-						framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
-					]{../content/non_tex_files/code/#5}
-				}
-				{%false
-					\lstinputlisting[
-						language={#3},
-						caption={#4},
-						label={code:#2},
-						% position line numbers depending on the amount of lines in the file
-						xleftmargin=\fpeval{1.8+\amndig*0.5}em,
-						framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
-						#1
-					]{../content/non_tex_files/code/#5}
-				}
-			
-		}
-    }
-}
-
-% \usecode{<ID>}
-\newcommand\usecode[1]{%
-    \@nameuse{code@#1}
-}
-
-\makeatother
-
-
-\input{../content/additionals/code.tex}
-
-
-%%%%%%%%%% Define own languages for listings %%%%%%%%%%
-
+% Define own languages for listings
 \newcommand{\ownlstlanguages}{
 	\lstdefinelanguage{ini}{
 		columns=fullflexible,
@@ -143,4 +59,86 @@
 	}
 }
 
-\listingsettings
+% Define the default style of the listings
+\lstset{
+	numbers=left,						% Line numbers left
+	stepnumber=1,						% Line numbers on every line
+	breaklines=true,					% Break long lines, if needed
+	breakautoindent=true,				% Autoindent broken lines
+	postbreak=\space,					% Break at a space
+	tabsize=1,							% Tabsize
+	basicstyle=\ttfamily\footnotesize, 	% Font and size to small
+	showspaces=false,					% Do not show spaces
+	showstringspaces=false,				% Do not show spaces in strings ('')
+	extendedchars=true,					% Show all characters from Latin1
+	captionpos=b,						% Sets the caption-position to bottom
+	xleftmargin=0pt,
+	xrightmargin=0.8em,
+	framexrightmargin=0.5em,
+	frame=single,						% Single frame around code
+	frameround=ffff,
+	rulecolor=\color{darkgray},			% Color of the frame
+	keywordstyle=\color[rgb]{0.133,0.133,0.6},
+	commentstyle=\color[rgb]{0.133,0.545,0.133},
+	stringstyle=\color[rgb]{0.627,0.126,0.941},
+	aboveskip=1.5em,
+}
+\ownlstlanguages
+
+
+%%%%%%%%%% Create new save command %%%%%%%%%%
+
+\makeatletter
+
+% \savecode[OPTIONAL: e.g. <morekeywords=type>]{<ID>}{<language>}{<caption>}{<fileName>}
+\newread\lstread % create read for counting the lines in a file
+\newcommand\savecode[5][]{%
+    \@namedef{code@#2}{
+		% Count the lines in the file to adjust the spacing of the code-block based on the result
+		\newcount\linecnt
+		\openin\lstread=../content/non_tex_files/code/#5
+		\@whilesw\unless\ifeof\lstread\fi{%
+			\advance\linecnt by \@ne
+			\readline\lstread t\expandafter o\csname line-\number\linecnt\endcsname
+		}
+		\advance\linecnt by -1 % correct by one
+		\newcommand{\amndig}{\fpeval{ ceil( ln(\linecnt+1)/ln(10) ) }} % get amount of digits in number of lines
+		\closein\lstread
+
+		% Check if optional values were given. If so, use these
+		\ifthenelse{\isempty{#1}}
+			{%true
+				\lstinputlisting[
+					language={#3},
+					caption={#4},
+					label={code:#2},
+					% position line numbers depending on the amount of lines in the file
+					xleftmargin=\fpeval{1.8+\amndig*0.5}em,
+					framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
+				]{../content/non_tex_files/code/#5}
+			}
+			{%false
+				\lstinputlisting[
+					language={#3},
+					caption={#4},
+					label={code:#2},
+					% position line numbers depending on the amount of lines in the file
+					xleftmargin=\fpeval{1.8+\amndig*0.5}em,
+					framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
+					#1
+				]{../content/non_tex_files/code/#5}
+			}
+    }
+}
+
+% \usecode{<ID>}
+\newcommand\usecode[1]{%
+    \@nameuse{code@#1}
+}
+
+\makeatother
+
+
+%%%%%%%%%% Content %%%%%%%%%%
+
+\input{../content/additionals/code.tex}

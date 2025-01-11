@@ -10,57 +10,96 @@
 %%%%%%%%%% Appendix %%%%%%%%%%
 
 %% BIBLIOGRAPHY
-% Nicht zitierte Quellen werden extra aufgeführt
+% Create a category for cited references -> makes it possible to print cited and uncited references separately
 \DeclareBibliographyCategory{cited}
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+
+% Load the bibliography
 \addbibresource{../config/bibliographie.bib}
 
 %% MORE THAN 26 APPENDICES
 \makeatletter
+
 % Adds AlphAlph as option to \pagenumbering to allow more than 26 pages in the appendix
-\newcommand{\@AlphAlph}{} % Check that \@AlphAlph is undefined.
+\newcommand{\@AlphAlph}{}
 \let\@AlphAlph=\AlphAlph
+
 \makeatother
 
 %% GLOSSARIES
-\ifglossar
+\ifglossary
     \makeglossaries
 \fi
 
 
 %%%%%%%%%% PDF Settings %%%%%%%%%%
 
-\title{\titel}
-\author{\autor}
+\title{\titlestr}
+\author{\authorstr}
 \date{\datum}
 
 
-%%%%%%%%%%% Hurenkinder und Schusterjungen verhindern %%%%%%%%%%
+%%%%%%%%%%% Language specific %%%%%%%%%%
 
-\clubpenalty = 10000 % schließt Schusterjungen aus (Seitenumbruch nach der ersten Zeile eines neuen Absatzes)
-\widowpenalty = 10000 % schließt Hurenkinder aus (die letzte Zeile eines Absatzes steht auf einer neuen Seite)
+\clubpenalty = 10000 % Avoid orphans (single lines at the end of a paragraph)
+\widowpenalty = 10000 % Avoid widows (single lines at the beginning of a paragraph)
 \displaywidowpenalty=10000
-\setcounter{biburlnumpenalty}{100}
-\setcounter{biburllcpenalty}{100}
-\setcounter{biburlucpenalty}{100}
+
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
 
 \addtokomafont{caption}{\small} % Make font size of captions smaller
 
 
 %%%%%%%%%% Reference with pages %%%%%%%%%%
 
-% # TODO: fixme
-% Add a pageref to autoref whenever the referenced page is not
-% the same as the current one useful for printed documents
-% without clickable hyperlinks
-\ifrefWithPages
-    \AtBeginDocument{\let\oldautoref\autoref}
-    \AtBeginDocument{
-        \renewcommand{\autoref}[1]{%
-            \oldautoref{#1}%
-            \ifthenelse{\thepage=\pageref{#1}}% if current page number equals the referenced page number
-            {}% then add nothing
-            { (S. \pageref{#1})}% else add the text
-        }
+\ifrefwithpages
+    % Add a pageref to autoref whenever the referenced page is not the same as
+    % the current one useful for printed documents without clickable hyperlinks
+    \let\oldautoref\autoref % Save the original autoref
+    \newcounter{sp}
+    \renewcommand{\autoref}[1]{%
+        \stepcounter{sp}\label{sp-\thesp}
+        \oldautoref{#1}
+        \ifthenelse{\equal{\getpagerefnumber{#1}}{\getpagerefnumber{sp-\thesp}}} % If the page number is the same
+            {} % Do nothing
+            {\ (\autopageref{#1})} % Otherwise add the page number
     }
 \fi
+
+
+%%%%%%%%%% Custom commands %%%%%%%%%%
+
+% Add a signature to the document
+\newcommand{\addsignature}{
+    % Create place for the signature
+    \ifshowsignature
+        \vspace{0.5cm}
+        \signature
+    \else
+        \vspace{2.7cm}
+    \fi
+
+    % Change the size of the line depending on the content below
+    \vspace{-0.8cm}
+    {% Create a scope for the \newcommand to avoid conflicts
+        \newcommand{\signcont}{
+            \authorstr \hspace{1cm} \submissionlocation, \signingdate
+        }
+        \let\signlen\relax % enable reusability of \signlen if already defined
+        \newlength{\signlen}
+        \setlength{\signlen}{\widthof{\signcont}}
+
+        % Depending on the size of the content below the line, change its width (if greater than 200pt)
+        \ifdimcomp{\signlen}{<}{200pt}
+            {%true
+                \rule{200pt}{0.4pt}
+            }
+            {%false
+                \rule{\signlen}{0.4pt}
+            }
+        \\
+        \signcont
+    }
+}

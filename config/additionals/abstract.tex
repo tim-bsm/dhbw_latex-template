@@ -1,58 +1,79 @@
 %!TEX root = ../../document/document.tex
 
-\newcommand{\deAbstract}{%
+
+%%%%%%%%%% Settings %%%%%%%%%%
+
+% Insert the default settings for every abstract
+\newcommand{\defabstract}{
     \thispagestyle{plain}
     \chapter*{\langabstract}
-    \input{../content/additionals/abstract_de.tex}
 }
 
+% Get the abstracts from the files and add the previously defined settings
+\newcommand{\deAbstract}{%
+    \defabstract
+    \input{../content/additionals/abstract_de.tex}
+}
 \newcommand{\enAbstract}{%
-    \thispagestyle{plain}
-    \chapter*{\langabstract}
+    \defabstract
     \input{../content/additionals/abstract_en.tex}
 }
 
 
-\iflang{de}{
-    \ifabstractde
-        \deAbstract
+%%%%%%%%%% Content %%%%%%%%%%
 
-        % Abstract zum Inhaltsverzeichnis hinzufügen
+\iflang{de}{
+    % Check if the german abstractshould be shown
+    \ifabstractde
+        % Show abstract and add it to the toc
+        \deAbstract
         \addcontentsline{toc}{chapter}{\langabstract}
         
+        % Check if the english abstract should be shown as well
         \ifabstracten
             \clearpage
             \begin{otherlanguage}{english}
                 \enAbstract
             \end{otherlanguage}
         \fi
+    % If not, ...
     \else
-        \begin{otherlanguage}{english}
-            \enAbstract
-        \end{otherlanguage}
-        
-        % Abstract zum Inhaltsverzeichnis hinzufügen
-        \addcontentsline{toc}{chapter}{\langabstract}
+        % ... check if the english abstract should be shown
+        \ifabstracten
+            \begin{otherlanguage}{english}
+                \enAbstract
+            \end{otherlanguage}
+            
+            % Add the abstract to the toc, as it is the only one
+            \addcontentsline{toc}{chapter}{\langabstract}
+        \fi
     \fi
 }
 
 \iflang{en}{
-    \ifabstractde
-        \begin{otherlanguage}{ngerman}
-            \deAbstract
-        \end{otherlanguage}
-
-        % Abstract zum Inhaltsverzeichnis hinzufügen
+    % Check if the english abstract should be shown
+    \ifabstracten
+        % Show abstract and add it to the toc
+        \enAbstract
         \addcontentsline{toc}{chapter}{\langabstract}
         
+        % Check if the german abstract should be shown as well
         \ifabstractde
             \clearpage
-            \enAbstract
+            \begin{otherlanguage}{ngerman}
+                \deAbstract
+            \end{otherlanguage}
         \fi
+    % If not, ...
     \else
-        \enAbstract
-
-        % Abstract zum Inhaltsverzeichnis hinzufügen
-        \addcontentsline{toc}{chapter}{\langabstract}
+        % ... check if the german abstract should be shown
+        \ifabstractde
+            \begin{otherlanguage}{ngerman}
+                \deAbstract
+            \end{otherlanguage}
+            
+            % Add the abstract to the toc, as it is the only one
+            \addcontentsline{toc}{chapter}{\langabstract}
+        \fi
     \fi
 }

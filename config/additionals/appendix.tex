@@ -1,8 +1,10 @@
 %!TEX root = ../../document/document.tex
 
+%%%%%%%%%% Settings %%%%%%%%%%
 
+% Start the appendix and change the pagestyle
 \appendix
-\setpagestylefoot
+\setpagestyleappendix
 
 % Add an 'A' before the figure, table, listing and equation numbers in the appendix
 \renewcommand{\thefigure}{A\arabic{figure}}
@@ -11,58 +13,34 @@
 \renewcommand{\theequation}{A\arabic{equation}}
 
 
-\ifliteratur
-    % Quellenverzeichnis nach Literatur und Weblinks trennen
-    \ifsplitbibliography
-        \addchap{\langusedsources}
-            \printbibliography[
-                category=cited,
-                heading=subbibintoc,
-                title=\langliteratur,
-                nottype=online]
-            \printbibliography[
-                category=cited,
-                heading=subbibintoc,
-                title=\langweblinks,
-                type=online]
-            % # TODO: fix overfull hhbox über rand raus
-        % Literaturverzeichnis um weitere Quellen (nicht zitiert) ergänzen
-        \nocite{*}
-        \addchap{\langweiterequellen}
-            \printbibliography[
-                notcategory=cited,
-                heading=subbibintoc,
-                title=\langliteratur,
-                nottype=online]
-            \printbibliography[
-                notcategory=cited,
-                heading=subbibintoc,
-                title=\langweblinks,
-                type=online]
-    % Quellenverzeichnis nicht trennen
-    \else
+%%%%%%%%%% Content %%%%%%%%%%
+
+% If set, include the bibliography
+\ifsources
+    % Force line breaking in the bibliography
+    \begin{sloppypar}
+        % Print the used sources
         \printbibliography[
             category=cited,
-            title=\langusedsources]
+            heading=bibintoc,
+            title=\langsources]
 
-        % Literaturverzeichnis um weitere Quellen (nicht zitiert) ergänzen
+        % Print the unused sources
         \nocite{*}
         \printbibliography[
             notcategory=cited,
-            title=\langweiterequellen]
-    \fi
+            title=\langfurthersources]
+    \end{sloppypar}
 \fi
 
-
-% Anhang
-\ifanhang
-    \addchap{\langanhang}
+% If set, include the appendix (extra content)
+\ifappendix
+    \addchap{\langappendix}
     \input{../content/additionals/appendix.tex}
 \fi
 
-
-% Glossar
-\ifglossar
+% If set, include the glossary
+\ifglossary
     \input{../content/additionals/glossary.tex}
-    \printglossary[style=altlist, title=\langglossar]
+    \printglossary[style=altlist, title=\langglossary]
 \fi

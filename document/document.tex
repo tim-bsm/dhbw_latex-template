@@ -1,9 +1,12 @@
 \input{../config/config.tex}
 
 \begin{document}
-    \setpagestylehead
-    \RedeclareSectionCommand[beforeskip=\kapitelabstand]{chapter} % Abstand zwischen Kapitelüberschrift und dem oberen Rand
+    %%%%%%%%%% Pages before the chapters %%%%%%%%%%
 
+    \setpagestylepre
+
+    % Set distance between chapter title and top of page
+    \RedeclareSectionCommand[beforeskip=\chapterdistance]{chapter}
     
     \ifshowtodonotes
         % Add ToDo-List
@@ -13,8 +16,7 @@
         \presetkeys{todonotes}{disable}{}
     \fi
 
-
-    % Deckblatt
+    % Cover sheet
     \begin{spacing}{1}
         \input{../config/additionals/cover_sheet.tex}
     \end{spacing}
@@ -22,25 +24,19 @@
     \newpage
     \pagenumbering{Roman}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    % Sperrvermerk
-    \ifsperrvermerk
+    % Blocking note
+    \ifblockingnote
         \input{../config/additionals/blocking_note.tex}
         \newpage
     \fi
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    % Selbstständigkeitserklärung
-    \ifselbsterkl
+    % Self-Declaration
+    \ifdeclaration
         \input{../config/additionals/declaration.tex}
         \newpage
     \fi
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    % # TODO: quellen unterverz aus toc raus und generell nur eine überschrift
+    % Abstract
     \ifabstractde
         \input{../config/additionals/abstract.tex}
         \newpage
@@ -51,16 +47,11 @@
         \fi
     \fi
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    \pagestyle{plain}		% nur Seitenzahlen im Fuß
-
-    % Inhaltsverzeichnis
-    \ifinhalt
+    % Table of contents
+    \iftableofcontents
         \begin{spacing}{1.1}
             \begingroup
-                % Zeige bis zu 2 Stufen von Unterkapiteln (Bsp.: 1.1.1)
-                % im Inhaltsverzeichnis an --> für mehr/weniger: 2 ändern
+                % Show up to 2 levels of subheadings (e.g. 1.1.1)
                 \setcounter{tocdepth}{2}
 
                 \pdfbookmark{\contentsname}{toc}
@@ -71,66 +62,50 @@
         \newpage
     \fi
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    % Abkürzungsverzeichnis
-    \ifabkverz
+    % List of acronyms
+    \ifacronyms
         \cleardoublepage
         \input{../config/additionals/acronyms.tex}
     \fi
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    % Abbildungsverzeichnis
-    \ifabbverz
+    % List of images
+    \ifimagelist
         \cleardoublepage
         \listoffigures
     \fi
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    % Tabellenverzeichnis
-    \iftableverz
+    % List of tables
+    \iftablelist
         \cleardoublepage
         \listoftables
-        \input{../config/additionals/tables.tex}
     \fi
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-	% Formelgrößenverzeichnis
-	\ifformelgroeverz
+	% List of symbols
+	\ifsymbols
 		\cleardoublepage
         \input{../config/additionals/symbols.tex}
 	\fi
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    % Formelverzeichnis
-    % mit "\formelentry{Formelname}" können neue Einträge erstellt werden. 
-    % => auslagern in separates File? z.B. \input{ads/formels}
-    \ifformelverz
+    % Formulary
+    \ifformulary
         \cleardoublepage
-        \input{../config/additionals/equations.tex}
+        \listofformels
+        
     \fi
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    % Listingsverzeichnis
-    \ifcodeverz
+    % List of code
+    \ifcodelist
         \cleardoublepage
         \lstlistoflistings
     \fi
 
-    
     \label{endOfRomanNumbering}
     
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
+    %%%%%%%%%% Pages with chapters %%%%%%%%%%
+    
     \cleardoublepage
-
-    % Begin of new numbering
-    \setpagestylecontent
+    \setpagestylechapter
 
     % Inhalt
     \foreach \i in {01,02,03,04,05,06,07,08,09,...,99} {
@@ -143,9 +118,8 @@
     \label{endOfArabicNumbering}
     \clearpage
     
-    %%%%%%%%%%%%%%%%%%%%%%%%%% NEUE SEITE %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \ifappendix
-        \input{../config/additionals/appendix.tex}
-    \fi
+    %%%%%%%%%% Pages after the chapters %%%%%%%%%%
+
+    \input{../config/additionals/appendix.tex}
 \end{document}

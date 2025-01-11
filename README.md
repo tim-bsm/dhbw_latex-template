@@ -1,7 +1,6 @@
-# LaTeX Template für die DHBW
-
-## Entwicklungsumgebung
-Um diese Vorlage optimal nutzen zu können, sollte am besten "MS Visual Studio Code" in Kombination mit JabRef verwendet werden. 
+# LaTeX Template for the DHBW
+## Development Environment
+To use this template optimally, it is best to use [MS Visual Studio Code](https://code.visualstudio.com) in combination with [JabRef](https://www.jabref.org).
 
 ### Visual Studio Code
 **Packages:**  
@@ -9,12 +8,13 @@ Um diese Vorlage optimal nutzen zu können, sollte am besten "MS Visual Studio C
 - [LaTeX Utilities](https://marketplace.visualstudio.com/items?itemName=tecosaur.latex-utilities)
 - [LTeX – LanguageTool grammar/spell checking](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex)
 
-**Einstellungen:**  
-Folgende Einstellungen sollten für eine bessere Verwendbarkeit in die settings.json von VSC zwischen den bereits bestehenden geschweiften Klammern eingefügt werden.  
-Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "settings" eingeben und das Feld mit "Preferences: Open User Settings (JSON)" auswählen. Dort bitte Folgendes einfügen:
-``````
+**Settings:**  
+The following settings should be added to the settings.json of VSC for better usability.  
+On Windows, press CTRL+SHIFT+P and on Mac CMD+SHIFT+P in VSC, type "settings" and select "Preferences: Open User Settings (JSON)". Then insert the following:
+
+```json
 // LaTeX Settings
-"ltex.language": "de-DE",
+"ltex.language": "de-DE", // Choose your own language: "en-US", "de-DE", ...
 "latex-workshop.latex.tools": [
     {
         "name": "latexmk",
@@ -28,37 +28,7 @@ Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "sett
             "%DOC%"
         ],
         "env": {}
-    },
-    {
-        "name": "xelatex",
-        "command": "xelatex",
-        "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "%DOC%"
-        ],
-        "env": {}
-    },
-    {
-        "name": "pdflatex",
-        "command": "pdflatex",
-        "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "%DOC%"
-        ],
-        "env": {}
-    },
-    {
-        "name": "bibtex",
-        "command": "bibtex",
-        "args": [
-            "%DOCFILE%"
-        ],
-        "env": {}
-    }       
+    }
 ],
 "latex-workshop.latex.recipes": [
     {
@@ -66,93 +36,67 @@ Hierfür auf Windows in VSC STRG+SHIFT+P und auf Mac CMD+SHIFT+P drücken, "sett
         "tools": [
             "latexmk"
         ]
-    },
-    {
-        "name": "pdfLaTeX",
-        "tools": [
-            "pdflatex"
-        ]
-    },
-    {
-        "name": "xelatex",
-        "tools": [
-            "xelatex"
-        ]
-    },
-    {
-        "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
-        "tools": [
-            "pdflatex",
-            "bibtex",
-            "pdflatex",
-            "pdflatex"
-        ]
-    },
-    {
-        "name": "xelatex ➞ bibtex ➞ xelatex`×2",
-        "tools": [
-            "xelatex",
-            "bibtex",
-            "xelatex",
-            "xelatex"
-        ]
     }
-        
 ],
+// Fix citation warnings in editor when using biber (wavy lines).
 "latex-workshop.intellisense.citation.backend": "biblatex",
-"latex-workshop.latex.recipe.default": "first", // set latexmk as default
+// Set bibliography indentation to two spaces (default).
+"latex-workshop.bibtex-format.tab": "2 spaces",
+// Build PDF every time a file is saved.
+"latex-workshop.latex.autoBuild.run": "onSave",
+// Sync PDF with cursor position after compiling.
+"latex-workshop.synctex.afterBuild.enabled": true,
+// Automatically choose first recipe (latexmk) on next build.
+"latex-workshop.latex.recipe.default": "first",
 
 // VS Code Settings
 "editor.wordWrap": "on",
-``````
+```
 
 ### JabRef
 **[Browser Extension:](https://docs.jabref.org/collect/jabref-browser-extension)**  
-Bei mir waren sowohl die Python, als auch die JSON Datei nicht vorhanden. Diese musste ich manuell installieren. Die JSON ist im obigen Link erklärt, der Pfad für die Python Datei zwar auch, die Datei selber ist allerdings nicht verlinkt. Man findet diese [hier](https://github.com/JabRef/jabref/), wenn man nach "jabrefHost" sucht und die passende Datei herunterlädt.
+For me, both the Python and JSON files were not present. I had to install them manually. The JSON is explained in the link above, the path for the Python file is also mentioned, but the file itself is not linked. You can find it [here](https://github.com/JabRef/jabref/) by searching for "jabrefHost" and downloading the appropriate file.
 
 **Template:**  
-Das Template ```bibliographie.bib``` in ```./settings``` beinhaltet bereits weitere Einstellungen von JabRef, welche einfach so übernommen werden können. Hierfür muss JabRef nur gestartet werden und dann mithilfe des Explorers die Datei ausgewählt werden. Bitte keine neue Library anlegen.
+The template ```bibliographie.bib``` in ```/config``` already includes additional settings from JabRef, which can be adopted as is. Just start JabRef and use the explorer to select the file. Please do not create a new library.
 
 &nbsp;
-## Was sind die clean-Skripte?
-Die clean Skripte werden dafür verwendet, um (unnötige) Files aus Unterordnern zu löschen. Die Files sind unnötig, wenn man die Vorlage weitergeben will bzw. wenn man fertig mit schreiben ist. Sie werden automatisch beim Builden erstellt und beschleunigen dieses für den nächsten Build. Wenn man diese also löscht, wird der nächste Build deutlich länger dauern.  
-Allerdings ist es manchmal hilfreich diese Dateien zu löschen, da beim Builden irgendetwas schiefgeht. Hierfür müssen einfach die Skripte (abhängig vom jeweiligen Betriebssystem) ausgeführt werden.
+## What are the clean scripts?
+The clean scripts are used to delete (unnecessary) files from subfolders. The files are unnecessary if you want to share the template or if you are done writing. They are automatically created during the build process and speed up the next build. If you delete them, the next build will take significantly longer.  
+However, it is sometimes helpful to delete these files if something goes wrong during the build. Just run the correct script (depending on your operating system).
 
 ### Windows
-Zuerst in das Verzeichnis des LaTeX Ordners dieser Vorlage wechseln und dann die ```bat_clean.bat``` Datei im Terminal wie folgt aufrufen:
-````
-# Zum Wechseln in das Verzeichnis
-cd /d <Dateipfad>
+First, navigate to the directory of the LaTeX folder of this template and then run the ```bat_clean.bat``` file in the terminal as follows:
+```bash
+# To change to the directory
+cd /d <file path>
 
-# Dann dort folgendes Ausführen
+# Then execute the following
 bat_clean.bat
-````
+```
 
-### Linux / MacOS / _Generell_ Unix
-Zuerst in das Verzeichnis des LaTeX Ordners dieser Vorlage wechseln und dann die ```sh_clean.sh``` Datei im Terminal wie folgt aufrufen:
-````
-# Zum Wechseln in das Verzeichnis
-cd <Dateipfad>
+### Linux / MacOS / _Generally_ Unix
+First, navigate to the directory of the LaTeX folder of this template and then run the ```sh_clean.sh``` file in the terminal as follows:
+```bash
+# To change to the directory
+cd <file path>
 
-# Dann dort folgendes Ausführen
+# Then execute the following
 sh sh_clean.sh
-````
+```
 
 &nbsp;
-## Sonstiges
-Formeln, Bilder und Tabellen müssen nicht in die externen Dateien unter ```/content/additionals/editable``` geschrieben werden. Sie können weiterhin normal verwendet werden.
+## Miscellaneous
+Code, formulas, images and tables do not need to be written in the external files under ```/content/additionals```. They can still be used normally.
 
 &nbsp;
-## Mögliche Fehler
+## Possible Errors
 
-### Flag "formelgroeverz" oder "abkverz" gesetzt
-Wenn das Flag "formelgroeverz" in der settings.tex auf True gesetzt ist, muss zwangsweise irgendwo mindestens ein Eintrag aus diesem Verzeichnis in den Chaptern verwendet werden, da sonst ein Fehler auftritt und das PDF nicht (richtig) erstellt werden kann.  
-Selbiges gilt für das Abkürzungsverzeichnis mit dem Flag "abkverz".
-
-### "empty bibliography"
-Wenn als Fehler "empty bibliography" ausgegeben wird, ist es einen Versuch wert, in der settings.tex die Einstellung für das "zitierbackend" auf die jeweilige andere Variante - die im Kommentar darüber genannt wird - zu stellen.
+### Flag 'symbolstrue' or 'acronymstrue' set
+If the flag `symbolstrue` is set in ```/content/user_settings.tex```, at least one entry from the symbols file must be used in the chapters, otherwise an error will occur and the PDF will not be created correctly.  
+The same applies to the acronyms file with the flag `acronymstrue`.
 
 &nbsp;
-## Hilfreiche Links
+## Helpful Links
 - https://mathjiajia.github.io/vscode-and-latex/
 - https://de.wikipedia.org/wiki/Liste_mathematischer_Symbole
