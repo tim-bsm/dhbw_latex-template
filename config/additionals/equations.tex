@@ -7,7 +7,7 @@
     forcenames,
     type=formel,
     name=\langformula,
-    listname={\langformulary},
+    listname=\langformulary,
 ]{for}
 
 % Adds a formel to the formular list
@@ -27,9 +27,9 @@
 \newcommand\saveequation[3]{%
     \@namedef{eq:equation@#1}{
         \begin{equation}
-            \formelentry{#3}        % Zu Formelverzeichnis hinzufügen
-            \label{eq:#1}           % Label setzen
-            #2                      % Formel setzen
+            \formelentry{#3}        % Add to formulary
+            \label{eq:#1}           % Set the label
+            #2                      % Print the equation
         \end{equation}
         \begin{center}
             \autoref{eq:#1}: #3
