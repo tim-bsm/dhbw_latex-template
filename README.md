@@ -1,5 +1,9 @@
 # LaTeX Template for the DHBW
 
+### To view a short example of the template, please look at [this PDF](document/document.pdf).
+
+&nbsp;
+
 ## Development Environment
 To use this template optimally, it is best to use [MS Visual Studio Code](https://code.visualstudio.com) in combination with [JabRef](https://www.jabref.org).  
 To check for any new updates, please visit my [repository](https://github.com/tim-bsm/dhbw_latex-template).
@@ -60,7 +64,7 @@ On Windows, press CTRL+SHIFT+P and on Mac CMD+SHIFT+P in VSC, type "settings" an
 For me, both the Python and JSON files were not present. I had to install them manually. The JSON is explained in the link above, the path for the Python file is also mentioned, but the file itself is not linked. You can find it [here](https://github.com/JabRef/jabref/) by searching for "jabrefHost" and downloading the appropriate file.
 
 **Template:**  
-The template ```bibliographie.bib``` in ```/config``` already includes additional settings from JabRef, which can be adopted as is. Just start JabRef and use the explorer to select the file. Please do not create a new library.
+The template ```bibliographie.bib``` in ```/content``` already includes additional settings from JabRef, which can be adopted as is. Just start JabRef and use the explorer to select the file. Please do not create a new library.
 
 
 

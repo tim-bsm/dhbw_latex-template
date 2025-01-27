@@ -1,5 +1,6 @@
 %!TEX root = ../document/document.tex
 
+
 %%%%%%%%%% Special colors (e.g. for listings) %%%%%%%%%%
 
 \definecolor{LinkColor}{HTML}{00007A}
@@ -15,15 +16,13 @@
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
 
 % Load the bibliography
-\addbibresource{../config/bibliographie.bib}
+\addbibresource{../content/bibliographie.bib}
 
 %% MORE THAN 26 APPENDICES
 \makeatletter
-
-% Adds AlphAlph as option to \pagenumbering to allow more than 26 pages in the appendix
-\newcommand{\@AlphAlph}{}
-\let\@AlphAlph=\AlphAlph
-
+    % Adds AlphAlph as option to \pagenumbering to allow more than 26 pages in the appendix
+    \newcommand{\@AlphAlph}{}
+    \let\@AlphAlph=\AlphAlph
 \makeatother
 
 %% GLOSSARIES
@@ -103,3 +102,12 @@
         \signcont
     }
 }
+
+
+%%%%%%%%%% Load any settings %%%%%%%%%%
+
+% Deactivate the \ac command in the PDF bookmarks
+% https://tex.stackexchange.com/a/735524/370422
+\makeatletter
+    \pdfstringdefDisableCommands{\let\@ac\relax}
+\makeatother

@@ -93,7 +93,7 @@
 % \savecode[OPTIONAL: e.g. <morekeywords=type>]{<ID>}{<language>}{<caption>}{<fileName>}
 \newread\lstread % create read for counting the lines in a file
 \newcommand\savecode[5][]{%
-    \@namedef{code@#2}{
+    \@namedef{code@#2}{{
 		% Count the lines in the file to adjust the spacing of the code-block based on the result
 		\newcount\linecnt
 		\openin\lstread=../content/non_tex_files/code/#5
@@ -128,7 +128,7 @@
 					#1
 				]{../content/non_tex_files/code/#5}
 			}
-    }
+    }}
 }
 
 % \usecode{<ID>}
