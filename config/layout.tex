@@ -1,5 +1,11 @@
 %!TEX root = ../document/document.tex
 
+% Filter out warning regarding fancyhdr and KOMA-script
+% https://tex.stackexchange.com/q/735915/370422
+\makeatletter
+\def\class@shoulddisablepackagewarning@list{fancyhdr}
+\makeatother
+
 \documentclass[%
     oneside,                % Print one sided
     fontsize=\fontsizestr,  % Set the font size
