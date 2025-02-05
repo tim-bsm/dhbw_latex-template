@@ -90,7 +90,12 @@
 
 \makeatletter
 
-% \savecode[OPTIONAL: e.g. <morekeywords=type>]{<ID>}{<language>}{<caption>}{<fileName>}
+% \savecode[OPTIONAL: e.g. <morekeywords=type>]{<ID>}{<language>}{<description>}{<file_name>}
+
+% -> OPTIONAL to add any special settings (see https://texdoc.org/serve/listings/0)
+% language: e.g. Java, C++, Python, ...
+% description: caption of the code-block
+% file_name: in the folder /content/non_tex_files/code
 \newread\lstread % create read for counting the lines in a file
 \newcommand\savecode[5][]{%
     \@namedef{code@#2}{{
@@ -104,30 +109,17 @@
 		\advance\linecnt by -1 % correct by one
 		\newcommand{\amndig}{\fpeval{ ceil( ln(\linecnt+1)/ln(10) ) }} % get amount of digits in number of lines
 		\closein\lstread
-
-		% Check if optional values were given. If so, use these
-		\ifthenelse{\isempty{#1}}
-			{%true
-				\lstinputlisting[
-					language={#3},
-					caption={#4},
-					label={code:#2},
-					% position line numbers depending on the amount of lines in the file
-					xleftmargin=\fpeval{1.8+\amndig*0.5}em,
-					framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
-				]{../content/non_tex_files/code/#5}
-			}
-			{%false
-				\lstinputlisting[
-					language={#3},
-					caption={#4},
-					label={code:#2},
-					% position line numbers depending on the amount of lines in the file
-					xleftmargin=\fpeval{1.8+\amndig*0.5}em,
-					framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
-					#1
-				]{../content/non_tex_files/code/#5}
-			}
+		
+		% Include the code
+		\lstinputlisting[
+			language={#3},
+			caption={#4},
+			label={code:#2},
+			% position line numbers depending on the amount of lines in the file
+			xleftmargin=\fpeval{1.8+\amndig*0.5}em,
+			framexleftmargin=\fpeval{1.5+\amndig*0.5}em,
+			#1% add any special settings here, if #1 not empty
+		]{../content/non_tex_files/code/#5}
     }}
 }
 

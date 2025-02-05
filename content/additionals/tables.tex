@@ -1,7 +1,11 @@
 %!TEX root = ../../document/document.tex
 
-% FORMAT: \savetable{<ID>}{<adjustSettings(e.g. center)>}{<tabularSetting(e.g. |c|c|c|c|c|c|)>}{<description>}{<content>}
-% For <adjustSettings>: http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/adjustbox/adjustbox.pdf
+% \savetable{<ID>}{<adjust_settings>}{<column_setting>}{<description>}{<content>}
+
+% adjust_settings: any settings for \begin{adjustbox} e.g. center
+% column_setting: any column settings for \begin{tabular} e.g. |c|c|c|c|c|c|
+% description: caption to show below the table
+% content: the content of the table
 
 
 \savetable{bsp_normal}{rotate=0, center}{|c|c|c|c|c|c|}{Beispieltabelle}{

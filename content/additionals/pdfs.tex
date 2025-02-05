@@ -1,0 +1,16 @@
+%!TEX root = ../../document/document.tex
+
+% \savepdf[OPTIONAL: e.g. <landscape=true>,<width=0.7\textwidth>]{<ID>}{<referenced_page>}{<type}{<pages>}{<last_page>}{<description>}{<file_name>}
+
+% -> OPTIONAL to add any special settings (see https://texdoc.org/serve/pdfpages.pdf/0)
+% referenced_page: add the number of the page to reference to (PDF page number)
+% type: figure or table to add to the corresponding list
+% first_pages: Enter all pages except the last one: e.g. 1,2 or 1-2 (PDF pages)
+% last_page: Enter last page here: e.g. 3
+% -> IF ONLY ONE PAGE IS NEEDED, LEAVE first_pages EMPTY AND ENTER THE PAGE NUMBER IN last_page
+% description: heading to show in the list of images/tables
+% file_name: in the folder /content/non_tex_files/pdfs
+
+
+\savepdf{example_multiple-pages}{1}{figure}{1-2}{3}{Test PDF - multiple pages}{example.pdf}
+\savepdf{example_single-page}{2}{figure}{}{2}{Test PDF - single page}{example.pdf}

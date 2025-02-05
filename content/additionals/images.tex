@@ -1,6 +1,12 @@
 %!TEX root = ../../document/document.tex
 
-% FORMAT: \saveimage[OPTIONAL: <linewidth=0px, padding=0mm>]{<ID>}{<imageSetting(e.g. !ht)>}{<graphicSettings(e.g. width=0.7)>}{<imageName>}{<description>} -> OPTIONAL um grauen Rahmen um Bild zu platzieren
+% \saveimage[OPTIONAL: <linewidth=0px, padding=0mm>]{<ID>}{<figure_position>}{<graphic_settings>}{<description>}{<file_name>}
+
+% -> OPTIONAL to add a frame around the image (see https://ctan.joethei.xyz/macros/latex/contrib/gradientframe/gradientframe.pdf)
+% figure_position: where to position the figure e.g. ht (here, top)
+% graphic_settings: any settings for \includegraphics e.g. width=0.7\textwidth
+% description: caption to show below the image
+% file_name: in the folder /content/non_tex_files/images
 
 
 %%%%%%%%%%%%%%%%%%%%%%% SETUP %%%%%%%%%%%%%%%%%%%%%%
@@ -23,4 +29,4 @@
 
 %%%%%%%%%%%%%%%%%%%% OWN IMAGES %%%%%%%%%%%%%%%%%%%%
 
-\saveimage[linewidth=2px, padding=3mm]{bsp}{ht}{width=0.7\textwidth}{dhbw_de.png}{Beispiel: einfügen eines Bildes \cite{2024}}
+\saveimage[linewidth=2px, padding=3mm]{bsp}{ht}{width=0.7\textwidth}{Beispiel: einfügen eines Bildes \cite{2024}}{dhbw_de.png}

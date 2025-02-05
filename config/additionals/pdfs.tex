@@ -1,0 +1,72 @@
+%!TEX root = ../../document/document.tex
+
+
+%%%%%%%%%% Create new save command %%%%%%%%%%
+
+\makeatletter
+
+% \savepdf[OPTIONAL: e.g. <landscape=true>,<width=0.7\textwidth>]{<ID>}{<referenced_page>}{<type}{<pages>}{<last_page>}{<description>}{<file_name>}
+
+% -> OPTIONAL to add any special settings (see https://texdoc.org/serve/pdfpages.pdf/0)
+% referenced_page: add the number of the page to reference to (jump to with a hyperlink)
+% type: figure or table to add to the corresponding list
+% first_pages: 1,2,3 or 1-3 -> DON'T ENTER THE LAST PAGE HERE
+% last_page: 4 -> ENTER THE LAST PAGE HERE
+% -> If only one page is needed, leave first_pages empty and enter the page number in last_page
+% description: heading to show in the list of images/tables
+% file_name: in the folder /content/non_tex_files/pdfs
+\newcommand\savepdf[8][]{%
+    \@namedef{pdf@#2}{
+        % Check if first pages are needed
+        \ifthenelse{\isempty{#5}}
+            {%True
+                % Add only last page WITH addtolist
+                \begin{minipage}[c]{\textwidth}
+                    \includepdf[
+                        pages={#6},
+                        width={\textwidth},% default width (can be overwritten setting another width in #1)
+                        addtolist={#3,#4,#7,pdf:#2},
+                        pagecommand={},
+                        #1% add any special settings here, if #1 not empty
+                    ]{../content/non_tex_files/pdfs/#8}    
+                \end{minipage}
+                \centering\vfill\autoref{pdf:#2}: #7
+                \newpage
+            }
+            {%False
+                % Add first pages
+                \includepdf[
+                    pages={#5},
+                    width={\textwidth},% default width (can be overwritten setting another width in #1)
+                    addtolist={#3,#4,#7,pdf:#2},
+                    pagecommand={},
+                    #1% add any special settings here, if #1 not empty
+                ]{../content/non_tex_files/pdfs/#8}
+                
+                % Add last page WITHOUT addtolist
+                \begin{minipage}[c]{\textwidth}
+                    \includepdf[
+                        pages={#6},
+                        width={\textwidth},% default width (can be overwritten setting another width in #1)
+                        pagecommand={},
+                        #1% add any special settings here, if #1 not empty
+                    ]{../content/non_tex_files/pdfs/#8}    
+                \end{minipage}
+                \centering\vfill\autoref{pdf:#2}: #7
+                \newpage
+            }
+        
+    }
+}
+
+% \usepdf{<ID>}
+\newcommand\usepdf[1]{%
+    \@nameuse{pdf@#1}
+}
+
+\makeatother
+
+
+%%%%%%%%%% Content %%%%%%%%%%
+
+\input{../content/additionals/pdfs.tex}

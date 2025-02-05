@@ -4,8 +4,8 @@
 
 &nbsp;
 
-## Legal statements
-As already stated under [the license](LICENSE), I do NOT guarantee any correctness of this repository and thus this template. That means, using this template is at your own risk of something being worng or not as stated in the guidelines of the DHBW.  
+## Legal statement
+As already stated under [the license](LICENSE), I do NOT guarantee any correctness of this repository and thus this template. That means, using this template is at your own risk of something being wrong or not as stated in the guidelines of the DHBW.  
 That being said, I did develop this template with the [guidelines for the technical commission from october 2021](https://www.dhbw.de/fileadmin/user_upload/Dokumente/Dokumente_fuer_Studierende/191212_Leitlinien_Praxismodule_Studien_Bachelorarbeiten.pdf) in mind.
 
 

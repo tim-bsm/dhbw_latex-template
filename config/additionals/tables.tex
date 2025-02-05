@@ -12,7 +12,12 @@
 
 \makeatletter
 
-% \savetable{<ID>}{<adjustSettings(e.g. center)>}{<tabularSetting(e.g. |c|c|c|c|c|c|)>}{<description>}{<content>}
+% \savetable{<ID>}{<adjust_settings>}{<column_setting>}{<description>}{<content>}
+
+% adjust_settings: any settings for \begin{adjustbox} e.g. center
+% column_setting: any column settings for \begin{tabular} e.g. |c|c|c|c|c|c|
+% description: caption to show below the table
+% content: the content of the table
 \newcommand\savetable[5]{%
     \@namedef{tab@#1}{
         \begin{adjustbox}{#2, captionbelow={#4\label{tab:#1}}, nofloat=table}
