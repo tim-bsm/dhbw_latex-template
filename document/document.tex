@@ -1,10 +1,10 @@
-%!TEX root = ./document.tex
+% !TEX root = ./document.tex
+% !TEX TS-program = lualatex
 
 \input{../config/config.tex}
 
 \begin{document}
     %%%%%%%%%% Pages before the chapters %%%%%%%%%%
-
     \setpagestylepre
 
     % Set distance between chapter title and top of page
@@ -49,47 +49,54 @@
         \fi
     \fi
 
-    % Table of contents
-    \iftableofcontents
-        \input{../config/additionals/toc.tex}
-        \newpage
-    \fi
+    % Put toc and lists inside a group to deactivate the \cite command for the lists
+    {
+        % Deactivate \cite command
+        \renewcommand{\cite}[2][]{\ignorespaces}%
 
-    % List of acronyms
-    \ifacronyms
-        \cleardoublepage
-        \input{../config/additionals/acronyms.tex}
-    \fi
 
-    % List of images
-    \ifimagelist
-        \cleardoublepage
-        \listoffigures
-    \fi
+        % Table of contents
+        \iftableofcontents
+            \input{../config/additionals/toc.tex}
+            \newpage
+        \fi
 
-    % List of tables
-    \iftablelist
-        \cleardoublepage
-        \listoftables
-    \fi
+        % List of acronyms
+        \ifacronyms
+            \cleardoublepage
+            \input{../config/additionals/acronyms.tex}
+        \fi
 
-	% List of symbols
-	\ifsymbols
-		\cleardoublepage
-        \input{../config/additionals/symbols.tex}
-	\fi
+        % List of images
+        \ifimagelist
+            \cleardoublepage
+            \listoffigures
+        \fi
 
-    % Formulary
-    \ifformulary
-        \cleardoublepage
-        \listofformels
-    \fi
+        % List of tables
+        \iftablelist
+            \cleardoublepage
+            \listoftables
+        \fi
 
-    % List of code
-    \ifcodelist
-        \cleardoublepage
-        \lstlistoflistings
-    \fi
+        % List of symbols
+        \ifsymbols
+            \cleardoublepage
+            \input{../config/additionals/symbols.tex}
+        \fi
+
+        % Formulary
+        \ifformulary
+            \cleardoublepage
+            \listofformels
+        \fi
+
+        % List of code
+        \ifcodelist
+            \cleardoublepage
+            \lstlistoflistings
+        \fi
+    }
 
     \label{endOfRomanNumbering}
     
