@@ -14,7 +14,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 clean_dir()
 {
     # Change to the directory to be cleaned and save its path
-    cd $SCRIPT_DIR$1
+    cd "$SCRIPT_DIR$1"
     current_dir=$(pwd)
 
     echo "Cleaning '$current_dir'"
