@@ -11,31 +11,37 @@
 
 
 \savetable{bsp_normal}{rotate=0, center}{|c|c|c|c|c|c|}{Beispieltabelle}{
-    \tablerow{\rowcolor{lightgray}
+        \rowcolor{lightgray}
         \textbf{Spalte 1} &
         \textbf{Spalte 2 (\%)} &
         \multicolumn{2}{|c|}{\textbf{Spalte 3}} & 
         \multicolumn{2}{|c|}{\textbf{Spalte 4}}
-    }
-    \tablerow{A & 10 & 111 & 0,1 & Dies & 100}
-    \tablerow{B & 20 & 222 & 0,2 & ist & 200}
-    \tablerow{C & 30 & 333 & 0,3 & ein & 300}
-    \tablerow{D & 40 & 444 & 0,4 & Beispiel & 400}
-    \tablerow{
+    \\\hline
+    A & 10 & 111 & 0,1 & Dies & 100
+    \\\hline
+    B & 20 & 222 & 0,2 & ist & 200
+    \\\hline
+    \multirow{2}{*}{C} & 30 & 333 & 0,3 & ein & 300
+    \\\cline{2-6}
+     & 40 & 444 & 0,4 & Beispiel & 400
+    \\\hline
         \textbf{Summe} &
         \textbf{100} &
         \textbf{1110} &
         \textbf{1} & 
          &
-        \textbf{1000}}
-    \tablerow{
+        \textbf{1000}
+    \\\hline
         \multicolumn{4}{|c|}{\textbf{Letzte}} &
         \multicolumn{2}{|c|}{\textbf{Reihe}}
-    }
-    \tablerow{\makecell{Multilined \\ cell text} & 1 & 2 & 3 & 4 & 5}
+    \\\hline
+    \makecell{Multilined \\ cell text} & 1 & 2 & 3 & 4 & 5
+    \\\hline
 }
 
 \savetable{bsp_rotiert}{rotate=90, center}{|c|c|c|}{Rotierte Tabelle}{
-    \tablerow{A & 10 & test}
-    \tablerow{B & 20 & test}
+    A & 10 & test
+    \\\hline
+    B & 20 & test
+    \\\hline
 }
