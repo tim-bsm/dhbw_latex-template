@@ -20,7 +20,7 @@ To check for any new updates, please visit my [repository](https://github.com/ti
 
 - [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 - [LaTeX Utilities](https://marketplace.visualstudio.com/items?itemName=tecosaur.latex-utilities)
-- [LTeX – LanguageTool grammar/spell checking](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex)
+- [LTeX+ – grammar/spell checking using LanguageTool](https://marketplace.visualstudio.com/items?itemName=ltex-plus.vscode-ltex-plus)
 
 **Settings:**  
 The following settings should be added to the settings.json of VSC for better usability.  
