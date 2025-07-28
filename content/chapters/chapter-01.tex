@@ -52,8 +52,12 @@ Auch hier kann wieder auf die Tabellen referenziert werden: \autoref{tab:bsp_nor
 
 \useimage{bsp_rotated}
 
-
-\usetable{bsp_rotiert}
+{
+    % Place \usetable{} in between {}-braces and use \setlength\arrayrulewidth{}
+    % to change the line width of the table.
+    \setlength\arrayrulewidth{2pt}
+    \usetable{bsp_rotiert}
+}
 
 Hier ein Beispiel für eine Liste:
 \begin{itemize}[label=\textbullet]

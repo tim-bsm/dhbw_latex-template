@@ -10,13 +10,17 @@
 % content: the content of the table
 
 
-\savetable{bsp_normal}{rotate=0, center}{|c|c|c|c|c|c|}{Beispieltabelle}{
-        \rowcolor{lightgray}
+% Use a pipe | to create a vertical line with the default line width. 
+% Use !{\vrule width 3pt} instead, to create a vertical line with a custom line width.
+\savetable{bsp_normal}{rotate=0, center}{|c!{\vrule width 3pt}c|c|c|c|c|}{Beispieltabelle}{
+    \rowcolor{lightgray}
         \textbf{Spalte 1} &
         \textbf{Spalte 2 (\%)} &
         \multicolumn{2}{|c|}{\textbf{Spalte 3}} & 
         \multicolumn{2}{|c|}{\textbf{Spalte 4}}
-    \\\hline
+    % Use \hline to create a horizontal line with the default line height.
+    % Use \noalign{\hrule height 3pt} to create a horizontal line with a custom line height.
+    \\\noalign{\hrule height 3pt}
     A & 10 & 111 & 0,1 & Dies & 100
     \\\hline
     B & 20 & 222 & 0,2 & ist & 200
