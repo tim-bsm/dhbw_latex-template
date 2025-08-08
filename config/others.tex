@@ -112,3 +112,11 @@
 \makeatletter
     \pdfstringdefDisableCommands{\let\@ac\relax}
 \makeatother
+
+% Change spacing of headings
+% https://tex.stackexchange.com/a/223524
+\RedeclareSectionCommand[
+  %runin=false,
+  afterindent=false,
+  beforeskip=1\baselineskip,
+  afterskip=.001\baselineskip]{subsubsection}
