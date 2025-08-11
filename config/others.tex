@@ -104,6 +104,12 @@
     }
 }
 
+% Add a command for the plus to align in text, as it is always
+% placed a bit too low by default
+\newcommand{\plus}{%
+    \raisebox{\dimexpr(\fontcharht\font`X-\height+\depth)/2\relax}{+}%
+}
+
 
 %%%%%%%%%% Load any settings %%%%%%%%%%
 
