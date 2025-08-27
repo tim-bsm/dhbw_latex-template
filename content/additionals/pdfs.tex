@@ -2,21 +2,18 @@
 % LTeX: enabled=false
 
 
-% This file is used to specify PDFs which should be included in a whole page / multiple pages. 
-% DON'T use this to add images which should be included in the text flow. For that please still
+% This file is used to show PDFs which should be included in a whole page / multiple pages. 
+% DON'T use this to add images which should be included in the text flow. For that, please 
 % use the /content/additionals/images.tex file, as this can also handle PDFs.
 
-% \savepdf[OPTIONAL: e.g. <landscape=true>,<width=0.7\textwidth>]{<ID>}{<referenced_page>}{<type>}{<pages>}{<last_page>}{<description>}{<file_name>}
+% \savepdf[<OPTIONAL>]{<ID>}{<referenced_page>}{<type>}{<pages>}{<last_page>}{<description>}{<file_name>}
 
-% -> OPTIONAL to add any special settings (see https://texdoc.org/serve/pdfpages.pdf/0)
-% referenced_page: add the number of the page to reference to (PDF page)
-% type: figure or table to add to the corresponding list
-% first_pages: Enter all pages except the last one: e.g. 1,2,3,4 or 1-4 (PDF pages)
-% last_page: Enter last page here: e.g. 5 (PDF page)
-% -> IF ONLY ONE PAGE IS NEEDED, LEAVE first_pages EMPTY AND ENTER THE PAGE NUMBER IN last_page
+% OPTIONAL: add any special settings (see https://texdoc.org/serve/graphicx.pdf/0) -> e.g.: width=0.7\textheight,angle=90,origin=c
+% ID: not used ID to reference
+% pages: enter all pages e.g. 1,2,3,4 or 1,...,4 (PDF pages) -> see: https://tikz.dev/pgffor
 % description: heading to show in the list of images/tables
 % file_name: in the folder /content/non_tex_files/pdfs
 
 
-\savepdf{example_multiple-pages}{1}{figure}{1-2}{3}{Test PDF - multiple pages \cite{A01}}{example.pdf}
-\savepdf{example_single-page}{2}{figure}{}{2}{Test PDF - single page}{example.pdf}
+\savepdf{example_multiple-pages}{1,...,3}{Test PDF - multiple pages \cite{A01}}{example.pdf}
+\savepdf{example_single-page}{2}{Test PDF - single page}{example.pdf}
