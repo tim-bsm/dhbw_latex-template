@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+&nbsp;
+
+## [1.0.1] - 2026-01-05
+
+### Changed
+
+- Moved settings out of the [README](/README.md) to the [workspace settings](/.vscode/settings.json).
+
 ## [1.0.0] - 2025-09-01
 
 ### Added

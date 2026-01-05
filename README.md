@@ -22,51 +22,6 @@ To check for any new updates, please visit my [repository](https://github.com/ti
 - [LaTeX Utilities](https://marketplace.visualstudio.com/items?itemName=tecosaur.latex-utilities)
 - [LTeX+ – grammar/spell checking using LanguageTool](https://marketplace.visualstudio.com/items?itemName=ltex-plus.vscode-ltex-plus)
 
-**Settings:**  
-The following settings should be added to the settings.json of VSC for better usability.  
-On Windows, press CTRL+SHIFT+P and on Mac CMD+SHIFT+P in VSC, type "settings" and select "Preferences: Open User Settings (JSON)". Then insert the following:
-
-```json
-// LaTeX Settings
-"ltex.language": "de-DE", // Choose your own language: "en-US", "de-DE", ...
-"latex-workshop.latex.tools": [
-    {
-        "name": "latexmk",
-        "command": "latexmk",
-        "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "-pdf",
-            "-outdir=%OUTDIR%",
-            "%DOC%"
-        ],
-        "env": {}
-    }
-],
-"latex-workshop.latex.recipes": [
-    {
-        "name": "latexmk",
-        "tools": [
-            "latexmk"
-        ]
-    }
-],
-// Fix citation warnings in editor when using biber (wavy lines).
-"latex-workshop.intellisense.citation.backend": "biblatex",
-// Set bibliography indentation to two spaces (default).
-"latex-workshop.bibtex-format.tab": "2 spaces",
-// Build PDF every time a file is saved.
-"latex-workshop.latex.autoBuild.run": "onSave",
-// Sync PDF with cursor position after compiling.
-"latex-workshop.synctex.afterBuild.enabled": true,
-// Automatically choose first recipe (latexmk) on next build.
-"latex-workshop.latex.recipe.default": "first",
-
-// VS Code Settings
-"editor.wordWrap": "on",
-```
-
 ### JabRef
 
 **[Browser Extension:](https://docs.jabref.org/collect/jabref-browser-extension)**  
@@ -146,7 +101,7 @@ Code, formulas, images and tables do not need to be written in the external file
 
 ## Possible Errors
 
-### Flag 'symbolstrue' or 'acronymstrue' set
+### `symbolstrue` or `acronymstrue` flag set
 
 If the flag `symbolstrue` is set in the [`user_settings.tex`-file](/content/user_settings.tex), at least one entry from [the symbols file](/content/additionals/symbols.tex) must be used in the chapters, otherwise an error will occur and the PDF will not be created correctly.  
 The same applies to [the acronyms file](/content/additionals/acronyms.tex) with the flag `acronymstrue`.

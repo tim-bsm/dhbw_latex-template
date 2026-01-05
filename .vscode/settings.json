@@ -1,0 +1,39 @@
+{
+  // LaTeX Settings
+  "ltex.language": "de-DE", // Choose your own language: "en-US", "de-DE", ...
+  "latex-utilities.countWord.path": "/Library/TeX/texbin/texcount",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    }
+  ],
+  // Fix citation warnings in editor when using biber (wavy lines).
+  "latex-workshop.intellisense.citation.backend": "biblatex",
+  // Set bibliography indentation to two spaces (default).
+  "latex-workshop.bibtex-format.tab": "2 spaces",
+  // Build PDF every time a file is saved.
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  // Sync PDF with cursor position after compiling.
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  // Automatically choose first recipe (latexmk) on next build.
+  "latex-workshop.latex.recipe.default": "first",
+
+  // VS Code Settings
+  "editor.wordWrap": "on"
+}
