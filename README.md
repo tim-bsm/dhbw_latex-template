@@ -1,4 +1,6 @@
-# LaTeX Template for the DHBW
+<!-- LTeX: enabled=false -->
+
+# LaTeX Template for the [DHBW](https://www.dhbw-stuttgart.de)
 
 ### To view a short example of the template, please look at [this PDF](document/document.pdf).
 

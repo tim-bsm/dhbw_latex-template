@@ -6,13 +6,16 @@
 % syllable for LaTeX to cut them off correctly at the end of each line.
 % For more options see: http://www.namsu.de/Extra/pakete/Acronym.pdf
 
+% Definition:
+% \acro{EP}{Ex\-ten\-ded Po\-li\-cy} % Example acronym
+% \acrodefplural{EP}[EPs]{Ex\-ten\-ded Po\-li\-cies} % Example plural form of the acronym to switch ending of the acronym when using the plural form in the text (\aclp{EP} -> Extended Policies instead of Extended Policys)
+
 % Usage:
-% \acro{BSP}{Board Support Package} % Example acronym
 % \ac{Abbr.}   --> inserts the abbreviation, at the first call the full version is inserted
-% \acf{Abbr.}   --> inserts the abbreviation AND the explanation
-% \acl{Abbr.}   --> inserts only the explanation
-% \acp{Abbr.}  --> inserts the plural form (adds 's'); the additional 'p' works with the above commands as well
-% \acs{Abbr.}   --> inserts the abbreviation
+% \acf{Abbr.}   --> inserts the abbreviation AND the explanation -> e.g. \acf{EP} -> Extended Policy (EP)
+% \acl{Abbr.}   --> inserts only the explanation -> e.g. \acl{EP} -> Extended Policy
+% \acp{Abbr.}  --> inserts the plural form (adds 's'); the additional 'p' works with the above commands as well -> e.g. \acp{EP} -> EPs, \acfp{EP} -> Extended Policies (EPs), \acsp{EP} -> EPs, \aclp{EP} -> Extended Policies
+% \acs{Abbr.}   --> inserts the abbreviation -> e.g. \acs{EP} -> EP
 
 % If the space between the acronym and the explanation is too small, you can adjust it by going into the config/additionals/acronyms.tex file and changing the 'ABCDEFGHIJ' to the longest acronym you have. 
 
@@ -25,7 +28,8 @@
 
 %D:
 \acro{DHBW}{Du\-a\-le Hoch\-schu\-le Ba\-den-Würt\-tem\-berg}
-\acro{dta}{das Test-A\-cro\-nym}
+\acro{dTA}{das Test-A\-cro\-nym}
+\acrodefplural{dTA}[dTAs]{die Test-A\-cro\-nyme}
 
 %E:
 

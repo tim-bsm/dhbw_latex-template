@@ -1,3 +1,5 @@
+<!-- LTeX: enabled=false -->
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -6,6 +8,28 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 &nbsp;
+
+## [1.3.2] - 2026-02-24
+
+### Added changes of newer template from [my other repository](https://github.com/tim-bsm/hse_latex-template).
+
+### Added
+
+- Added further information regarding acronyms and their plural
+- Deactivated LTeX spelling check for the Markdown files
+- Added package `textgreek` to use greek letters in text mode (e.g. \textalpha)
+- Added YAML syntax highlighting for code
+- Added `dockerfile` and `docker-compose` language for code in [code.tex](/config/additionals/code.tex)
+- Added link to DHBW homepage in [README.md](/README.md)
+
+### Changed
+
+- Minor refactoring
+- Rewrote [`tables.tex`](/config/additionals/tables.tex) wrapper to use `tabularx` to better format table for with and line breaks with vertical centered text in tables
+- Matched code syntax highlighting to same colors
+- Changed folder structure in [code.tex](/content/additionals/code.tex) to use the chapter number instead of the code language (e. g. chapter-01/hello-world.cpp instead of cpp/hello-world.cpp) for better structure.
+- Removed deprecated command `\tablerow{}` for tables defined in [tables.tex](/config/additionals/tables.tex). Use `content\\\hline` instead of `\tablerow{content}` (see [tables.tex](/content/additionals/tables.tex) for examples).
+- Changed template from DHBW to HSE
 
 ## [1.0.1] - 2026-01-05
 

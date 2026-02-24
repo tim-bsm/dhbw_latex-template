@@ -2,18 +2,33 @@
 % LTeX: enabled=false
 
 
-% \savetable[<OPTIONAL>]{<ID>}{<adjust_settings>}{<column_setting>}{<description>}{<content>}
+% \savetable{<ID>}{<position>}{<adjust_settings>}{<table_width>}{<description>}{<column_setting>}{<content>}
 
-% OPTIONAL: width of table lines e.g. 2pt
-% adjust_settings: any settings for \begin{adjustbox} e.g. center
-% column_setting: any column settings for \begin{tabular} e.g. |c|c|c|c|c|c|
+% ID: name to save the table under
+% position: where to position the table e.g. ht (here, top)
+% adjust_settings: any settings for \begin{adjustbox} e.g. rotate=90, right
+% table_width: width of the table e.g. \textwidth
 % description: caption to show below the table
+% column_setting: any column settings for \begin{tabular} e.g. | C | C | C |
 % content: the content of the table
 
 
-% Use a pipe | to create a vertical line with the default line width. 
-% Use !{\vrule width 3pt} instead, to create a vertical line with a custom line width.
-\savetable{bsp_normal}{rotate=0, center}{|c!{\vrule width 3pt}c|c|c|c|c|}{Beispieltabelle}{
+% Define own column style j with fixed size and centered aligning for column 2 in this case
+\newcolumntype{j}{>{\centering\arraybackslash\hsize=0.18\textwidth}X}
+\savetable{bsp_normal}{!ht}{rotate=0, center}{\textwidth}{Beispieltabelle}
+% Define columnstyles and vertical lines for the table and its content
+{
+    % Use a pipe | to create a vertical line with the default line width. 
+    % Use !{\vrule width 3pt} instead, to create a vertical line with a custom line width of 3pt.
+    | >{\hsize=0.2\textwidth}X % use default column type X with own size for column 1
+    !{\vrule width 3pt} j
+    | C
+    | C
+    | R
+    | L
+    |
+}{
+    \hline
     \rowcolor{lightgray}
         \textbf{Spalte 1} &
         \textbf{Spalte 2 (\%)} &
@@ -22,7 +37,7 @@
     % Use \hline to create a horizontal line with the default line height.
     % Use \noalign{\hrule height 3pt} to create a horizontal line with a custom line height.
     \\\noalign{\hrule height 3pt}
-    A & 10 & 111 & 0,1 & Dies & 100
+    Längerer Text mit automatischem Zeilenumbruch & 10 & 111 & 0,1 & Dies & 100
     \\\hline
     B & 20 & 222 & 0,2 & ist & 200
     \\\hline
@@ -40,11 +55,15 @@
         \multicolumn{4}{|c|}{\textbf{Letzte}} &
         \multicolumn{2}{|c|}{\textbf{Reihe}}
     \\\hline
-    \makecell{Multilined \\ cell text} & 1 & 2 & 3 & 4 & 5
+    Numbers & 1 & 2 & 3 & 4 & 5
     \\\hline
 }
 
-\savetable[2pt]{bsp_rotiert}{rotate=90, center}{|c|c|c|}{Rotierte Tabelle}{
+\savetable{bsp_rotiert}{hb}{rotate=90, right}{0.28\textwidth}{Rotierte Tabelle}
+% Same size for all columns 
+{| C | C | C |}
+{
+    \hline
     A & 10 & test
     \\\hline
     B & 20 & test

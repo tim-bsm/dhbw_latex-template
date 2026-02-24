@@ -6,33 +6,37 @@
 
 % Change spaces of tables
 \setlength{\tabcolsep}{10pt}
-\renewcommand{\arraystretch}{1.5}
+\renewcommand\arraystretch{1.5}
+
+% Vertical center text in tables
+\renewcommand\tabularxcolumn[1]{m{#1}}
 
 
 %%%%%%%%%% Create new save command %%%%%%%%%%
 
 \makeatletter
 
-% \savetable[<OPTIONAL>]{<ID>}{<adjust_settings>}{<column_setting>}{<description>}{<content>}
+% \savetable{<ID>}{<position>}{<adjust_settings>}{<table_width>}{<description>}{<column_setting>}{<content>}
 
-% OPTIONAL: width of table lines e.g. 2pt
-% adjust_settings: any settings for \begin{adjustbox} e.g. center
-% column_setting: any column settings for \begin{tabular} e.g. |c|c|c|c|c|c|
+% ID: name to save the table under
+% position: where to position the table e.g. ht (here, top)
+% adjust_settings: any settings for \begin{adjustbox} e.g. rotate=90, right
+% table_width: width of the table e.g. \textwidth
 % description: caption to show below the table
+% column_setting: any column settings for \begin{tabular} e.g. | C | C | C |
 % content: the content of the table
-\newcommand\savetable[6][]{%
-    \@namedef{tab@#2}{{
-        % Change width of table lines, if set
-        \ifthenelse{\isempty{#1}}
-            {}% True
-            {\setlength\arrayrulewidth{#1}}%False
-
-        \begin{adjustbox}{#3, captionbelow={#5\label{tab:#2}}, nofloat=table}
-            \begin{tabular}[c]{#4}
-                \hline
-                #6
-            \end{tabular}
-        \end{adjustbox}
+\newcommand\savetable[7]{%
+    \@namedef{tab@#1}{{
+        \begin{table}[#2]
+            \centering
+            \begin{adjustbox}{#3}
+                \begin{tabularx}{#4}{#6}
+                    #7
+                \end{tabularx}
+            \end{adjustbox}
+            \caption{#5}
+            \label{tab:#1}
+        \end{table}
     }}
 }
 
@@ -41,14 +45,14 @@
     \@nameuse{tab@#1}
 }
 
-% Adds a shortcut to create a new row in a table
-% TODO: DEPRECATED
-\newcommand\tablerow[1]{%
-    #1\\
-    \hline
-}
-
 \makeatother
+
+
+%%%%%%%%%% Additionals Commands %%%%%%%%%%
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
 
 %%%%%%%%%% Content %%%%%%%%%%
